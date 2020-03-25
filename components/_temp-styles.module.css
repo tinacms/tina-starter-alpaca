@@ -1,0 +1,13 @@
+.header {
+  max-width: 80%;
+  margin: 0 auto;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+.header a {
+  margin-right: 3rem;
+}
+.header a:nth-child(2) {
+  margin-left: auto;
+}
