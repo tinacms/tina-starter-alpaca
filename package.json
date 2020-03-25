@@ -1,0 +1,35 @@
+{
+  "name": "forestry",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "cross-env NODE_ENV=production node server.js",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\""
+  },
+  "keywords": [
+    "nextjs",
+    "tinaCMS"
+  ],
+  "author": "Bejamas",
+  "license": "ISC",
+  "dependencies": {
+    "@tinacms/api-git": "^0.7.0",
+    "@tinacms/git-client": "^0.6.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "next": "^9.3.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.0.1",
+    "tinacms": "^0.18.0"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
+    "cross-env": "^7.0.2",
+    "prettier": "2.0.2"
+  }
+}
