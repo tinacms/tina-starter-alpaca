@@ -1,0 +1,28 @@
+.header {
+  max-width: 80%;
+  margin: 0 auto;
+  align-items: center;
+}
+.header__logoWrapper {
+  height: 57px;
+  display: flex;
+  align-items: center;
+}
+
+.header__navWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media all and (min-width: 768px) {
+  .header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header__navWrapper {
+    a {
+      margin-right: 3rem;
+    }
+  }
+}

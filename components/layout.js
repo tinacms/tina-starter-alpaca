@@ -1,8 +1,11 @@
 import React from "react"
 
+import TopBar from './topbar';
+
 export default function layout({ children }) {
   return (
     <main>
+      <TopBar />
       {children}
       <style jsx>{`
         :global(body) {
