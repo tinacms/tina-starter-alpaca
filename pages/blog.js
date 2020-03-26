@@ -1,7 +1,6 @@
-import styled from "styled-components"
-
 import Head from "../components/head"
 import Layout from "../components/layout"
+import Container from "../components/container"
 
 const Blog = () => {
   return (
@@ -13,11 +12,5 @@ const Blog = () => {
     </Layout>
   )
 }
-
-const Container = styled.div`
-  max-width: 80%;
-  color: #333;
-  margin: 0 auto;
-`
 
 export default Blog

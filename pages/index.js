@@ -1,10 +1,12 @@
 import Head from "../components/head"
 import styled from "styled-components"
 import Layout from "../components/layout"
+import Container from "../components/container"
+
 export default () => (
   <Layout>
     <Head title="Home" />
-    <Container className="container">
+    <Container>
       <h1 className="title">Forestry</h1>
       <p className="description">
         To get started, edit <code>pages/index.js</code> and save to reload.
@@ -12,9 +14,3 @@ export default () => (
     </Container>
   </Layout>
 )
-
-const Container = styled.div`
-  max-width: 80%;
-  color: #333;
-  margin: 0 auto;
-`

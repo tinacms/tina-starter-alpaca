@@ -1,6 +1,6 @@
 import React from "react"
 
-import TopBar from './top-bar';
+import TopBar from './topbar';
 
 export default function layout({ children }) {
   return (
