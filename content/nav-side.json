@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "label": "Deployment",
+      "link": "/deployment"
+    },
+    {
+      "label": "Basic Features",
+      "link": "/basic-features"
+    },
+    {
+      "label": "Advanced Features",
+      "link": "/advanced-features"
+    }
+  ]
+}
