@@ -1,6 +1,6 @@
-import NavItem from './nav-item'
+import NavItem from "./nav-item"
 
-import styles from './styles.module.scss'
+import styles from "./styles.module.scss"
 
 const SideNav = ({ allDocs }) => {
   return (
@@ -8,9 +8,9 @@ const SideNav = ({ allDocs }) => {
       <p>
         <strong>DOCS</strong>
       </p>
-      {allDocs.map(doc => (
-        <NavItem itemData={doc} key={doc.slug} />
-      ))}
+      {allDocs &&
+        allDocs.length > 0 &&
+        allDocs.map((doc) => <NavItem itemData={doc} key={doc.slug} />)}
     </nav>
   )
 }
