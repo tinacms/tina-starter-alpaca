@@ -38,6 +38,18 @@
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7",
     "cross-env": "^7.0.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.0",
     "prettier": "2.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json,md}": [
+      "prettier --write"
+    ]
   }
 }
