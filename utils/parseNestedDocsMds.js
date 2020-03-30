@@ -53,11 +53,12 @@ const parseParentItem = (key, document, type) => {
     ...(type === "link" && {
       key: keySplitted[1],
       slug: `${keySplitted[1]}/index`,
+      title: document.data.title,
     }),
     ...(type === "group" && {
       key: document.data.groupIn,
+      title: document.data.groupIn,
     }),
-    title: document.data.title,
     children: [...(keySplitted[2] !== "index.md" ? [parseChildItem(key, document)] : [])],
   }
 }
