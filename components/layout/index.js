@@ -1,4 +1,5 @@
 import { useCMS, usePlugins } from 'tinacms'
+
 import { toMarkdownString } from '@utils'
 
 import TopBar from '@components/topbar'
@@ -11,20 +12,25 @@ const Layout = ({ children, allDocs }) => {
   usePlugins([
     {
       __type: 'content-creator',
-      name: 'Create Doc Page',
+      name: 'Create Main Doc Page',
       user: 'LiamKlyneker',
       fields: [
+        {
+          name: 'slug',
+          label: 'Slug',
+          component: 'text',
+        },
         {
           name: 'title',
           label: 'Title',
           component: 'text',
         },
       ],
-      onSubmit: ({ title }) => {
+      onSubmit: ({ slug, title }) => {
         return cms.api.git.onChange({
-          fileRelativePath: `docs/${title}.md`,
+          fileRelativePath: `docs/${slug}/index.md`,
           content: toMarkdownString({
-            fileRelativePath: `docs/${title}.md`,
+            fileRelativePath: `docs/${slug}/index.md`,
             rawFrontmatter: {
               title,
             },

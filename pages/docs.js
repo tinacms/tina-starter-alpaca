@@ -1,3 +1,5 @@
+import matter from 'gray-matter'
+
 import Head from "@components/head"
 import Layout from "@components/layout"
 import Container from "@components/container"
@@ -16,14 +18,9 @@ const Docs = ({ allDocs }) => {
 }
 
 Docs.getInitialProps = async () => {
-	const docs = (context => {
-    const keys = context.keys()
-		const data = keys.reduce((newData, key) => {
-      newData = parseNestedDocsMds(key, newData)
-			return newData;
-    }, [])
-		return data
-	})(require.context('@docs', true, /\.md$/))
+  const docs = (context =>
+    parseNestedDocsMds(context)
+  )(require.context('@docs', true, /\.md$/))
 	return {
 		allDocs: docs
 	}

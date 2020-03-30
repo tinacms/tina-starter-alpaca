@@ -3,16 +3,20 @@ import Link from 'next/link'
 import styles from './styles.module.scss'
 
 const NavItem = ({
-  itemData: { slug, type, name, children },
+  itemData: { slug, children, title, type },
 }) => {
   return (
     <div>
-      <Link href={`/docs/${slug}`}>
-        <a>{name}</a>
-      </Link>
-      {type === 'group' && (
+      {type === 'link' && (
+        <Link href={`/docs/${slug}`}>
+          <a>{title}</a>
+        </Link>
+      )}
+      {type === 'group' && <a href="#">{title}</a>}
+
+      {children && (
         <div className={styles.navGroup}>
-          {type === 'group' && children.map(item => (
+          {children.map(item => (
             <NavItem itemData={item} key={item.slug} />
           ))}
         </div>
