@@ -1,13 +1,13 @@
-import Link from 'next/link'
-
-import styles from './styles.module.scss'
+import Link from "next/link"
+import styles from "./styles.module.scss"
+import theme from "../../utils/theme"
 
 const TopBar = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__logoWrapper}>
         <Link href="/">
-          <a>Logo</a>
+          <a>{theme.logo}</a>
         </Link>
       </div>
       <div className={styles.header__navWrapper}>
@@ -20,7 +20,9 @@ const TopBar = () => {
         <Link href="/docs">
           <a>Docs</a>
         </Link>
-        <a href="https://github.com/tinacms/tinacms" target="_blank">GitHub</a>
+        <a href="https://github.com/tinacms/tinacms" target="_blank">
+          GitHub
+        </a>
       </div>
     </header>
   )
