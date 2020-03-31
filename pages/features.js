@@ -1,6 +1,6 @@
-import Head from "../components/head"
-import Layout from "../components/layout"
-import Container from "../components/container"
+import Head from "@components/head"
+import Layout from "@components/layout"
+import Container from "@components/container"
 
 const Features = () => {
   return (
