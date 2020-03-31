@@ -20,7 +20,7 @@ const TopBar = () => {
         <Link href="/docs/getting-started/index">
           <a>Docs</a>
         </Link>
-        <a href="https://github.com/tinacms/tinacms" target="_blank">
+        <a href="https://github.com/tinacms/tinacms" target="_blank" rel="noopener noreferrer">
           GitHub
         </a>
       </div>

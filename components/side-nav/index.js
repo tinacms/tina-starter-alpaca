@@ -1,3 +1,5 @@
+import { array } from "prop-types"
+
 import NavItem from "./nav-item"
 
 import styles from "./styles.module.scss"
@@ -13,6 +15,10 @@ const SideNav = ({ allDocs }) => {
         allDocs.map((doc) => <NavItem itemData={doc} key={doc.slug} />)}
     </nav>
   )
+}
+
+SideNav.propTypes = {
+  allDocs: array,
 }
 
 export default SideNav
