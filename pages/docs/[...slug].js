@@ -7,6 +7,7 @@ import { parseNestedDocsMds, toMarkdownString } from "@utils"
 import Head from "@components/head"
 import Layout from "@components/layout"
 import Container from "@components/container"
+import PostNavigation from "@components/post-navigation"
 
 const DocTemplate = ({ markdownFile, allDocs }) => {
   const router = useRouter()
@@ -56,12 +57,12 @@ const DocTemplate = ({ markdownFile, allDocs }) => {
       },
     },
   ])
-
   return (
     <Layout allDocs={allDocs}>
       <Head title="Docs" />
       <Container>
         <h1>{markdownFile.frontmatter.title}</h1>
+        <PostNavigation allDocs={allDocs} router={router} />
       </Container>
     </Layout>
   )

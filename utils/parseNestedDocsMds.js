@@ -8,6 +8,16 @@ export default (context) => {
     newData = parseNestiness(key, newData, document)
     return newData
   }, [])
+  data.sort((a, b) => {
+    return a.position < b.position
+  })
+
+  // Order By Position
+  data.sort((a, b) => {
+    if (a.position < b.position) return -1
+    if (a.position > b.position) return 1
+    return 0
+  })
   return data
 }
 
@@ -21,6 +31,7 @@ const parseNestiness = (key, list, document) => {
         listCopy[foundIndex].children.push(parseChildItem(key, document))
       } else {
         listCopy[foundIndex].title = document.data.title
+        listCopy[foundIndex].position = document.data.position
       }
     } else {
       listCopy[foundIndex].children = parseGroupChildren(
@@ -59,6 +70,7 @@ const parseParentItem = (key, document, type) => {
       key: document.data.groupIn,
       title: document.data.groupIn,
     }),
+    position: document.data.position,
     children: [...(keySplitted[2] !== "index.md" ? [parseChildItem(key, document)] : [])],
   }
 }
@@ -75,7 +87,9 @@ const parseChildItem = (key, document) => {
 
 const parseRawSlug = (rawSlug) =>
   rawSlug
-    .replace(/^.*[\\\/]/, "")
-    .split(".")
-    .slice(0, -1)
-    .join(".")
+    ? rawSlug
+        .replace(/^.*[\\\/]/, "")
+        .split(".")
+        .slice(0, -1)
+        .join(".")
+    : ""
