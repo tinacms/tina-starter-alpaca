@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\""
@@ -21,11 +21,17 @@
     "@zeit/next-sass": "^1.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "gray-matter": "^4.0.2",
     "moment": "^2.24.0",
     "next": "^9.3.1",
+    "next-tinacms-json": "^0.3.7",
+    "next-tinacms-markdown": "^0.2.7",
     "node-sass": "^4.13.1",
+    "raw-loader": "^4.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-markdown": "^4.3.1",
+    "slugify": "^1.4.0",
     "styled-components": "^5.0.1",
     "tinacms": "^0.18.0"
   },

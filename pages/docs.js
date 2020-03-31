@@ -1,16 +1,27 @@
-import Head from "../components/head"
-import Layout from "../components/layout"
-import Container from "../components/container"
+import matter from "gray-matter"
 
-const Docs = () => {
+import Head from "@components/head"
+import Layout from "@components/layout"
+import Container from "@components/container"
+
+import { parseNestedDocsMds } from "@utils"
+
+const Docs = ({ allDocs }) => {
   return (
-    <Layout>
+    <Layout allDocs={allDocs}>
       <Head title="Docs" />
       <Container>
         <h1>Docs</h1>
       </Container>
     </Layout>
   )
+}
+
+Docs.getInitialProps = async () => {
+  const docs = ((context) => parseNestedDocsMds(context))(require.context("@docs", true, /\.md$/))
+  return {
+    allDocs: docs,
+  }
 }
 
 export default Docs
