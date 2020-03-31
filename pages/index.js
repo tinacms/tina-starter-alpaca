@@ -1,6 +1,8 @@
-import Head from "../components/head"
-import Layout from "../components/layout"
-import Container from "../components/Container"
+import styled from "styled-components"
+
+import Head from "@components/head"
+import Layout from "@components/layout"
+import Container from "@components/Container"
 
 const Page = () => {
   return (
