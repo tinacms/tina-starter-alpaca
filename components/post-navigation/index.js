@@ -2,7 +2,7 @@ import Link from "next/link"
 
 import { flatDocs } from "@utils"
 
-import styles from "./styles.module.scss"
+import { PostNavigationStyled } from "./styles"
 
 const PostNavigation = ({ allDocs, router }) => {
   const { query } = router
@@ -20,11 +20,12 @@ const PostNavigation = ({ allDocs, router }) => {
     </Link>
   )
 
+  console.log(Boolean(prevPage), prevPage)
   return (
-    <div className={styles.postNavigation}>
-      <div>{prevPage && renderButton(prevPage, "Previous:")}</div>
-      <div>{nextPage && renderButton(nextPage, "Next:")}</div>
-    </div>
+    <PostNavigationStyled existPrev={Boolean(prevPage)}>
+      {prevPage && renderButton(prevPage, "Previous:")}
+      {nextPage && renderButton(nextPage, "Next:")}
+    </PostNavigationStyled>
   )
 }
 
