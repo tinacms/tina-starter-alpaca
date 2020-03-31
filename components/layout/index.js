@@ -31,7 +31,7 @@ const Layout = ({ children, allDocs }) => {
       ],
       onSubmit: ({ slug, title }) => {
         return cms.api.git
-          .onChange({
+          .writeToDisk({
             fileRelativePath: `docs/${slug}/index.md`,
             content: toMarkdownString({
               fileRelativePath: `docs/${slug}/index.md`,
@@ -40,7 +40,7 @@ const Layout = ({ children, allDocs }) => {
               },
             }),
           })
-          .then(() => setTimeout(() => router.push(`/docs/${slug}/index`), 1000))
+          .then(() => setTimeout(() => router.push(`/docs/${slug}/index`), 1500))
       },
     },
   ])
