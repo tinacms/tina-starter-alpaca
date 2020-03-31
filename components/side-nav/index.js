@@ -2,18 +2,18 @@ import { array } from "prop-types"
 
 import NavItem from "./nav-item"
 
-import styles from "./styles.module.scss"
+import { SideNavStyled } from "./styles"
 
 const SideNav = ({ allDocs }) => {
   return (
-    <nav className={styles.sideNav}>
+    <SideNavStyled>
       <p>
         <strong>DOCS</strong>
       </p>
       {allDocs &&
         allDocs.length > 0 &&
         allDocs.map((doc) => <NavItem itemData={doc} key={doc.slug} />)}
-    </nav>
+    </SideNavStyled>
   )
 }
 
