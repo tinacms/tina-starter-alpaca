@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
 export const TopBarStyled = styled.div`
-  margin 0 auto;
-  align-items center;
+  margin: 0 auto;
+  align-items: center;
   @media all and (min-width: 768px) {
-    height 80px;
-    display flex;
-    justify-content space-between;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
   }
 `
 
@@ -23,6 +23,6 @@ export const NavWrapperStyled = styled.div`
 
 export const NavBarLink = styled.a`
   @media all and (min-width: 768px) {
-    margin-right 3rem;
+    margin-right: 3rem;
   }
 `
