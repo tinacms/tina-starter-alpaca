@@ -8,6 +8,7 @@ import Head from "@components/head"
 import Layout from "@components/layout"
 import Container from "@components/container"
 import PostNavigation from "@components/post-navigation"
+import PostFeedback from "@components/post-feedback"
 
 const DocTemplate = ({ markdownFile, allDocs }) => {
   const router = useRouter()
@@ -63,6 +64,7 @@ const DocTemplate = ({ markdownFile, allDocs }) => {
       <Container>
         <h1>{markdownFile.frontmatter.title}</h1>
         <PostNavigation allDocs={allDocs} router={router} />
+        <PostFeedback />
       </Container>
     </Layout>
   )

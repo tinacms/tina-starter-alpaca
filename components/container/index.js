@@ -1,7 +1,13 @@
-import styles from "./styles.module.scss"
+import { node } from "prop-types"
+
+import { ContainerStyled } from "./styles"
 
 const Container = ({ children }) => {
-  return <div className={styles.container}>{children}</div>
+  return <ContainerStyled>{children}</ContainerStyled>
+}
+
+Container.propTypes = {
+  children: node,
 }
 
 export default Container

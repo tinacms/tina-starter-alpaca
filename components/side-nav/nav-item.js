@@ -1,26 +1,31 @@
+import { shape } from "prop-types"
 import Link from "next/link"
 
-import styles from "./styles.module.scss"
+import { NavItemLink, NavGroup } from "./styles"
 
 const NavItem = ({ itemData: { slug, children, title, type } }) => {
   return (
     <div>
       {type === "link" && (
-        <Link href={`/docs/${slug}`}>
-          <a>{title}</a>
+        <Link href={`/docs/${slug}`} passHref>
+          <NavItemLink>{title}</NavItemLink>
         </Link>
       )}
       {type === "group" && <a href="#">{title}</a>}
 
       {children && (
-        <div className={styles.navGroup}>
+        <NavGroup>
           {children.map((item, index) => (
             <NavItem itemData={item} key={index} />
           ))}
-        </div>
+        </NavGroup>
       )}
     </div>
   )
+}
+
+NavItem.propTypes = {
+  itemData: shape(),
 }
 
 export default NavItem

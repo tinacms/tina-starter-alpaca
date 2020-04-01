@@ -1,12 +1,13 @@
 import { useCMS, usePlugins } from "tinacms"
 import { useRouter } from "next/router"
+import { node, array } from "prop-types"
 
 import { toMarkdownString } from "@utils"
 
 import TopBar from "@components/topbar"
 import SideNav from "@components/side-nav"
 
-import styles from "./styles.module.scss"
+import { LayoutStyled, LayoutBodyStyled } from "./styles"
 
 const Layout = ({ children, allDocs }) => {
   const router = useRouter()
@@ -46,14 +47,19 @@ const Layout = ({ children, allDocs }) => {
   ])
 
   return (
-    <main className={styles.layout}>
+    <LayoutStyled>
       <TopBar />
-      <div className={styles.layout__body}>
+      <LayoutBodyStyled>
         <SideNav allDocs={allDocs} />
-        <div>{children}</div>
-      </div>
-    </main>
+        {children}
+      </LayoutBodyStyled>
+    </LayoutStyled>
   )
+}
+
+Layout.propTypes = {
+  children: node,
+  allDocs: array,
 }
 
 Layout.defaultProps = {
