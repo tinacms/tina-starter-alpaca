@@ -18,7 +18,7 @@ const TopBar = () => {
         <Link href="/features" passHref>
           <NavBarLink>Features</NavBarLink>
         </Link>
-        <Link href="/docs/getting-started/index">
+        <Link href="/docs/getting-started/index" passHref>
           <NavBarLink>Docs</NavBarLink>
         </Link>
         <NavBarLink

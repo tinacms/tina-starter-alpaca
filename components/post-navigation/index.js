@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { array, shape } from "prop-types"
 
 import { flatDocs } from "@utils"
 
@@ -20,13 +21,17 @@ const PostNavigation = ({ allDocs, router }) => {
     </Link>
   )
 
-  console.log(Boolean(prevPage), prevPage)
   return (
     <PostNavigationStyled existPrev={Boolean(prevPage)}>
       {prevPage && renderButton(prevPage, "Previous:")}
       {nextPage && renderButton(nextPage, "Next:")}
     </PostNavigationStyled>
   )
+}
+
+PostNavigation.propTypes = {
+  allDocs: array,
+  router: shape(),
 }
 
 export default PostNavigation
