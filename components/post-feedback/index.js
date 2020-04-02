@@ -36,6 +36,7 @@ const PostFeedback = () => {
           setShowFeedbackForm(true)
           setValue("reaction", reactionData.value)
         }}
+        key={reactionData.value}
       >
         <span>{reactionData.emoticon}</span>
       </ReactionButton>

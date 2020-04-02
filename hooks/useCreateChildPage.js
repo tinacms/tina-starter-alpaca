@@ -1,7 +1,13 @@
+import { useCMS, usePlugins } from "tinacms"
+import { useRouter } from "next/router"
+
 import { toMarkdownString } from "@utils"
 
-export default (cms, parentObject, router) => {
-  return [
+const useCreateChildPage = (allDocs) => {
+  const router = useRouter()
+  const cms = useCMS()
+  const parentObject = allDocs.find((item) => item.key === router.query.slug[0])
+  usePlugins([
     {
       __type: "content-creator",
       name: `Create Child Page for ${parentObject.title}`,
@@ -42,5 +48,7 @@ export default (cms, parentObject, router) => {
           })
       },
     },
-  ]
+  ])
 }
+
+export default useCreateChildPage

@@ -1,9 +1,10 @@
-import { useCMS, usePlugins } from "tinacms"
-import { useRouter } from "next/router"
 import matter from "gray-matter"
+import ReactMarkdown from "react-markdown"
+import { array, shape } from "prop-types"
 
 import { parseNestedDocsMds } from "@utils"
-import { createChildPage } from "@plugins"
+
+import { useFormEditDoc, useCreateChildPage } from "@hooks"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -12,17 +13,17 @@ import PostNavigation from "@components/post-navigation"
 import PostFeedback from "@components/post-feedback"
 
 const DocTemplate = ({ markdownFile, allDocs }) => {
-  const router = useRouter()
-  const cms = useCMS()
-  const parentObject = allDocs.find((item) => item.key === router.query.slug[0])
-  usePlugins(createChildPage(cms, parentObject, router))
+  useCreateChildPage(allDocs)
+  const [post] = useFormEditDoc(markdownFile)
 
   return (
     <Layout allDocs={allDocs}>
       <Head title="Docs" />
       <Container>
-        <h1>{markdownFile.frontmatter.title}</h1>
-        <PostNavigation allDocs={allDocs} router={router} />
+        <h1>{post.frontmatter.title}</h1>
+        <ReactMarkdown source={post.markdownBody} />
+
+        <PostNavigation allDocs={allDocs} />
         <PostFeedback />
       </Container>
     </Layout>
@@ -33,17 +34,22 @@ DocTemplate.getInitialProps = async function (ctx) {
   const { slug } = ctx.query
   const content = await import(`@docs/${slug.join("/")}.md`)
   const data = matter(content.default)
-
+  //eslint-disable-next-line
   const docs = ((context) => parseNestedDocsMds(context))(require.context("@docs", true, /\.md$/))
 
   return {
     markdownFile: {
-      fileRelativePath: `src/docs/${slug}.md`,
+      fileRelativePath: `docs/${slug.join("/")}.md`,
       frontmatter: data.data,
       markdownBody: data.content,
     },
     allDocs: docs,
   }
+}
+
+DocTemplate.propTypes = {
+  allDocs: array,
+  markdownFile: shape(),
 }
 
 export default DocTemplate
