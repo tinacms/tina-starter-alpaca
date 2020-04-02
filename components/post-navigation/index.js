@@ -1,11 +1,13 @@
 import Link from "next/link"
-import { array, shape } from "prop-types"
+import { useRouter } from "next/router"
+import { array } from "prop-types"
 
 import { flatDocs } from "@utils"
 
 import { PostNavigationStyled } from "./styles"
 
-const PostNavigation = ({ allDocs, router }) => {
+const PostNavigation = ({ allDocs }) => {
+  const router = useRouter()
   const { query } = router
   const allDocsFlatted = flatDocs(allDocs)
   const foundIndex = allDocsFlatted.findIndex((doc) => doc.slug === query.slug.join("/"))
@@ -31,7 +33,6 @@ const PostNavigation = ({ allDocs, router }) => {
 
 PostNavigation.propTypes = {
   allDocs: array,
-  router: shape(),
 }
 
 export default PostNavigation
