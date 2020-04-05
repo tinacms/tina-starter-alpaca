@@ -3,8 +3,6 @@ date: "2019-07-10T07:00:00.000Z"
 title: Basics
 ---
 
-# **Getting Started**
-
 Welcome to the Next.js documentation!
 
 If you're new to Next.js we recommend that you start with the [learn course](https://nextjs.org/learn/basics/getting-started).
