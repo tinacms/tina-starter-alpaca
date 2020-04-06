@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { theme } from "@utils"
 
+import Search from "@components/search"
+
 import { TopBarStyled, LogoWrapperStyled, NavWrapperStyled, NavBarLink } from "./styles"
 
 const TopBar = () => {
@@ -11,6 +13,7 @@ const TopBar = () => {
           <NavBarLink>{theme.logo}</NavBarLink>
         </Link>
       </LogoWrapperStyled>
+      <Search />
       <NavWrapperStyled>
         <Link href="/blog" passHref>
           <NavBarLink>Blog</NavBarLink>
