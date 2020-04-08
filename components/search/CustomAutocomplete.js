@@ -1,3 +1,4 @@
+import { shape, string, func, array } from "prop-types"
 import Link from "next/link"
 import { connectAutoComplete, Highlight, connectStateResults } from "react-instantsearch-dom"
 import styled from "styled-components"
@@ -14,22 +15,33 @@ const Autocomplete = ({ hits, currentRefinement, refine, query }) => (
     <HitsWrapper show={query.length > 0}>
       <Results>
         {hits.map((hit) => (
-          <Hit hit={hit} />
+          <Hit key={hit.key} hit={hit} />
         ))}
       </Results>
     </HitsWrapper>
   </SearchWrapper>
 )
 
-const Hit = ({ hit }) => {
-  return (
+Autocomplete.propTypes = {
+  hits: array,
+  currentRefinement: string,
+  refine: func,
+  query: string,
+}
+
+const Hit = ({ hit }) => (
+  <Link href={`/docs/${hit.slug}`} passHref>
     <HitItem>
       <HighlightTitle hit={hit} attribute="title" />
       <div>
         <Highlight hit={hit} attribute="description" />
       </div>
     </HitItem>
-  )
+  </Link>
+)
+
+Hit.propTypes = {
+  hit: shape(),
 }
 
 const Results = connectStateResults(({ searchState, searchResults, children }) =>
@@ -81,7 +93,7 @@ const HitsWrapper = styled.div`
   box-shadow: 2px 4px 8px 0px rgba(60, 60, 60, 0.2);
   display: ${({ show }) => (show ? `block` : `none`)};
 `
-const HitItem = styled.div`
+const HitItem = styled.a`
   display: block;
   padding: 15px;
   box-shadow: 0px 1px 0 0px #dedede;

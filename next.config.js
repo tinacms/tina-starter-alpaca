@@ -1,5 +1,4 @@
 const path = require("path")
-const glob = require("glob")
 
 module.exports = {
   webpack: (config) => {
@@ -18,6 +17,7 @@ module.exports = {
       "@plugins": path.resolve(__dirname, "./plugins"),
       "@hooks": path.resolve(__dirname, "./hooks"),
     }
+
     return config
   },
 }

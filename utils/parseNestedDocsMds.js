@@ -32,6 +32,7 @@ const parseNestiness = (key, list, document) => {
       } else {
         listCopy[foundIndex].title = document.data.title
         listCopy[foundIndex].position = document.data.position
+        listCopy[foundIndex].content = document.content
       }
     } else {
       listCopy[foundIndex].children = parseGroupChildren(
@@ -71,6 +72,7 @@ const parseParentItem = (key, document, type) => {
       title: document.data.groupIn,
     }),
     position: document.data.position,
+    content: document.content,
     children: [...(keySplitted[2] !== "index.md" ? [parseChildItem(key, document)] : [])],
   }
 }
@@ -82,6 +84,7 @@ const parseChildItem = (key, document) => {
     slug: `${keySplitted[1]}/${parseRawSlug(keySplitted[2])}`,
     type: "link",
     title: document.data.title,
+    content: document.content,
   }
 }
 
