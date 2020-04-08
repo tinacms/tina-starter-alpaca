@@ -1,4 +1,4 @@
-import { node, array } from "prop-types"
+import { node, array, bool } from "prop-types"
 
 import { useCreateMainDoc } from "@hooks"
 
@@ -7,14 +7,14 @@ import SideNav from "@components/side-nav"
 
 import { LayoutStyled, LayoutBodyStyled } from "./styles"
 
-const Layout = ({ children, allDocs }) => {
+const Layout = ({ children, allNestedDocs, showDocsSearcher }) => {
   useCreateMainDoc()
 
   return (
     <LayoutStyled>
-      <TopBar />
+      <TopBar showDocsSearcher={showDocsSearcher} />
       <LayoutBodyStyled>
-        <SideNav allDocs={allDocs} />
+        <SideNav allNestedDocs={allNestedDocs} />
         {children}
       </LayoutBodyStyled>
     </LayoutStyled>
@@ -22,12 +22,14 @@ const Layout = ({ children, allDocs }) => {
 }
 
 Layout.propTypes = {
+  allNestedDocs: array,
   children: node,
-  allDocs: array,
+  showDocsSearcher: bool,
 }
 
 Layout.defaultProps = {
-  allDocs: [],
+  allNestedDocs: [],
+  showDocsSearcher: false,
 }
 
 export default Layout

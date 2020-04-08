@@ -4,21 +4,21 @@ import NavItem from "./nav-item"
 
 import { SideNavStyled } from "./styles"
 
-const SideNav = ({ allDocs }) => {
+const SideNav = ({ allNestedDocs }) => {
   return (
     <SideNavStyled>
       <p>
         <strong>DOCS</strong>
       </p>
-      {allDocs &&
-        allDocs.length > 0 &&
-        allDocs.map((doc) => <NavItem itemData={doc} key={doc.slug} />)}
+      {allNestedDocs &&
+        allNestedDocs.length > 0 &&
+        allNestedDocs.map((doc) => <NavItem itemData={doc} key={doc.slug} />)}
     </SideNavStyled>
   )
 }
 
 SideNav.propTypes = {
-  allDocs: array,
+  allNestedDocs: array,
 }
 
 export default SideNav

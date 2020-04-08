@@ -6,10 +6,10 @@ import { flatDocs } from "@utils"
 
 import { PostNavigationStyled } from "./styles"
 
-const PostNavigation = ({ allDocs }) => {
+const PostNavigation = ({ allNestedDocs }) => {
   const router = useRouter()
   const { query } = router
-  const allDocsFlatted = flatDocs(allDocs)
+  const allDocsFlatted = flatDocs(allNestedDocs)
   const foundIndex = allDocsFlatted.findIndex((doc) => doc.slug === query.slug.join("/"))
   const prevPage = allDocsFlatted[foundIndex - 1]
   const nextPage = allDocsFlatted[foundIndex + 1]
@@ -32,7 +32,7 @@ const PostNavigation = ({ allDocs }) => {
 }
 
 PostNavigation.propTypes = {
-  allDocs: array,
+  allNestedDocs: array,
 }
 
 export default PostNavigation

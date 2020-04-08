@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import styled from "styled-components"
 import algoliasearch from "algoliasearch/lite"
 import { InstantSearch } from "react-instantsearch-dom"
 import CustomAutoComplete from "./CustomAutocomplete"
@@ -8,6 +7,7 @@ const searchClient = algoliasearch("ND3Q3FDRQR", "d8db7a735ab11d85cc4110edcd85b1
 
 const Search = () => {
   const [query, setQuery] = useState(``)
+
   return (
     <InstantSearch
       onSearchStateChange={({ query }) => setQuery(query)}
