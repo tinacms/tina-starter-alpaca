@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\""
@@ -19,19 +19,50 @@
     "@tinacms/api-git": "^0.7.0",
     "@tinacms/git-client": "^0.6.2",
     "@zeit/next-sass": "^1.0.1",
+    "algoliasearch": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "fast-glob": "^3.2.2",
+    "file-loader": "^6.0.0",
+    "gray-matter": "^4.0.2",
     "moment": "^2.24.0",
     "next": "^9.3.1",
+    "next-images": "^1.4.0",
+    "next-tinacms-json": "^0.3.7",
+    "next-tinacms-markdown": "^0.2.7",
     "node-sass": "^4.13.1",
+    "raw-loader": "^4.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-instantsearch-dom": "^6.4.0",
+    "react-markdown": "^4.3.1",
+    "react-textarea-autosize": "^7.1.2",
+    "react-tinacms-inline": "^0.4.2",
+    "slugify": "^1.4.0",
     "styled-components": "^5.0.1",
     "tinacms": "^0.18.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-styled-components": "^1.10.7",
     "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.0",
     "prettier": "2.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,json,md}": [
+      "prettier --write"
+    ]
   }
 }

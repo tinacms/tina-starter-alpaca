@@ -1,29 +1,69 @@
-import Link from 'next/link'
+import { useState } from "react"
+import { bool } from "prop-types"
+import Link from "next/link"
 
-import styles from './styles.module.scss'
+import IconCloseSVG from "../../public/icons/close.svg"
+import IconMenuSVG from "../../public/icons/menu.svg"
+import Logo from "../../public/logo_ipsum.png"
+import GitHubLogo from "../../public/icons/github.png"
+
+// import Search from "@components/search"
+
+import { TopBarStyled, LogoWrapperStyled, NavWrapperStyled, NavBarLink, LogoImg } from "./styles"
 
 const TopBar = () => {
+  /* States */
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+  /* Methods */
+  const handleToggleMobileMenu = () => setShowMobileMenu(!showMobileMenu)
+
   return (
-    <header className={styles.header}>
-      <div className={styles.header__logoWrapper}>
+    <TopBarStyled>
+      <LogoWrapperStyled>
         <Link href="/">
-          <a>Logo</a>
+          <a>
+            <LogoImg src={Logo} />
+          </a>
         </Link>
-      </div>
-      <div className={styles.header__navWrapper}>
-        <Link href="/blog">
-          <a>Blog</a>
+        <div>
+          <button onClick={handleToggleMobileMenu}>
+            {!showMobileMenu ? <IconMenuSVG /> : <IconCloseSVG />}
+          </button>
+        </div>
+      </LogoWrapperStyled>
+      {/* {showDocsSearcher && <Search />} */}
+      <NavWrapperStyled showMobileMenu={showMobileMenu}>
+        <Link href="/blog" passHref>
+          <NavBarLink>Blog</NavBarLink>
         </Link>
-        <Link href="/features">
-          <a>Features</a>
+        <Link href="/features" passHref>
+          <NavBarLink>Features</NavBarLink>
         </Link>
-        <Link href="/docs">
-          <a>Docs</a>
+        <Link href="/docs/getting-started/index" passHref>
+          <NavBarLink>Docs</NavBarLink>
         </Link>
-        <a href="https://github.com/tinacms/tinacms" target="_blank">GitHub</a>
-      </div>
-    </header>
+        <NavBarLink
+          href="https://github.com/tinacms/tinacms"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </NavBarLink>
+        <NavBarLink
+          href="https://github.com/tinacms/tinacms"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={GitHubLogo} />
+        </NavBarLink>
+      </NavWrapperStyled>
+    </TopBarStyled>
   )
+}
+
+TopBar.propTypes = {
+  showDocsSearcher: bool,
 }
 
 export default TopBar
