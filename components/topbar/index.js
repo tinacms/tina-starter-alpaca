@@ -1,21 +1,39 @@
+import { useState } from "react"
 import { bool } from "prop-types"
 import Link from "next/link"
-import { theme } from "@utils"
 
-import Search from "@components/search"
+import IconCloseSVG from "../../public/icons/close.svg"
+import IconMenuSVG from "../../public/icons/menu.svg"
+import Logo from "../../public/logo_ipsum.png"
+import GitHubLogo from "../../public/icons/github.png"
 
-import { TopBarStyled, LogoWrapperStyled, NavWrapperStyled, NavBarLink } from "./styles"
+// import Search from "@components/search"
 
-const TopBar = ({ showDocsSearcher }) => {
+import { TopBarStyled, LogoWrapperStyled, NavWrapperStyled, NavBarLink, LogoImg } from "./styles"
+
+const TopBar = () => {
+  /* States */
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+  /* Methods */
+  const handleToggleMobileMenu = () => setShowMobileMenu(!showMobileMenu)
+
   return (
     <TopBarStyled>
       <LogoWrapperStyled>
-        <Link href="/" passHref>
-          <NavBarLink>{theme.logo}</NavBarLink>
+        <Link href="/">
+          <a>
+            <LogoImg src={Logo} />
+          </a>
         </Link>
+        <div>
+          <button onClick={handleToggleMobileMenu}>
+            {!showMobileMenu ? <IconMenuSVG /> : <IconCloseSVG />}
+          </button>
+        </div>
       </LogoWrapperStyled>
-      {showDocsSearcher && <Search />}
-      <NavWrapperStyled>
+      {/* {showDocsSearcher && <Search />} */}
+      <NavWrapperStyled showMobileMenu={showMobileMenu}>
         <Link href="/blog" passHref>
           <NavBarLink>Blog</NavBarLink>
         </Link>
@@ -31,6 +49,13 @@ const TopBar = ({ showDocsSearcher }) => {
           rel="noopener noreferrer"
         >
           GitHub
+        </NavBarLink>
+        <NavBarLink
+          href="https://github.com/tinacms/tinacms"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={GitHubLogo} />
         </NavBarLink>
       </NavWrapperStyled>
     </TopBarStyled>

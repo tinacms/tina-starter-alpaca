@@ -14,7 +14,7 @@ const Layout = ({ children, allNestedDocs, showDocsSearcher }) => {
     <LayoutStyled>
       <TopBar showDocsSearcher={showDocsSearcher} />
       <LayoutBodyStyled>
-        <SideNav allNestedDocs={allNestedDocs} />
+        {showDocsSearcher && <SideNav allNestedDocs={allNestedDocs} />}
         {children}
       </LayoutBodyStyled>
     </LayoutStyled>
