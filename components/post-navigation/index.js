@@ -4,7 +4,7 @@ import { array } from "prop-types"
 
 import { flatDocs } from "@utils"
 
-import { PostNavigationStyled } from "./styles"
+import { PostNavigationStyled, PaginationLink } from "./styles"
 
 const PostNavigation = ({ allNestedDocs }) => {
   const router = useRouter()
@@ -15,18 +15,30 @@ const PostNavigation = ({ allNestedDocs }) => {
   const nextPage = allDocsFlatted[foundIndex + 1]
 
   /* Methods */
-  const renderButton = (pageObject, label) => (
-    <Link href={`/docs/${pageObject.slug}`}>
-      <a>
-        {label} {pageObject.title}
-      </a>
+  const renderButton = ({ pageObject, label, iconLeft, iconRight }) => (
+    <Link href={`/docs/${pageObject.slug}`} passHref>
+      <PaginationLink>
+        {iconLeft && iconLeft}
+        <span>{label}</span>
+        {iconRight && iconRight}
+      </PaginationLink>
     </Link>
   )
 
   return (
     <PostNavigationStyled existPrev={Boolean(prevPage)}>
-      {prevPage && renderButton(prevPage, "Previous:")}
-      {nextPage && renderButton(nextPage, "Next:")}
+      {prevPage &&
+        renderButton({
+          pageObject: prevPage,
+          label: "Previous article",
+          iconLeft: <i className="icon-arrow_left" />,
+        })}
+      {nextPage &&
+        renderButton({
+          pageObject: nextPage,
+          label: "Next article",
+          iconRight: <i className="icon-arrow_right" />,
+        })}
     </PostNavigationStyled>
   )
 }

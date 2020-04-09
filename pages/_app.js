@@ -6,6 +6,8 @@ import { Normalize } from "styled-normalize"
 import { ThemeProvider } from "styled-components"
 import theme from "../utils/theme"
 
+import "./app.css"
+
 class MyApp extends App {
   constructor() {
     super()
