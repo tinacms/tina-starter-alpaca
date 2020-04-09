@@ -4,8 +4,6 @@ export const TopBarStyled = styled.header`
   background-color: #0071f0;
   padding: 0 24px;
   justify-content: space-between;
-  /* margin: 0 auto;
-  align-items: center; */
   @media all and (min-width: 768px) {
     display: flex;
   }
@@ -25,6 +23,15 @@ export const LogoWrapperStyled = styled.div`
 
 export const LogoImg = styled.img`
   max-width: 161px;
+`
+
+export const IconButton = styled.button`
+  background-color: transparent;
+  border: 0;
+  color: white;
+  outline: 0;
+  font-size: 18px;
+  padding-top: 2px;
 `
 
 export const NavWrapperStyled = styled.div`

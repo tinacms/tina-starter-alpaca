@@ -2,14 +2,19 @@ import { useState } from "react"
 import { bool } from "prop-types"
 import Link from "next/link"
 
-import IconCloseSVG from "../../public/icons/close.svg"
-import IconMenuSVG from "../../public/icons/menu.svg"
 import Logo from "../../public/logo_ipsum.png"
 import GitHubLogo from "../../public/icons/github.png"
 
 // import Search from "@components/search"
 
-import { TopBarStyled, LogoWrapperStyled, NavWrapperStyled, NavBarLink, LogoImg } from "./styles"
+import {
+  TopBarStyled,
+  LogoWrapperStyled,
+  NavWrapperStyled,
+  NavBarLink,
+  LogoImg,
+  IconButton,
+} from "./styles"
 
 const TopBar = () => {
   /* States */
@@ -27,9 +32,9 @@ const TopBar = () => {
           </a>
         </Link>
         <div>
-          <button onClick={handleToggleMobileMenu}>
-            {!showMobileMenu ? <IconMenuSVG /> : <IconCloseSVG />}
-          </button>
+          <IconButton onClick={handleToggleMobileMenu}>
+            {!showMobileMenu ? <i className="icon-menu_icon" /> : <i className="icon-close" />}
+          </IconButton>
         </div>
       </LogoWrapperStyled>
       {/* {showDocsSearcher && <Search />} */}
