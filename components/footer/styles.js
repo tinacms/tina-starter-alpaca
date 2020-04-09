@@ -48,13 +48,21 @@ export const EditWithTinaButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 12px;
-  max-width: 254px;
+  padding: 4px 14px;
+  padding-top: 6px;
+  max-width: 264px;
   margin: 0 auto;
-  svg {
-    margin-right: 8px;
+  i {
+    margin-right: 7px;
+    font-size: 18px;
+    position: relative;
+    top: -2px;
+    color: #0071f0;
   }
   &:hover {
     border-color: #77b1fa;
+  }
+  @media all and (min-width: 768px) {
+    margin-right: 0;
   }
 `
