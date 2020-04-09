@@ -15,16 +15,30 @@ const PostNavigation = ({ allNestedDocs }) => {
   const nextPage = allDocsFlatted[foundIndex + 1]
 
   /* Methods */
-  const renderButton = (pageObject, label) => (
+  const renderButton = ({ pageObject, label, iconLeft, iconRight }) => (
     <Link href={`/docs/${pageObject.slug}`} passHref>
-      <PaginationLink>{label}</PaginationLink>
+      <PaginationLink>
+        {iconLeft && iconLeft}
+        <span>{label}</span>
+        {iconRight && iconRight}
+      </PaginationLink>
     </Link>
   )
 
   return (
     <PostNavigationStyled existPrev={Boolean(prevPage)}>
-      {prevPage && renderButton(prevPage, "Previousa article")}
-      {nextPage && renderButton(nextPage, "Next article")}
+      {prevPage &&
+        renderButton({
+          pageObject: prevPage,
+          label: "Previous article",
+          iconLeft: <i className="icon-arrow_left" />,
+        })}
+      {nextPage &&
+        renderButton({
+          pageObject: nextPage,
+          label: "Next article",
+          iconRight: <i className="icon-arrow_right" />,
+        })}
     </PostNavigationStyled>
   )
 }

@@ -9,4 +9,6 @@ export const LayoutStyled = styled.main`
 
 export const LayoutBodyStyled = styled.main`
   min-height: calc(100vh - 80px);
+  margin: 0 auto;
+  max-width: calc(762px + 40px);
 `
