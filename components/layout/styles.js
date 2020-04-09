@@ -8,6 +8,5 @@ export const LayoutStyled = styled.main`
 `
 
 export const LayoutBodyStyled = styled.main`
-  display: flex;
   min-height: calc(100vh - 80px);
 `

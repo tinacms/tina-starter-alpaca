@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="7px" height="12px" viewBox="0 0 7 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>maximize</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0.29289322,0.29289322 C0.68341751,-0.09763107 1.31658249,-0.09763107 1.70710678,0.29289322 L1.70710678,0.29289322 L6.7071068,5.2928932 C7.0976311,5.6834175 7.0976311,6.3165825 6.7071068,6.7071068 L6.7071068,6.7071068 L1.70710678,11.7071068 L1.61289944,11.7902954 C1.22060824,12.0953203 0.65337718,12.0675907 0.29289322,11.7071068 C-0.09763107,11.3165825 -0.09763107,10.6834175 0.29289322,10.2928932 L0.29289322,10.2928932 L4.585,6 L0.29289322,1.70710678 L0.20970461,1.61289944 C-0.09532028,1.22060824 -0.06759074,0.65337718 0.29289322,0.29289322 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-284.000000, -314.000000)">
+            <g id="maximize" transform="translate(284.000000, 314.000000)">
+                <g id="color-/-primary-Clipped">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="path-1"></g>
+                    <g id="color-/-primary" mask="url(#mask-2)" fill="#1A73E8" fill-rule="nonzero">
+                        <g transform="translate(-4.000000, -6.000000)" id="Rectangle">
+                            <rect x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
