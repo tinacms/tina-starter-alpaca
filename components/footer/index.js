@@ -1,6 +1,5 @@
 import Link from "next/link"
-// import styles from './styles.module.scss'
-import IconEditSVG from "../../public/icons/edit.svg"
+
 import { FooterWrapper, FooterLink, EditWithTinaButton } from "./styles"
 
 const Footer = () => {
@@ -25,7 +24,7 @@ const Footer = () => {
         </FooterLink>
       </div>
       <EditWithTinaButton href="#">
-        <IconEditSVG />
+        <i className="icon-edit" />
         Edit this page with TinaCMS
       </EditWithTinaButton>
     </FooterWrapper>
