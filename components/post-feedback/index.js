@@ -9,10 +9,9 @@ const PostFeedback = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
   const [{ formStatus, reaction, comment }, dispatch] = useReducer(reducer, initialState)
   const reactionsList = [
-    { emoticon: "😭", value: "cry" },
-    { emoticon: "😕", value: "meh" },
-    { emoticon: "😁", value: "happy" },
-    { emoticon: "🤩", value: "biblical" },
+    { emoticon: ":/", value: "meh" },
+    { emoticon: "._.", value: "normal" },
+    { emoticon: ":D", value: "happy" },
   ]
 
   /* Methods */
@@ -53,7 +52,7 @@ const PostFeedback = () => {
               {reactionsList.map((reactionData) => renderReactionButton(reactionData, reaction))}
             </div>
             {showFeedbackForm && (
-              <div>
+              <div className="inputWrapper">
                 <TextArea
                   rows={3}
                   placeholder="Please enter your feedback..."
