@@ -4,6 +4,7 @@ import { useCreateMainDoc } from "@hooks"
 
 import TopBar from "@components/topbar"
 import SideNav from "@components/side-nav"
+import Footer from "@components/footer"
 
 import { LayoutStyled, LayoutBodyStyled } from "./styles"
 
@@ -17,6 +18,7 @@ const Layout = ({ children, allNestedDocs, showDocsSearcher }) => {
         {showDocsSearcher && <SideNav allNestedDocs={allNestedDocs} />}
         {children}
       </LayoutBodyStyled>
+      <Footer />
     </LayoutStyled>
   )
 }
