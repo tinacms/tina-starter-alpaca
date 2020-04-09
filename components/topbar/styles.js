@@ -31,6 +31,7 @@ export const IconButton = styled.button`
   color: white;
   outline: 0;
   font-size: 18px;
+  padding-top: 2px;
 `
 
 export const NavWrapperStyled = styled.div`
