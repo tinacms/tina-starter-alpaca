@@ -31,7 +31,6 @@ export const PostFeedbackStyled = styled.div`
 
 export const ReactionButton = styled.button`
   background-color: transparent;
-  font-size: 12px;
   border: 0;
   padding: 0.5rem;
   margin-right: 66px;
@@ -39,8 +38,8 @@ export const ReactionButton = styled.button`
   border-radius: 50%;
   border: 2px solid #707070;
   color: #707070;
-  height: 29px;
-  width: 29px;
+  height: 32px;
+  width: 32px;
   background-color: #f3f2f2;
   outline: 0;
   position: relative;
@@ -52,18 +51,25 @@ export const ReactionButton = styled.button`
     border-color: #77b1fa;
     background-color: #eef6ff;
   }
-  &:last-child {
-    font-size: 16px;
-    i {
-      top: 6px;
-      left: 4px;
-    }
-  }
   i {
     position: absolute;
-    left: 6px;
-    top: 8px;
   }
+  .icon-confused {
+    font-size: 12px;
+    left: 6px;
+    top: 9px;
+  }
+  .icon-neutral {
+    font-size: 12px;
+    left: 7px;
+    top: 9px;
+  }
+  .icon-happy {
+    font-size: 17px;
+    left: 4px;
+    top: 7px;
+  }
+
   ${({ active }) =>
     active &&
     css`
