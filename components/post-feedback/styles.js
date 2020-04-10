@@ -32,7 +32,6 @@ export const PostFeedbackStyled = styled.div`
 export const ReactionButton = styled.button`
   background-color: transparent;
   border: 0;
-  padding: 0.5rem;
   margin-right: 66px;
   cursor: pointer;
   border-radius: 50%;
@@ -55,19 +54,19 @@ export const ReactionButton = styled.button`
     position: absolute;
   }
   .icon-confused {
-    font-size: 12px;
-    left: 6px;
-    top: 9px;
+    font-size: 11px;
+    left: 7px;
+    top: 10px;
   }
   .icon-neutral {
-    font-size: 12px;
+    font-size: 13px;
     left: 7px;
     top: 9px;
   }
   .icon-happy {
-    font-size: 17px;
-    left: 4px;
-    top: 7px;
+    font-size: 16px;
+    left: 5px;
+    top: 8px;
   }
 
   ${({ active }) =>
@@ -84,6 +83,20 @@ export const ReactionButton = styled.button`
     `}
   @media all and (min-width: 768px) {
     margin-right: 73px;
+    .icon-confused {
+      font-size: 12px;
+      left: 6px;
+      top: 9px;
+    }
+    .icon-neutral {
+      font-size: 12px;
+      top: 10px;
+    }
+    .icon-happy {
+      font-size: 17px;
+      left: 4px;
+      top: 7px;
+    }
   }
 `
 
