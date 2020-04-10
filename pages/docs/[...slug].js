@@ -9,25 +9,29 @@ import { useFormEditDoc, useCreateChildPage } from "@hooks"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
-import Container from "@components/container"
 import PostNavigation from "@components/post-navigation"
 import PostFeedback from "@components/post-feedback"
+import SideNav from "@components/side-nav"
+import DocWrapper from "@components/doc-wrapper"
 
 const DocTemplate = ({ markdownFile, allNestedDocs }) => {
   useCreateChildPage(allNestedDocs)
   const [post] = useFormEditDoc(markdownFile)
 
   return (
-    <Layout allNestedDocs={allNestedDocs} showDocsSearcher>
-      <Head title="Docs" />
-      <Container>
-        <h1>{post.frontmatter.title}</h1>
-        <ReactMarkdown source={post.markdownBody} />
+    <>
+      <Head title={post.frontmatter.title} />
+      <Layout showDocsSearcher splitView>
+        <SideNav allNestedDocs={allNestedDocs} />
+        <DocWrapper>
+          <h1>{post.frontmatter.title}</h1>
+          <ReactMarkdown source={post.markdownBody} />
 
-        <PostNavigation allNestedDocs={allNestedDocs} />
-        <PostFeedback />
-      </Container>
-    </Layout>
+          <PostNavigation allNestedDocs={allNestedDocs} />
+          <PostFeedback />
+        </DocWrapper>
+      </Layout>
+    </>
   )
 }
 
@@ -35,8 +39,8 @@ DocTemplate.getInitialProps = async function (ctx) {
   const { slug } = ctx.query
   const content = await import(`@docs/${slug.join("/")}.md`)
   const data = matter(content.default)
-  //eslint-disable-next-line
   const allNestedDocs = ((context) => parseNestedDocsMds(context))(
+    //eslint-disable-next-line
     require.context("@docs", true, /\.md$/)
   )
 

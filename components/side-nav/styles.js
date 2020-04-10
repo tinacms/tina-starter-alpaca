@@ -1,8 +1,11 @@
 import styled from "styled-components"
 
 export const SideNavStyled = styled.nav`
-  flex: 1;
-  max-width: 22%;
+  @media all and (min-width: 768px) {
+    flex: 1;
+    max-width: 22%;
+    margin-right: 48px;
+  }
 `
 
 export const NavItemLink = styled.a`

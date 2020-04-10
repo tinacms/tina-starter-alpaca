@@ -3,35 +3,31 @@ import { node, array, bool } from "prop-types"
 import { useCreateMainDoc } from "@hooks"
 
 import TopBar from "@components/topbar"
-import SideNav from "@components/side-nav"
 import Footer from "@components/footer"
 
 import { LayoutStyled, LayoutBodyStyled } from "./styles"
 
-const Layout = ({ children, allNestedDocs, showDocsSearcher }) => {
+const Layout = ({ children, showDocsSearcher, splitView }) => {
   useCreateMainDoc()
 
   return (
     <LayoutStyled>
       <TopBar showDocsSearcher={showDocsSearcher} />
-      <LayoutBodyStyled>
-        {showDocsSearcher && <SideNav allNestedDocs={allNestedDocs} />}
-        {children}
-      </LayoutBodyStyled>
+      <LayoutBodyStyled splitView>{children}</LayoutBodyStyled>
       <Footer />
     </LayoutStyled>
   )
 }
 
 Layout.propTypes = {
-  allNestedDocs: array,
   children: node,
   showDocsSearcher: bool,
+  splitView: bool,
 }
 
 Layout.defaultProps = {
-  allNestedDocs: [],
   showDocsSearcher: false,
+  splitView: false,
 }
 
 export default Layout
