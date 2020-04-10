@@ -3,7 +3,7 @@ import styled, { css } from "styled-components"
 export const PostNavigationStyled = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: 48px 20px;
+  padding: 48px 0;
   ${({ existPrev }) =>
     existPrev &&
     css`
