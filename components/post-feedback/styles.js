@@ -21,21 +21,29 @@ export const PostFeedbackStyled = styled.div`
     padding: 50px 0;
     border-bottom-width: 0;
   }
+  .success-message {
+    p {
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+  }
 `
 
 export const ReactionButton = styled.button`
   background-color: transparent;
-  font-size: 14px;
+  font-size: 12px;
   border: 0;
   padding: 0.5rem;
   margin-right: 66px;
   cursor: pointer;
   border-radius: 50%;
   border: 2px solid #707070;
+  color: #707070;
   height: 29px;
   width: 29px;
   background-color: #f3f2f2;
   outline: 0;
+  position: relative;
   &:last-child {
     margin-right: 0;
   }
@@ -43,6 +51,18 @@ export const ReactionButton = styled.button`
     color: #77b1fa;
     border-color: #77b1fa;
     background-color: #eef6ff;
+  }
+  &:last-child {
+    font-size: 16px;
+    i {
+      top: 6px;
+      left: 4px;
+    }
+  }
+  i {
+    position: absolute;
+    left: 6px;
+    top: 8px;
   }
   ${({ active }) =>
     active &&
