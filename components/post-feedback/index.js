@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react"
+import { useState, useReducer, useRef } from "react"
 
 import { reducer, initialState } from "./reducer"
 // import FeedbackForm from "./feedback-form"
@@ -9,15 +9,20 @@ const PostFeedback = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
   const [{ formStatus, reaction, comment }, dispatch] = useReducer(reducer, initialState)
   const reactionsList = [
-    { emoticon: "😭", value: "cry" },
-    { emoticon: "😕", value: "meh" },
-    { emoticon: "😁", value: "happy" },
-    { emoticon: "🤩", value: "biblical" },
+    { icon: "icon-confused", value: "confused" },
+    { icon: "icon-neutral", value: "neutral" },
+    { icon: "icon-happy", value: "happy" },
   ]
+  const textAreaRef = useRef()
 
   /* Methods */
   const setValue = (name, value) => {
     dispatch({ type: "set-value", value: { name, value } })
+    if (!textAreaRef.current) {
+      setTimeout(() => textAreaRef.current.focus(), 150)
+    } else {
+      textAreaRef.current.focus()
+    }
   }
 
   const sendFeedback = () => {
@@ -28,17 +33,17 @@ const PostFeedback = () => {
     }
   }
 
-  const renderReactionButton = (reactionData, reactionSelected) => {
+  const renderReactionButton = (reactionData) => {
     return (
       <ReactionButton
-        active={reactionSelected === reactionData.value}
+        active={reaction === reactionData.value}
         onClick={() => {
           setShowFeedbackForm(true)
           setValue("reaction", reactionData.value)
         }}
         key={reactionData.value}
       >
-        <span>{reactionData.emoticon}</span>
+        <i className={reactionData.icon} />
       </ReactionButton>
     )
   }
@@ -49,18 +54,17 @@ const PostFeedback = () => {
         <>
           <p>Was this helpful?</p>
           <FeedbackForm>
-            <div>
-              {reactionsList.map((reactionData) => renderReactionButton(reactionData, reaction))}
-            </div>
+            <div>{reactionsList.map((reactionData) => renderReactionButton(reactionData))}</div>
             {showFeedbackForm && (
-              <div>
+              <div className="inputWrapper">
                 <TextArea
                   rows={3}
                   placeholder="Please enter your feedback..."
                   value={comment}
                   onChange={(e) => setValue("comment", e.target.value)}
+                  ref={textAreaRef}
                 />
-                {formStatus === "ERROR" && <p>Comment can&apos;t be empty</p>}
+                {formStatus === "ERROR" && <p>Feedback can&apos;t be empty</p>}
                 <button onClick={sendFeedback}>Send</button>
               </div>
             )}
@@ -68,10 +72,10 @@ const PostFeedback = () => {
         </>
       )}
       {formStatus === "SUCCESS" && (
-        <>
+        <div className="success-message">
           <p>Your feedback has been received!</p>
           <p>Thank you for your help.</p>
-        </>
+        </div>
       )}
     </PostFeedbackStyled>
   )

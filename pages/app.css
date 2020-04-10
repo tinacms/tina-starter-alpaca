@@ -43,3 +43,12 @@
 .icon-search:before {
   content: "\e905";
 }
+.icon-neutral:before {
+  content: "\e906";
+}
+.icon-happy:before {
+  content: "\e907";
+}
+.icon-confused:before {
+  content: "\e908";
+}

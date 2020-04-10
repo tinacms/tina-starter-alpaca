@@ -6,7 +6,6 @@ export const FooterWrapper = styled.footer`
   padding: 20px;
   div {
     padding-top: 32px;
-    border-top: 1px solid #d8d8d8;
   }
   @media all and (min-width: 768px) {
     display: flex;

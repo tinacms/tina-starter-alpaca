@@ -9,6 +9,10 @@ export const PostNavigationStyled = styled.div`
     css`
       justify-content: space-between;
     `}
+  @media all and (min-width: 768px) {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 `
 
 export const PaginationLink = styled.a`
