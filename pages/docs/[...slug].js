@@ -2,6 +2,7 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import ReactMarkdown from "react-markdown"
 import { array, shape } from "prop-types"
+import { useRouter } from "next/router"
 
 import { parseNestedDocsMds, flatDocs } from "@utils"
 
@@ -15,6 +16,7 @@ import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
 
 const DocTemplate = ({ markdownFile, allNestedDocs }) => {
+  const router = useRouter()
   useCreateChildPage(allNestedDocs)
   const [post] = useFormEditDoc(markdownFile)
 
@@ -22,7 +24,11 @@ const DocTemplate = ({ markdownFile, allNestedDocs }) => {
     <>
       <Head title={post.frontmatter.title} />
       <Layout showDocsSearcher splitView>
-        <SideNav allNestedDocs={allNestedDocs} />
+        <SideNav
+          allNestedDocs={allNestedDocs}
+          currentSlug={router.query.slug}
+          groupIn={post.frontmatter.groupIn}
+        />
         <DocWrapper>
           <h1>{post.frontmatter.title}</h1>
           <ReactMarkdown source={post.markdownBody} />
