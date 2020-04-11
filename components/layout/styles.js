@@ -13,11 +13,13 @@ export const LayoutBodyStyled = styled.main`
   margin: 0 auto;
   padding: 0 20px;
   padding-bottom: 1px;
+  padding-top: 6px;
   ${({ splitView }) =>
     splitView &&
     css`
       @media all and (min-width: 768px) {
         display: flex;
+        padding-top: 24px;
       }
     `}
 `

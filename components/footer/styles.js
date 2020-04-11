@@ -1,17 +1,21 @@
 import styled from "styled-components"
 
 export const FooterWrapper = styled.footer`
-  max-width: calc(762px + 40px);
+  max-width: calc(1048px + 40px);
   margin: 0 auto;
   padding: 20px;
-  div {
+  .linksWrapper {
     padding-top: 32px;
   }
   @media all and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    padding: 48px 20px;
-    div {
+    & > div {
+      display: flex;
+      align-items: center;
+      padding: 48px 0;
+      max-width: 762px;
+      margin-left: auto;
+    }
+    .linksWrapper {
       padding-top: 0;
       border-top: 0;
       display: flex;

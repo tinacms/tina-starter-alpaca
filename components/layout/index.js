@@ -1,4 +1,4 @@
-import { node, array, bool } from "prop-types"
+import { node, bool } from "prop-types"
 
 import { useCreateMainDoc } from "@hooks"
 
@@ -13,7 +13,7 @@ const Layout = ({ children, showDocsSearcher, splitView }) => {
   return (
     <LayoutStyled>
       <TopBar showDocsSearcher={showDocsSearcher} />
-      <LayoutBodyStyled splitView>{children}</LayoutBodyStyled>
+      <LayoutBodyStyled splitView={splitView}>{children}</LayoutBodyStyled>
       <Footer />
     </LayoutStyled>
   )
