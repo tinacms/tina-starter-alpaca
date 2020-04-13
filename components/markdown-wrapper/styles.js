@@ -34,4 +34,17 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
   img {
     width: 100%;
   }
+  strong {
+    font-weight: 700;
+  }
+  blockquote {
+    background-color: #eef6ff;
+    border: 1px solid #cce3fe;
+    border-radius: 2px;
+    margin: 0;
+    padding: 24px;
+    padding-bottom: 0;
+    color: #0071f0;
+    margin-bottom: 2rem;
+  }
 `
