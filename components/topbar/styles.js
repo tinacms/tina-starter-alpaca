@@ -4,7 +4,8 @@ export const TopBarStyled = styled.header`
   background-color: #0071f0;
   padding: 0 24px;
   justify-content: space-between;
-  @media all and (min-width: 768px) {
+  position: relative;
+  @media all and (min-width: 1024px) {
     display: flex;
   }
 `
@@ -14,7 +15,9 @@ export const LogoWrapperStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media all and (min-width: 768px) {
+  position: relative;
+  @media all and (min-width: 1024px) {
+    z-index: 999;
     div {
       display: none;
     }
@@ -32,6 +35,11 @@ export const IconButton = styled.button`
   outline: 0;
   font-size: 18px;
   padding-top: 2px;
+  margin-right: 16px;
+  width: 32px;
+  &:last-child {
+    margin-right: 0;
+  }
 `
 
 export const NavWrapperStyled = styled.div`
@@ -51,12 +59,13 @@ export const NavWrapperStyled = styled.div`
     css`
       display: flex;
     `}
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 1024px) {
     position: initial;
     display: flex;
     height: initial;
     flex-direction: row;
     justify-content: flex-end;
+    max-width: 386px;
   }
 `
 
@@ -68,7 +77,7 @@ export const NavBarLink = styled.a`
   text-decoration: none;
   width: 100%;
   text-align: center;
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 1024px) {
     margin-right: 3rem;
     font-size: 16px;
     color: #cce3fe;
@@ -81,12 +90,70 @@ export const NavBarLink = styled.a`
   &:last-child {
     display: none;
   }
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 1024px) {
     &:nth-last-child(2) {
       display: none;
     }
     &:last-child {
       display: block;
+    }
+  }
+`
+
+export const SearchWrapperStyled = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 2px 4px 0 rgba(51, 51, 51, 0.1);
+  width: 100%;
+  z-index: 99;
+  display: none;
+  ${({ active }) =>
+    active &&
+    css`
+      display: block;
+    `}
+  @media all and (min-width: 1024px) {
+    display: flex;
+    align-items: center;
+    top: calc(50% - 22px);
+    z-index: 9999;
+    box-shadow: none;
+    & > div {
+      width: 100%;
+      max-width: calc(1048px + 40px);
+      margin: 0 auto;
+      display: flex;
+      &:before {
+        content: "";
+        flex: 1;
+        display: block;
+        max-width: 22%;
+        margin-right: 60px;
+      }
+      & > div {
+        flex: 1;
+        max-width: 762px;
+        margin-left: auto;
+        input {
+          max-width: 32vw;
+        }
+        & > div {
+          max-width: calc(32vw - 2px);
+        }
+      }
+    }
+  }
+  @media all and (min-width: 1900px) {
+    & > div {
+      & > div {
+        input {
+          max-width: 100%;
+        }
+        & > div {
+          max-width: calc(100% - 2px);
+        }
+      }
     }
   }
 `
