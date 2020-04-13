@@ -12,6 +12,7 @@ export const SideNavStyled = styled.nav`
     flex: 1;
     max-width: 22%;
     margin-right: 48px;
+    border-bottom-width: 0;
     .sideNavDocsList {
       display: block;
     }
