@@ -7,6 +7,8 @@ Welcome to the Next.js documentation!
 
 If you're new to Next.js we recommend that you start with the [learn course](https://nextjs.org/learn/basics/getting-started).
 
+> **Note:** Fusce cursus, libero ut accumsan tincidunt, risus ante varius nisl, et tristique nisl nulla et enim. Phasellus auctor nunc purus. Morbi tincidunt justo nulla, ut porta ex vestibulum vitae.
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis et nibh vel blandit. Fusce sit amet volutpat purus. Pellentesque finibus sapien sit amet tortor sagittis, sit amet rhoncus erat aliquet. Cras efficitur quam eu turpis rhoncus aliquam. Suspendisse ultricies, arcu at lobortis lobortis, massa nulla faucibus eros, quis lacinia orci justo a ipsum. Suspendisse faucibus venenatis laoreet.
 
 If you have questions about anything related to Next.js, you're always welcome to ask our community on [GitHub Discussions](https://github.com/zeit/next.js/discussions).
