@@ -1,6 +1,5 @@
 import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
-import ReactMarkdown from "react-markdown"
 import { array, shape } from "prop-types"
 import { useRouter } from "next/router"
 
@@ -14,6 +13,7 @@ import PostNavigation from "@components/post-navigation"
 import PostFeedback from "@components/post-feedback"
 import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
+import MarkdownWrapper from "@components/markdown-wrapper"
 
 const DocTemplate = ({ markdownFile, allNestedDocs }) => {
   const router = useRouter()
@@ -31,7 +31,7 @@ const DocTemplate = ({ markdownFile, allNestedDocs }) => {
         />
         <DocWrapper>
           <h1>{post.frontmatter.title}</h1>
-          <ReactMarkdown source={post.markdownBody} />
+          <MarkdownWrapper post={post} />
 
           <PostNavigation allNestedDocs={allNestedDocs} />
           <PostFeedback />
