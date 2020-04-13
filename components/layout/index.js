@@ -5,13 +5,14 @@ import { useCreateMainDoc } from "@hooks"
 import TopBar from "@components/topbar"
 import Footer from "@components/footer"
 
-import { LayoutStyled, LayoutBodyStyled } from "./styles"
+import { GlobalStyles, LayoutStyled, LayoutBodyStyled } from "./styles"
 
 const Layout = ({ children, showDocsSearcher, splitView }) => {
   useCreateMainDoc()
 
   return (
     <LayoutStyled>
+      <GlobalStyles />
       <TopBar showDocsSearcher={showDocsSearcher} />
       <LayoutBodyStyled splitView={splitView}>{children}</LayoutBodyStyled>
       <Footer />

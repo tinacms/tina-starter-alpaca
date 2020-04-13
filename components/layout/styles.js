@@ -1,4 +1,15 @@
-import styled, { css } from "styled-components"
+import styled, { css, createGlobalStyle } from "styled-components"
+
+export const GlobalStyles = createGlobalStyle`
+  h1 {
+    font-size: 40px;
+    margin: 0;
+    margin-bottom: 16px;
+    color: #333333;
+    line-height: 56px;
+    font-weight: 700;
+  }
+`
 
 export const LayoutStyled = styled.main`
   margin: 0;
