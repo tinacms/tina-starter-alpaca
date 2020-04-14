@@ -14,7 +14,7 @@ Suspendisse potenti. Interdum et malesuada fames ac ante ipsum primis in faucibu
 
     export default HomePage
 
-> Note: Fusce cursus, libero ut accumsan tincidunt, risus ante varius nisl, et tristique nisl nulla et enim. Phasellus auctor nunc purus. Morbi tincidunt justo nulla, ut porta ex vestibulum vitae.
+> **Note:** Fusce cursus, libero ut accumsan tincidunt, risus ante varius nisl, et tristique nisl nulla et enim. Phasellus auctor nunc purus. Morbi tincidunt justo nulla, ut porta ex vestibulum vitae.
 
 ## Menu Header
 
