@@ -117,7 +117,6 @@ export const SearchWrapperStyled = styled.div`
     display: flex;
     align-items: center;
     top: calc(50% - 22px);
-    z-index: 9999;
     box-shadow: none;
     & > div {
       width: 100%;
