@@ -10,7 +10,7 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     letter-spacing: -0.1px;
   }
   a {
-    color: #0071f0;
+    color: ${({ theme }) => theme.colors.primary};
     text-decoration: none;
     &:hover {
       text-decoration: underline;
@@ -44,7 +44,7 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     margin: 0;
     padding: 24px;
     padding-bottom: 0;
-    color: #0071f0;
+    color: ${({ theme }) => theme.colors.primary};
     margin-bottom: 2rem;
   }
 `

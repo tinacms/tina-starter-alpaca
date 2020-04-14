@@ -60,7 +60,7 @@ export const EditWithTinaButton = styled.a`
     font-size: 18px;
     position: relative;
     top: -2px;
-    color: #0071f0;
+    color: ${({ theme }) => theme.colors.primary};
   }
   &:hover {
     border-color: #77b1fa;

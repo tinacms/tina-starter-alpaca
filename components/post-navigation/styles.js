@@ -17,7 +17,7 @@ export const PostNavigationStyled = styled.div`
 
 export const PaginationLink = styled.a`
   font-size: 16px;
-  color: #0071f0;
+  color: ${({ theme }) => theme.colors.primary};
   text-decoration: none;
   .icon-arrow_right {
     margin-left: 10px;
