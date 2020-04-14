@@ -61,7 +61,14 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     padding: 0 10px;
   }
 
-  pre > code {
-    background: transparent;
+  pre {
+    background: #ccc;
+    border-radius: 2px;
+    padding: 20px;
+    white-space: pre-wrap;
+
+    & > code {
+      background: transparent;
+    }
   }
 `
