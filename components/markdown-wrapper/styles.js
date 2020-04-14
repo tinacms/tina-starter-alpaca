@@ -9,6 +9,7 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     margin-bottom: 1.5rem;
     letter-spacing: -0.1px;
   }
+
   a {
     color: ${({ theme }) => theme.colors.primary};
     text-decoration: none;
@@ -16,6 +17,7 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
       text-decoration: underline;
     }
   }
+
   ul {
     padding-left: 18px;
     margin-bottom: 2rem;
@@ -23,6 +25,7 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
       margin-bottom: 1rem;
     }
   }
+
   h2 {
     font-size: 32px;
     line-height: 36px;
@@ -31,12 +34,15 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     margin: 0;
     margin-bottom: 12px;
   }
+
   img {
     width: 100%;
   }
+
   strong {
     font-weight: 700;
   }
+
   blockquote {
     background-color: #eef6ff;
     border: 1px solid #cce3fe;
@@ -46,5 +52,16 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     padding-bottom: 0;
     color: ${({ theme }) => theme.colors.primary};
     margin-bottom: 2rem;
+  }
+
+  code,
+  kbd,
+  samp {
+    background: #c7e3ff;
+    padding: 0 10px;
+  }
+
+  pre > code {
+    background: transparent;
   }
 `
