@@ -22,10 +22,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis et nibh ve
 
 Suspendisse potenti. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam ultricies laoreet venenatis. Quisque in gravida velit, et vehicula sem `res.setPreviewData({})z`
 
-| Lorem | Lorem | Ipsum | Dolores |
-| ----- | ----- | ----- | ------- |
-| Ipsum | Ipsum | Ipsum | Ipsum   |
-| Ipsum | Ipsum | Ipsum | Ipsum   |
+| Lorem | Lorem | Ipsum | Dolores | Ipsum |
+| ----- | ----- | ----- | ------- | ----- |
+| Ipsum | Ipsum | Ipsum | Ipsum   | 0     |
+| Ipsum | Ipsum | Ipsum | Ipsum   | 0     |
 
 ## Menu Header
 
