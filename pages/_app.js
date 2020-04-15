@@ -5,7 +5,8 @@ import { GitClient, GitMediaStore } from "@tinacms/git-client"
 import { Normalize } from "styled-normalize"
 import { ThemeProvider } from "styled-components"
 import theme from "../utils/theme"
-
+// eslint-disable-next-line no-undef
+require("typeface-source-code-pro")
 import "./app.css"
 
 class MyApp extends App {

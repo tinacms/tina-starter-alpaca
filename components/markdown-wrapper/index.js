@@ -1,6 +1,6 @@
 import { shape } from "prop-types"
 
-import CodeBlock from "./codeBlock"
+import CodeBlock from "./CodeBlock"
 
 import { ReactMarkdowStyled } from "./styles"
 
