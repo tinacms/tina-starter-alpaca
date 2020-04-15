@@ -2,6 +2,7 @@ import styled from "styled-components"
 import ReactMarkdown from "react-markdown"
 
 export const ReactMarkdowStyled = styled(ReactMarkdown)`
+  font-family: ${({ theme }) => theme.fonts.body};
   p {
     font-size: 16px;
     line-height: 32px;
@@ -70,5 +71,31 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     & > code {
       background: transparent;
     }
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin: 32px 0;
+    color: #707070;
+  }
+
+  th {
+    background: #eef6ff;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 12px;
+    border: 4px solid #fff;
+  }
+
+  tbody td {
+    font-size: 12px;
+    padding: 20px 12px;
   }
 `
