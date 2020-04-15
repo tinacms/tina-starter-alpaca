@@ -37,7 +37,7 @@ const Codetheme = {
     msHyphens: "none",
     hyphens: "none",
     padding: "24px",
-    margin: ".5em 0",
+    margin: "10px 0 32px 0",
     overflow: "auto",
   },
   'pre[class*="language-"]::-moz-selection': {
