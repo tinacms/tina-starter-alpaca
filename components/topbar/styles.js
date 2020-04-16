@@ -65,7 +65,7 @@ export const NavWrapperStyled = styled.div`
     height: initial;
     flex-direction: row;
     justify-content: flex-end;
-    max-width: 386px;
+    max-width: 340px;
   }
 `
 
@@ -78,7 +78,7 @@ export const NavBarLink = styled.a`
   width: 100%;
   text-align: center;
   @media all and (min-width: 1024px) {
-    margin-right: 3rem;
+    margin-right: 32px;
     font-size: 16px;
     color: #cce3fe;
     margin-bottom: 0;
@@ -128,17 +128,17 @@ export const SearchWrapperStyled = styled.div`
         flex: 1;
         display: block;
         max-width: 22%;
-        margin-right: 60px;
+        margin-right: 10px;
       }
       & > div {
         flex: 1;
         max-width: 762px;
-        margin-left: auto;
+        margin-left: 0;
         input {
-          max-width: 32vw;
+          max-width: 44vw;
         }
         & > div {
-          max-width: calc(32vw - 2px);
+          max-width: calc(44vw - 2px);
         }
       }
     }
