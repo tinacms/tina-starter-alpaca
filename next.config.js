@@ -1,7 +1,7 @@
 const path = require("path")
-const withImages = require("next-images")
+const withSvgr = require("next-svgr")
 
-module.exports = withImages({
+module.exports = withSvgr({
   webpack: (config) => {
     config.node = {
       fs: "empty",

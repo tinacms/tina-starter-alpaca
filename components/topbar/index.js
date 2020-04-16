@@ -2,7 +2,7 @@ import { useState } from "react"
 import { bool } from "prop-types"
 import Link from "next/link"
 
-import GitHubLogo from "../../public/icons/github.png"
+import GitHubLogo from "../../public/icons/github.svg"
 
 import Search from "@components/search"
 
@@ -79,7 +79,7 @@ const TopBar = ({ showDocsSearcher }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img alt="gitHub" src={GitHubLogo} />
+          <GitHubLogo width="32" height="32" />
         </NavBarLink>
       </NavWrapperStyled>
     </TopBarStyled>
