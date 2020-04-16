@@ -1,14 +1,14 @@
 import { shape } from "prop-types"
 
 import CodeBlock from "./CodeBlock"
-import Headings from "./Header"
+import Heading from "./Heading"
 
 import { ReactMarkdowStyled } from "./styles"
 
 const MarkdownWrapper = ({ post }) => (
   <ReactMarkdowStyled
     source={post.markdownBody}
-    renderers={{ code: CodeBlock, heading: Headings }}
+    renderers={{ code: CodeBlock, heading: Heading }}
   />
 )
 
