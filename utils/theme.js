@@ -1,5 +1,5 @@
 module.exports = {
-  logo: "Logo",
+  logo: "logo_ipsum.png",
   siteName: "Forestry",
   description: "Docs starter with next.js and TinaCMS",
   fonts: {

@@ -2,10 +2,11 @@ import { useState } from "react"
 import { bool } from "prop-types"
 import Link from "next/link"
 
-import Logo from "../../public/logo_ipsum.png"
 import GitHubLogo from "../../public/icons/github.png"
 
 import Search from "@components/search"
+
+import { theme } from "@utils"
 
 import {
   TopBarStyled,
@@ -32,7 +33,7 @@ const TopBar = ({ showDocsSearcher }) => {
       <LogoWrapperStyled>
         <Link href="/">
           <a>
-            <LogoImg src={Logo} />
+            <LogoImg alt={theme.siteName} src={`/${theme.logo}`} />
           </a>
         </Link>
         <div>
@@ -78,7 +79,7 @@ const TopBar = ({ showDocsSearcher }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={GitHubLogo} />
+          <img alt="gitHub" src={GitHubLogo} />
         </NavBarLink>
       </NavWrapperStyled>
     </TopBarStyled>
