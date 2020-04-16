@@ -1,6 +1,11 @@
-import styled, { css, createGlobalStyle } from "styled-components"
+import styled, { css } from "styled-components"
 
-export const GlobalStyles = createGlobalStyle`
+export const LayoutStyled = styled.main`
+  margin: 0;
+  font-family: Roboto, system-ui, sans-serif;
+  width: 100%;
+  margin: 0 auto;
+
   h1 {
     font-size: 40px;
     margin: 0;
@@ -9,13 +14,6 @@ export const GlobalStyles = createGlobalStyle`
     line-height: 56px;
     font-weight: 700;
   }
-`
-
-export const LayoutStyled = styled.main`
-  margin: 0;
-  font-family: Roboto, system-ui, sans-serif;
-  width: 100%;
-  margin: 0 auto;
 `
 
 export const LayoutBodyStyled = styled.main`
