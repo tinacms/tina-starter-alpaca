@@ -35,7 +35,7 @@ const Autocomplete = ({
   return (
     <SearchWrapper>
       <Search
-        placeholder="Type to search into docs"
+        placeholder="Search our docs by topic…"
         type="search"
         value={currentRefinement}
         onChange={(event) => refine(event.currentTarget.value)}
@@ -151,10 +151,14 @@ const Search = styled.input`
   &:hover,
   &:focus {
     text-decoration: none;
+  }
+
+  &:focus {
     & ~ i {
       color: ${({ theme }) => theme.colors.primary};
     }
   }
+
   @media all and (min-width: 1024px) {
     height: 44px;
     border-radius: 2px;
