@@ -1,10 +1,22 @@
 import { string } from "prop-types"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 import styled from "styled-components"
 
 const Toc = ({ tocItems }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const allLinks = document.querySelectorAll("a")
+    if (allLinks.length > 0) {
+      allLinks.forEach((a) =>
+        a.addEventListener("click", () => {
+          setIsOpen(false)
+        })
+      )
+    }
+  }, [])
+
   return (
     <TocWrapper>
       <TocButtom onClick={() => setIsOpen(!isOpen)}>
