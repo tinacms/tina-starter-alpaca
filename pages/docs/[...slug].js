@@ -16,7 +16,7 @@ import { parseNestedDocsMds, flatDocs, createToc } from "@utils"
 import { useFormEditDoc, useCreateChildPage } from "@hooks"
 
 import { InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
-import { EditToggle, DiscardChanges, SaveButton } from "@components/inline-controls"
+import InlineEditingControls from "@components/inline-controls"
 
 const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs }) => {
   const router = useRouter()
@@ -33,9 +33,7 @@ const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs }) => {
         />
         <DocWrapper>
           <InlineForm form={form}>
-            <EditToggle />
-            <DiscardChanges />
-            <SaveButton />
+            <InlineEditingControls />
             <main>
               <h1>
                 <InlineTextField name="frontmatter.title" />
