@@ -33,7 +33,8 @@ const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs }) => {
         />
         <DocWrapper>
           <InlineForm form={form}>
-            <InlineEditingControls />
+            {process.env.NODE_ENV !== "production" && <InlineEditingControls />}
+
             <main>
               <h1>
                 <InlineTextField name="frontmatter.title" />
