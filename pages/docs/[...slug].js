@@ -15,23 +15,37 @@ import Toc from "@components/Toc"
 import { parseNestedDocsMds, flatDocs, createToc } from "@utils"
 import { useFormEditDoc, useCreateChildPage } from "@hooks"
 
+import { InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
+import { EditToggle, DiscardChanges, SaveButton } from "@components/inline-controls"
+
 const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs }) => {
   const router = useRouter()
   useCreateChildPage(allNestedDocs)
-  const [post] = useFormEditDoc(markdownFile)
+  const [data, form] = useFormEditDoc(markdownFile)
   return (
     <>
-      <Head title={post.frontmatter.title} />
+      <Head title={data.frontmatter.title} />
       <Layout showDocsSearcher splitView>
         <SideNav
           allNestedDocs={allNestedDocs}
           currentSlug={router.query.slug}
-          groupIn={post.frontmatter.groupIn}
+          groupIn={data.frontmatter.groupIn}
         />
         <DocWrapper>
-          <h1>{post.frontmatter.title}</h1>
-          {Alltocs.length > 0 && <Toc tocItems={Alltocs} />}
-          <MarkdownWrapper post={post} />
+          <InlineForm form={form}>
+            <EditToggle />
+            <DiscardChanges />
+            <SaveButton />
+            <main>
+              <h1>
+                <InlineTextField name="frontmatter.title" />
+              </h1>
+              {Alltocs.length > 0 && <Toc tocItems={Alltocs} />}
+              <InlineWysiwyg name="markdownBody">
+                <MarkdownWrapper source={data.markdownBody} />
+              </InlineWysiwyg>
+            </main>
+          </InlineForm>
           <PostNavigation allNestedDocs={allNestedDocs} />
           <PostFeedback />
         </DocWrapper>

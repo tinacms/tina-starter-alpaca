@@ -5,11 +5,8 @@ import Heading from "./Heading"
 
 import { ReactMarkdowStyled } from "./styles"
 
-const MarkdownWrapper = ({ post }) => (
-  <ReactMarkdowStyled
-    source={post.markdownBody}
-    renderers={{ code: CodeBlock, heading: Heading }}
-  />
+const MarkdownWrapper = ({ source }) => (
+  <ReactMarkdowStyled source={source} renderers={{ code: CodeBlock, heading: Heading }} />
 )
 
 MarkdownWrapper.propTypes = {

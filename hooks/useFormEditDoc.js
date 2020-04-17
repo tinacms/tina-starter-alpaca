@@ -1,4 +1,4 @@
-import { useLocalMarkdownForm } from "next-tinacms-markdown"
+import { useMarkdownForm } from "next-tinacms-markdown"
 
 const useFormEditDocs = (markdownFile) => {
   const formOptions = {
@@ -16,9 +16,9 @@ const useFormEditDocs = (markdownFile) => {
     ],
   }
 
-  const [post] = useLocalMarkdownForm(markdownFile, formOptions)
+  const [data, post] = useMarkdownForm(markdownFile, formOptions)
 
-  return [post]
+  return [data, post]
 }
 
 export default useFormEditDocs
