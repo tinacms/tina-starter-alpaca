@@ -17,8 +17,8 @@ const InlineEditingControls = () => {
 export default InlineEditingControls
 
 const Toolbar = styled.div`
-  position: absolute;
-  right: 15px;
+  position: relative;
+  margin-bottom: 25px;
 
   & button {
     margin-right: 15px;
