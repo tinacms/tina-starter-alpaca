@@ -1,8 +1,12 @@
 import { useInlineForm } from "react-tinacms-inline"
 import { Button as TinaButton } from "@tinacms/styles"
+import { useCMS } from "tinacms"
 
 const DiscardButton = () => {
-  const { form } = useInlineForm()
+  const cms = useCMS()
+  const { status, deactivate, form } = useInlineForm()
+  const editing = status === "active"
+  if (!editing) return null
 
   /*
    ** If there are no changes
@@ -16,7 +20,14 @@ const DiscardButton = () => {
     <TinaButton
       color="primary"
       onClick={() => {
-        form.finalForm.reset()
+        try {
+          form.finalForm.reset()
+          deactivate()
+          cms.alerts.info("Discard changes success")
+        } catch (error) {
+          deactivate()
+          cms.alerts.error("Something failed, please try again")
+        }
       }}
     >
       Discard Changes
