@@ -10,7 +10,7 @@ const useFormEditDocs = (markdownFile) => {
       },
       {
         name: "markdownBody",
-        label: "Blog Body",
+        label: "Doc Body",
         component: "markdown",
       },
     ],
