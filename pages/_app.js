@@ -2,6 +2,12 @@ import React from "react"
 import App from "next/app"
 import { TinaProvider, TinaCMS } from "tinacms"
 import { GitClient, GitMediaStore } from "@tinacms/git-client"
+import { Normalize } from "styled-normalize"
+import { ThemeProvider } from "styled-components"
+import theme from "../utils/theme"
+// eslint-disable-next-line no-undef
+require("typeface-source-code-pro")
+import "./app.css"
 
 class MyApp extends App {
   constructor() {
@@ -20,7 +26,10 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <TinaProvider cms={this.cms}>
-        <Component {...pageProps} />
+        <Normalize />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </TinaProvider>
     )
   }

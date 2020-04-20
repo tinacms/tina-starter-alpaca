@@ -1,0 +1,60 @@
+@font-face {
+  font-family: 'forestry-icons';
+  src:  url('/fonts/forestry-icons.eot?gx3yf4');
+  src:  url('/fonts/forestry-icons.eot?gx3yf4#iefix') format('embedded-opentype'),
+    url('/fonts/forestry-icons.ttf?gx3yf4') format('truetype'),
+    url('/fonts/forestry-icons.woff?gx3yf4') format('woff'),
+    url('/fonts/forestry-icons.svg?gx3yf4#forestry-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'forestry-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow_down:before {
+  content: "\e909";
+}
+.icon-arrow_up:before {
+  content: "\e90a";
+}
+.icon-arrow_left:before {
+  content: "\e900";
+}
+.icon-arrow_right:before {
+  content: "\e901";
+}
+.icon-close:before {
+  content: "\e902";
+}
+.icon-edit:before {
+  content: "\e903";
+}
+.icon-menu_icon:before {
+  content: "\e904";
+}
+.icon-search:before {
+  content: "\e905";
+}
+.icon-neutral:before {
+  content: "\e906";
+}
+.icon-happy:before {
+  content: "\e907";
+}
+.icon-confused:before {
+  content: "\e908";
+}
