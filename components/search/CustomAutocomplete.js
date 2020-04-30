@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useState, useRef } from "react"
 import { shape, string, func, array, bool } from "prop-types"
 import Link from "next/link"
 import {
@@ -8,6 +8,8 @@ import {
   connectHighlight,
 } from "react-instantsearch-dom"
 import styled from "styled-components"
+import Router from "next/router"
+import { useOnClickOutside } from "@hooks"
 
 const Autocomplete = ({
   handleToggleSearchInput,
@@ -18,12 +20,28 @@ const Autocomplete = ({
   query,
 }) => {
   const inputRef = useRef()
+  const wrapperRef = useRef()
+  const [hasFocus, setFocus] = useState(false)
+
   /* Effects */
   useEffect(() => {
     if (showMobileSearch) {
       inputRef.current.focus()
     }
   }, [showMobileSearch])
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setFocus(false)
+    }
+
+    Router.events.on("routeChangeComplete", handleRouteChange)
+    return () => {
+      Router.events.off("routeChangeComplete", handleRouteChange)
+    }
+  }, [])
+
+  useOnClickOutside(wrapperRef, () => setFocus(false))
 
   /* Methods */
   const handleBlur = () => {
@@ -32,18 +50,23 @@ const Autocomplete = ({
     }, 50)
   }
 
+  const onFocus = () => {
+    setFocus(true)
+  }
+
   return (
-    <SearchWrapper>
+    <SearchWrapper ref={wrapperRef}>
       <Search
         placeholder="Search our docs by topic…"
         type="search"
         value={currentRefinement}
         onChange={(event) => refine(event.currentTarget.value)}
+        onFocus={onFocus}
         {...(showMobileSearch && { onBlur: handleBlur })}
         ref={inputRef}
       />
       <SearchIcon className="icon-search" />
-      <HitsWrapper show={query.length > 0}>
+      <HitsWrapper show={hasFocus && query.length > 0}>
         <Results>
           {hits.map((hit) => (
             <Hit key={hit.key} hit={hit} />
@@ -81,7 +104,7 @@ const CustomHighlight = connectHighlight(({ highlight, attribute, hit }) => {
 })
 
 const Hit = ({ hit }) => (
-  <Link href={`/docs/${hit.slug}`} passHref>
+  <Link href="/docs/[...slug]" as={`/docs/${hit.slug}`} passHref>
     <HitItem>
       <HighlightTitle hit={hit} attribute="title" />
       <div>

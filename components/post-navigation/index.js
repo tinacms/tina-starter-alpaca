@@ -16,7 +16,7 @@ const PostNavigation = ({ allNestedDocs }) => {
 
   /* Methods */
   const renderButton = ({ pageObject, label, iconLeft, iconRight }) => (
-    <Link href={`/docs/${pageObject.slug}`} passHref>
+    <Link href="/docs/[...slug]" as={`/docs/${pageObject.slug}`} passHref>
       <PaginationLink>
         {iconLeft && iconLeft}
         <span>{label}</span>
