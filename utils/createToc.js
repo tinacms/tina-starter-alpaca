@@ -1,6 +1,5 @@
-// eslint-disable-next-line no-undef
-const toc = require("markdown-toc")
+import toc from "markdown-toc"
 
 export default function generateTOC(markdown) {
-  return toc(markdown).content
+  return markdown.length > 0 ? toc(markdown).content : ""
 }

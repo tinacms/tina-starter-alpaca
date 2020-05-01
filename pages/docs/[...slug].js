@@ -83,14 +83,13 @@ DocTemplate.getInitialProps = async function (ctx) {
     require.context("@docs", true, /\.md$/)
   )
 
-  // Update data in algolia
-  const searchClient = algoliasearch("ND3Q3FDRQR", "16cffa070a73fdfb1ec9d95f9bd8afe7")
-  const index = searchClient.initIndex("docs_index")
-  const allFlattedDocs = flatDocs(allNestedDocs)
-  index.replaceAllObjects(allFlattedDocs, { autoGenerateObjectIDIfNotExist: true })
-
   // Create Toc
-  const Alltocs = createToc(data.content)
+  // TODO: this works only on SSR, it doesn't work for client routing
+  let Alltocs = ""
+
+  if (typeof window === "undefined") {
+    Alltocs = createToc(data.content)
+  }
 
   return {
     markdownFile: {
