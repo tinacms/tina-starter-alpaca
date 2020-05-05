@@ -5,9 +5,19 @@ import Layout from "@components/layout"
 import Container from "@components/container"
 import { getGithubPreviewProps, parseJson } from "next-tinacms-github"
 import { GetStaticProps } from "next"
+import { useGithubJsonForm } from "react-tinacms-github"
 
 const Page = ({ file }) => {
-  const data = file.data
+  const formOptions = {
+    label: "home page",
+    fields: [
+      {
+        name: "title",
+        component: "text",
+      },
+    ],
+  }
+  const [data, form] = useGithubJsonForm(file, formOptions)
   return (
     <Layout>
       <Head title="Home" />

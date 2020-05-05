@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
+    "dev2": "next",
     "build": "next build",
     "start": "cross-env NODE_ENV=production node server.js",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\""
