@@ -1,8 +1,8 @@
 import Link from "next/link"
-
+import { useGithubEditing, GithubClient, TinacmsGithubProvider } from "react-tinacms-github"
 import { FooterWrapper, FooterLink, EditWithTinaButton } from "./styles"
 
-const Footer = () => {
+const Footer = ({ preview }) => {
   return (
     <FooterWrapper>
       <div>
@@ -24,13 +24,20 @@ const Footer = () => {
             GitHub
           </FooterLink>
         </section>
-        <EditWithTinaButton href="#">
-          <i className="icon-edit" />
-          Edit this page with TinaCMS
-        </EditWithTinaButton>
+
+        <EditLink editMode={preview} />
       </div>
     </FooterWrapper>
   )
 }
+export const EditLink = ({ editMode }) => {
+  const github = useGithubEditing()
 
+  return (
+    <EditWithTinaButton onClick={editMode ? github.exitEditMode : github.enterEditMode}>
+      <i className="icon-edit" />
+      {editMode ? "Exit Edit Mode" : "Edit This Site With TinaCMS"}
+    </EditWithTinaButton>
+  )
+}
 export default Footer

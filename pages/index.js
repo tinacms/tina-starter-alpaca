@@ -7,7 +7,7 @@ import { getGithubPreviewProps, parseJson } from "next-tinacms-github"
 import { GetStaticProps } from "next"
 import { useGithubJsonForm } from "react-tinacms-github"
 
-const Page = ({ file }) => {
+const Page = ({ file, preview }) => {
   const formOptions = {
     label: "home page",
     fields: [
@@ -19,7 +19,7 @@ const Page = ({ file }) => {
   }
   const [data, form] = useGithubJsonForm(file, formOptions)
   return (
-    <Layout>
+    <Layout preview={preview}>
       <Head title="Home" />
       <Container className="container">
         <Title className="title">{data.title}</Title>
@@ -47,6 +47,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
       parse: parseJson,
     })
   }
+  // render from the file system.
   return {
     props: {
       sourceProvider: null,

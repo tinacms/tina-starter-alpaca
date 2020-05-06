@@ -2,6 +2,7 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { array, shape, string } from "prop-types"
 import { useRouter } from "next/router"
+import { getGithubPreviewProps, parseMarkdown } from "next-tinacms-github"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -19,18 +20,19 @@ import { useCMS } from "tinacms"
 import { InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
 import InlineEditingControls from "@components/inline-controls"
 
-const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs }) => {
+const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs, preview }) => {
   const router = useRouter()
   const cms = useCMS()
 
   useCreateChildPage(allNestedDocs)
   const [data, form] = useFormEditDoc(markdownFile)
+  // console.log(data)
 
   if (!form) return null
   return (
     <Layout showDocsSearcher splitView>
       <Head title={data.frontmatter.title} />
-      <InlineForm form={form}>
+      {/* <InlineForm form={form}>
         <SideNav
           allNestedDocs={allNestedDocs}
           currentSlug={router.query.slug}
@@ -69,13 +71,21 @@ const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs }) => {
           <PostNavigation allNestedDocs={allNestedDocs} />
           <PostFeedback />
         </DocWrapper>
-      </InlineForm>
+      </InlineForm> */}
     </Layout>
   )
 }
 
-DocTemplate.getInitialProps = async function (ctx) {
-  const { slug } = ctx.query
+DocTemplate.getInitialProps = async function ({ preview, previewData, query }) {
+  const { slug } = query
+  if (preview) {
+    console.log("preview mode")
+    return getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: `docs/${slug.join("/")}.md`,
+      parse: parseMarkdown,
+    })
+  }
   const content = await import(`@docs/${slug.join("/")}.md`)
   const data = matter(content.default)
   const allNestedDocs = ((context) => parseNestedDocsMds(context))(
@@ -96,9 +106,16 @@ DocTemplate.getInitialProps = async function (ctx) {
       fileRelativePath: `docs/${slug.join("/")}.md`,
       frontmatter: data.data,
       markdownBody: data.content,
+      data: {
+        fileRelativePath: `docs/${slug.join("/")}.md`,
+        frontmatter: data.data,
+        markdownBody: data.content,
+      },
     },
     allNestedDocs,
     Alltocs,
+    preview: false,
+    error: null,
   }
 }
 

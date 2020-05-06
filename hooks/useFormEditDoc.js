@@ -1,7 +1,9 @@
 import { useMarkdownForm } from "next-tinacms-markdown"
+import { useGithubMarkdownForm } from "react-tinacms-github"
 
 const useFormEditDocs = (markdownFile) => {
   const formOptions = {
+    label: "Edit doc page",
     fields: [
       {
         name: "frontmatter.title",
@@ -16,8 +18,7 @@ const useFormEditDocs = (markdownFile) => {
     ],
   }
 
-  const [data, post] = useMarkdownForm(markdownFile, formOptions)
-
+  const [data, post] = useGithubMarkdownForm(markdownFile, formOptions)
   return [data, post]
 }
 

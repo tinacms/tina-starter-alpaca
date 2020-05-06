@@ -14,17 +14,20 @@ import "./app.css"
 class MyApp extends App {
   constructor(props) {
     super(props)
+    const client = new GithubClient({
+      proxy: "/api/proxy-github",
+      authCallbackRoute: "/api/create-github-access-token",
+      clientId: process.env.GITHUB_CLIENT_ID,
+      baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
+      baseBranch: process.env.BASE_BRANCH,
+    })
     this.cms = new TinaCMS({
       apis: {
         /**
          * 2. Register the GithubClient
          */
-        github: new GithubClient({
-          proxy: "/api/proxy-github",
-          authCallbackRoute: "/api/create-github-access-token",
-          clientId: process.env.GITHUB_CLIENT_ID,
-          baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
-        }),
+        github: client,
+        git: client,
       },
       /**
        * 3. Hide the Sidebar & Toolbar
@@ -38,9 +41,10 @@ class MyApp extends App {
         hidden: !props.pageProps.preview,
       },
     })
-    const client = new GitClient("http://localhost:3000/___tina")
-    this.cms.registerApi("git", client)
-    this.cms.media.store = new GitMediaStore(client)
+
+    // const client = new GitClient("http://localhost:3000/___tina")
+    // this.cms.registerApi("git", client)
+    // this.cms.media.store = new GitMediaStore(client)
   }
 
   render() {
@@ -54,7 +58,7 @@ class MyApp extends App {
           error={pageProps.error}
         >
           <ThemeProvider theme={theme}>
-            <EditLink editMode={pageProps.preview} />
+            {/* <EditLink editMode={pageProps.preview} /> */}
             <Normalize />
             <Component {...pageProps} />
           </ThemeProvider>
@@ -64,7 +68,6 @@ class MyApp extends App {
   }
 }
 
-// TODO: move this to the components folder
 const enterEditMode = () => {
   return fetch(`/api/preview`).then(() => {
     window.location.href = window.location.pathname
@@ -75,15 +78,5 @@ const exitEditMode = () => {
   return fetch(`/api/reset-preview`).then(() => {
     window.location.reload()
   })
-}
-
-export const EditLink = ({ editMode }) => {
-  const github = useGithubEditing()
-
-  return (
-    <button onClick={editMode ? github.exitEditMode : github.enterEditMode}>
-      {editMode ? "Exit Edit Mode" : "Edit This Site"}
-    </button>
-  )
 }
 export default MyApp

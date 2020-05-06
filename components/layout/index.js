@@ -7,14 +7,14 @@ import Footer from "@components/footer"
 
 import { LayoutStyled, LayoutBodyStyled } from "./styles"
 
-const Layout = ({ children, showDocsSearcher, splitView }) => {
+const Layout = ({ children, showDocsSearcher, splitView, preview }) => {
   useCreateMainDoc()
 
   return (
     <LayoutStyled>
       <TopBar showDocsSearcher={showDocsSearcher} />
       <LayoutBodyStyled splitView={splitView}>{children}</LayoutBodyStyled>
-      <Footer />
+      <Footer preview={preview} />
     </LayoutStyled>
   )
 }
