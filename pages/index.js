@@ -40,13 +40,13 @@ const Title = styled.h1`
  * Fetch data with getStaticProps based on 'preview' mode
  */
 export const getStaticProps = async function ({ preview, previewData }) {
-  // if (preview) {
-  //   return getGithubPreviewProps({
-  //     ...previewData,
-  //     fileRelativePath: "content/home.json",
-  //     parse: parseJson,
-  //   })
-  // }
+  if (preview) {
+    return getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: "content/home.json",
+      parse: parseJson,
+    })
+  }
   // render from the file system.
   return {
     props: {
