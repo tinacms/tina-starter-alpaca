@@ -32,7 +32,7 @@ const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs, preview }) => {
   return (
     <Layout showDocsSearcher splitView>
       <Head title={data.frontmatter.title} />
-      {/* <InlineForm form={form}>
+      <InlineForm form={form}>
         <SideNav
           allNestedDocs={allNestedDocs}
           currentSlug={router.query.slug}
@@ -71,7 +71,7 @@ const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs, preview }) => {
           <PostNavigation allNestedDocs={allNestedDocs} />
           <PostFeedback />
         </DocWrapper>
-      </InlineForm> */}
+      </InlineForm>
     </Layout>
   )
 }
