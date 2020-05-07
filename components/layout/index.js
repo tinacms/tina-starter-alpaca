@@ -17,7 +17,7 @@ const Layout = ({ children, showDocsSearcher, splitView, preview, form }) => {
     <LayoutStyled>
       <TopBar showDocsSearcher={showDocsSearcher} />
       <LayoutBodyStyled splitView={splitView}>
-        {form ? <InlineForm form={form}>{children}</InlineForm> : { children }}
+        {form ? <InlineForm form={form}>{children}</InlineForm> : children}
       </LayoutBodyStyled>
       <Footer preview={preview} />
     </LayoutStyled>
