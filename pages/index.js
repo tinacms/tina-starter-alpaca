@@ -19,7 +19,7 @@ const Page = ({ file, preview }) => {
   }
   const [data, form] = useGithubJsonForm(file, formOptions)
   return (
-    <Layout preview={preview}>
+    <Layout preview={preview} form={form}>
       <Head title="Home" />
       <Container className="container">
         <Title className="title">{data.title}</Title>

@@ -71,7 +71,7 @@ const parseParentItem = (key, document, type) => {
       key: document.data.groupIn,
       title: document.data.groupIn,
     }),
-    // if no position is given put it at the  back
+    // if no position is given put it at the back
     position: typeof document.data.position === "undefined" ? Infinity : document.data.position,
     content: document.content,
     children: [...(keySplitted[2] !== "index.md" ? [parseChildItem(key, document)] : [])],

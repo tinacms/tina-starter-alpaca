@@ -18,8 +18,8 @@ const useFormEditDocs = (markdownFile) => {
     ],
   }
 
-  const [data, post] = useGithubMarkdownForm(markdownFile, formOptions)
-  return [data, post]
+  const [data, form] = useGithubMarkdownForm(markdownFile, formOptions)
+  return [data, form]
 }
 
 export default useFormEditDocs

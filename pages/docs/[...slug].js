@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { array, shape, string } from "prop-types"
@@ -17,61 +18,71 @@ import { parseNestedDocsMds, flatDocs, createToc } from "@utils"
 import { useFormEditDoc, useCreateChildPage } from "@hooks"
 
 import { useCMS } from "tinacms"
-import { InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
+import { useInlineForm, InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
 import InlineEditingControls from "@components/inline-controls"
 
-const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs, preview }) => {
+const DocTemplate = (props) => {
   const router = useRouter()
   const cms = useCMS()
 
-  useCreateChildPage(allNestedDocs)
-  const [data, form] = useFormEditDoc(markdownFile)
-  // console.log(data)
+  // const { deactivate, activate } = useInlineForm()
+
+  // function handleInlineEdit() {
+  //   props.preview ? activate() : deactivate()
+  // }
+  // useMemo(handleInlineEdit, [props.preview] )
+
+  // debugger;
+
+  // console.log({allnested: props.allNestedDocs})
+  useCreateChildPage(props.allNestedDocs)
+  // console.log({file: props.file})
+  const [data, form] = useFormEditDoc(props.file)
+  // console.log({ data })
 
   if (!form) return null
   return (
-    <Layout showDocsSearcher splitView>
+    <Layout showDocsSearcher splitView preview={props.preview} form={form}>
       <Head title={data.frontmatter.title} />
-      <InlineForm form={form}>
-        <SideNav
-          allNestedDocs={allNestedDocs}
-          currentSlug={router.query.slug}
-          groupIn={data.frontmatter.groupIn}
-        />
-        <DocWrapper>
-          {process.env.NODE_ENV !== "production" && <InlineEditingControls />}
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {Alltocs.length > 0 && <Toc tocItems={Alltocs} />}
-            <InlineWysiwyg
-              imageProps={{
-                async upload(files) {
-                  const directory = "/public/images/"
+      <SideNav
+        allNestedDocs={props.allNestedDocs}
+        currentSlug={router.query.slug}
+        groupIn={data.frontmatter.groupIn}
+      />
+      <DocWrapper preview={props.preview}>
+        {process.env.NODE_ENV !== "production" && <InlineEditingControls />}
+        <main>
+          <h1>
+            <InlineTextField name="frontmatter.title" />
+          </h1>
+          {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+          <InlineWysiwyg
+            // TODOL: fix this
+            imageProps={{
+              async upload(files) {
+                const directory = "/public/images/"
 
-                  let media = await cms.media.store.persist(
-                    files.map((file) => {
-                      return {
-                        directory,
-                        file,
-                      }
-                    })
-                  )
-                  return media.map((m) => `/images/${m.filename}`)
-                },
-                previewUrl: (str) => str,
-              }}
-              name="markdownBody"
-            >
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
+                let media = await cms.media.store.persist(
+                  files.map((file) => {
+                    return {
+                      directory,
+                      file,
+                    }
+                  })
+                )
+                return media.map((m) => `/images/${m.filename}`)
+              },
+              previewUrl: (str) => str,
+            }}
+            name="markdownBody"
+          >
+            <MarkdownWrapper source={data.markdownBody} />
+          </InlineWysiwyg>
+        </main>
 
-          <PostNavigation allNestedDocs={allNestedDocs} />
-          <PostFeedback />
-        </DocWrapper>
-      </InlineForm>
+        <PostNavigation allNestedDocs={props.allNestedDocs} />
+        <PostFeedback />
+      </DocWrapper>
     </Layout>
   )
 }
@@ -79,14 +90,7 @@ const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs, preview }) => {
 export const getStaticProps = async function ({ preview, previewData, query, params }) {
   const { slug } = params
   console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
-  if (preview) {
-    console.log("preview mode")
-    return getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath: `docs/${slug.join("/")}.md`,
-      parse: parseMarkdown,
-    })
-  }
+
   const content = await import(`@docs/${slug.join("/")}.md`)
   const data = matter(content.default)
   const allNestedDocs = ((context) => parseNestedDocsMds(context))(
@@ -102,14 +106,30 @@ export const getStaticProps = async function ({ preview, previewData, query, par
     Alltocs = createToc(data.content)
   }
 
+  if (preview) {
+    const previewProps = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: `docs/${slug.join("/")}.md`,
+      parse: parseMarkdown,
+    })
+    // console.log({ previewProps })
+
+    return {
+      props: {
+        ...previewProps.props,
+        allNestedDocs,
+        Alltocs,
+      },
+    }
+  }
+
   return {
     props: {
-      markdownFile: {
-        fileRelativePath: `docs/${slug.join("/")}.md`,
-        frontmatter: data.data,
-        markdownBody: data.content,
+      file: {
+        fileRelativePath: `./docs/${slug.join("/")}.md`,
+        // frontmatter: data.data,
+        // markdownBody: data.content,
         data: {
-          fileRelativePath: `docs/${slug.join("/")}.md`,
           frontmatter: data.data,
           markdownBody: data.content,
         },
