@@ -37,3 +37,4 @@ test
 * Lorem
 * Ipsum
 * Dolores
+* Logan
