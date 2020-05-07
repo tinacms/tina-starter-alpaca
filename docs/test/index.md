@@ -6,3 +6,5 @@ title: This is a test page!
 lorem.......
 
 ### test sub
+
+testing inline editing.
