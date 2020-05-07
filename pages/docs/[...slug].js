@@ -76,8 +76,9 @@ const DocTemplate = ({ markdownFile, allNestedDocs, Alltocs, preview }) => {
   )
 }
 
-DocTemplate.getInitialProps = async function ({ preview, previewData, query }) {
-  const { slug } = query
+export const getStaticProps = async function ({ preview, previewData, query, params }) {
+  const { slug } = params
+  console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
   if (preview) {
     console.log("preview mode")
     return getGithubPreviewProps({
@@ -102,27 +103,44 @@ DocTemplate.getInitialProps = async function ({ preview, previewData, query }) {
   }
 
   return {
-    markdownFile: {
-      fileRelativePath: `docs/${slug.join("/")}.md`,
-      frontmatter: data.data,
-      markdownBody: data.content,
-      data: {
+    props: {
+      markdownFile: {
         fileRelativePath: `docs/${slug.join("/")}.md`,
         frontmatter: data.data,
         markdownBody: data.content,
+        data: {
+          fileRelativePath: `docs/${slug.join("/")}.md`,
+          frontmatter: data.data,
+          markdownBody: data.content,
+        },
       },
+      allNestedDocs,
+      Alltocs,
+      preview: false,
+      error: null,
     },
-    allNestedDocs,
-    Alltocs,
-    preview: false,
-    error: null,
   }
 }
 
-DocTemplate.propTypes = {
-  allNestedDocs: array,
-  markdownFile: shape(),
-  Alltocs: string,
+export const getStaticPaths = async function () {
+  const fg = require("fast-glob")
+  const contentDir = "docs/"
+  const files = await fg(`${contentDir}**/*.md`)
+  return {
+    fallback: false,
+    paths: files
+      // .filter(file => !file.endsWith('index.md'))
+      .map((file) => {
+        const path = file.substring(contentDir.length, file.length - 3)
+        return { params: { slug: path.split("/") } }
+      }),
+  }
 }
+
+// DocTemplate.propTypes = {
+//   allNestedDocs: array,
+//   markdownFile: shape(),
+//   Alltocs: string,
+// }
 
 export default DocTemplate
