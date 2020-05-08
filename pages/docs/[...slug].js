@@ -3,7 +3,7 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { array, shape, string } from "prop-types"
 import { useRouter } from "next/router"
-import { getGithubPreviewProps, parseMarkdown } from "next-tinacms-github"
+import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -35,7 +35,7 @@ const DocTemplate = (props) => {
   // debugger;
 
   // console.log({allnested: props.allNestedDocs})
-  useCreateChildPage(props.allNestedDocs)
+  // useCreateChildPage(props.allNestedDocs)
   // console.log({file: props.file})
   const [data, form] = useFormEditDoc(props.file)
   // console.log({ data })
@@ -55,25 +55,25 @@ const DocTemplate = (props) => {
           <h1>
             <InlineTextField name="frontmatter.title" />
           </h1>
-          {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+          {/* {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
           <InlineWysiwyg
             // TODOL: fix this
-            imageProps={{
-              async upload(files) {
-                const directory = "/public/images/"
+            // imageProps={{
+            //   async upload(files) {
+            //     const directory = "/public/images/"
 
-                let media = await cms.media.store.persist(
-                  files.map((file) => {
-                    return {
-                      directory,
-                      file,
-                    }
-                  })
-                )
-                return media.map((m) => `/images/${m.filename}`)
-              },
-              previewUrl: (str) => str,
-            }}
+            //     let media = await cms.media.store.persist(
+            //       files.map((file) => {
+            //         return {
+            //           directory,
+            //           file,
+            //         }
+            //       })
+            //     )
+            //     return media.map((m) => `/images/${m.filename}`)
+            //   },
+            //   previewUrl: (str) => str,
+            // }}
             name="markdownBody"
           >
             <MarkdownWrapper source={data.markdownBody} />
@@ -91,7 +91,33 @@ export const getStaticProps = async function ({ preview, previewData, query, par
   const { slug } = params
   console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
 
+  if (preview) {
+    const test = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: "docs/config.json",
+      parse: parseJson,
+    })
+    console.log(test.props.file)
+    const previewProps = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: `docs/${slug.join("/")}.md`,
+      parse: parseMarkdown,
+    })
+
+    // console.log({ previewProps })
+    // console.log(previewProps.props.file)
+
+    return {
+      props: {
+        ...previewProps.props,
+        // allNestedDocs,
+        // Alltocs,
+      },
+    }
+  }
+
   const content = await import(`@docs/${slug.join("/")}.md`)
+  console.log({ content })
   const data = matter(content.default)
   const allNestedDocs = ((context) => parseNestedDocsMds(context))(
     //eslint-disable-next-line
@@ -106,29 +132,12 @@ export const getStaticProps = async function ({ preview, previewData, query, par
     Alltocs = createToc(data.content)
   }
 
-  if (preview) {
-    const previewProps = await getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath: `docs/${slug.join("/")}.md`,
-      parse: parseMarkdown,
-    })
-    // console.log({ previewProps })
-
-    return {
-      props: {
-        ...previewProps.props,
-        allNestedDocs,
-        Alltocs,
-      },
-    }
-  }
+  console.log(JSON.stringify(allNestedDocs))
 
   return {
     props: {
       file: {
         fileRelativePath: `./docs/${slug.join("/")}.md`,
-        // frontmatter: data.data,
-        // markdownBody: data.content,
         data: {
           frontmatter: data.data,
           markdownBody: data.content,

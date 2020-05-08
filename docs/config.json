@@ -1,0 +1,161 @@
+{
+  "config": [
+    {
+      "type": "link",
+      "key": "getting-started",
+      "slug": "getting-started/index",
+      "title": "Getting Started",
+      "position": 0,
+      "content": "## Blocks\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis et nibh vel blandit. Fusce sit amet volutpat purus. Pellentesque finibus sapien sit amet tortor sagittis, sit amet rhoncus erat aliquet. Cras efficitur quam eu turpis rhoncus aliquam. Suspendisse ultricies, arcu at lobortis lobortis, massa nulla faucibus eros, quis lacinia orci justo a ipsum. Suspendisse faucibus venenatis laoreet.\n\nSuspendisse potenti. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam ultricies laoreet venenatis. Quisque in gravida velit, et vehicula sem. [Praesent quis consequat mi](https://www.google.com/ \"Link\").\n\n    function HomePage() {\n      return <div>Welcome to Next.js!</div>\n    }\n    \n    export default HomePage\n\n> **Note:** Fusce cursus, libero ut accumsan tincidunt, risus ante varius nisl, et tristique nisl nulla et enim. Phasellus auctor nunc purus. Morbi tincidunt justo nulla, ut porta ex vestibulum vitae.\n\n### Menu Sub Header\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis et nibh vel blandit. Fusce sit amet volutpat purus. Pellentesque finibus sapien sit amet tortor sagittis, sit amet rhoncus erat aliquet. Cras efficitur quam eu turpis rhoncus aliquam. Suspendisse ultricies, arcu at lobortis lobortis, massa nulla faucibus eros, quis lacinia orci justo a ipsum. Suspendisse faucibus venenatis laoreet.\n\nSuspendisse potenti. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam ultricies laoreet venenatis. Quisque in gravida velit, et vehicula sem `res.setPreviewData({})`\n\ntest\n\n## Tables\n\n| Lorem | Lorem | Ipsum | Dolores | Ipsum |\n| --- | --- | --- | --- | --- |\n| Ipsum | Ipsum | Ipsum | Ipsum | 0 |\n| Ipsum | Ipsum | Ipsum | Ipsum | 0 |\n\n## List Items\n\n* Lorem\n* Ipsum\n* Dolores\n* test",
+      "children": []
+    },
+    {
+      "type": "link",
+      "key": "deployment",
+      "slug": "deployment/index",
+      "title": "Deployment",
+      "position": 1,
+      "content": "",
+      "children": [
+        {
+          "key": "./deployment/basics.md",
+          "slug": "deployment/basics",
+          "type": "link",
+          "title": "Basics",
+          "content": "\nWelcome to the Next.js documentation!\n\nIf you're new to Next.js we recommend that you start with the [learn course](https://nextjs.org/learn/basics/getting-started).\n\n> **Note:** Fusce cursus, libero ut accumsan tincidunt, risus ante varius nisl, et tristique nisl nulla et enim. Phasellus auctor nunc purus. Morbi tincidunt justo nulla, ut porta ex vestibulum vitae.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis et nibh vel blandit. Fusce sit amet volutpat purus. Pellentesque finibus sapien sit amet tortor sagittis, sit amet rhoncus erat aliquet. Cras efficitur quam eu turpis rhoncus aliquam. Suspendisse ultricies, arcu at lobortis lobortis, massa nulla faucibus eros, quis lacinia orci justo a ipsum. Suspendisse faucibus venenatis laoreet.\n\nIf you have questions about anything related to Next.js, you're always welcome to ask our community on [GitHub Discussions](https://github.com/zeit/next.js/discussions).\n\n## System Requirements\n\n- MacOS, Windows (including WSL), and Linux are supported\n\n### **Setup**\n\nWe recommend creating a new Next.js app using `create-next-app`, which sets up everything automatically for you. To create a project, run:\n\n    npm init next-app\n    # or\n    yarn create next-app\n\nAfter the installation is complete, follow the instructions to start the development server. Try editing `pages/index.js` and see the result on your browser.\n\n### Manual Setup\n\nInstall `next`, `react` and `react-dom` in your project:\n\n    npm install next react react-dom\n\nPopulate `./pages/index.js` with the following contents:\n"
+        },
+        {
+          "type": "group",
+          "key": "Complement",
+          "title": "Complement",
+          "position": null,
+          "content": "",
+          "children": [
+            {
+              "key": "./deployment/complement-1.md",
+              "slug": "deployment/complement-1",
+              "type": "link",
+              "title": "Complement Sub 1",
+              "content": ""
+            },
+            {
+              "key": "./deployment/complement-2.md",
+              "slug": "deployment/complement-2",
+              "type": "link",
+              "title": "Complement Sub 2",
+              "content": ""
+            },
+            {
+              "key": "./deployment/complement-3.md",
+              "slug": "deployment/complement-3",
+              "type": "link",
+              "title": "Complement Sub 3",
+              "content": ""
+            }
+          ]
+        },
+        {
+          "key": "./deployment/node.md",
+          "slug": "deployment/node",
+          "type": "link",
+          "title": "Node",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "key": "features",
+      "slug": "features/index",
+      "title": "Features",
+      "position": 2,
+      "content": "",
+      "children": [
+        {
+          "type": "group",
+          "key": "Linux",
+          "title": "Linux",
+          "position": null,
+          "content": "",
+          "children": [
+            {
+              "key": "./features/linux-froyo.md",
+              "slug": "features/linux-froyo",
+              "type": "link",
+              "title": "Froyo",
+              "content": ""
+            },
+            {
+              "key": "./features/ubuntu.md",
+              "slug": "features/ubuntu",
+              "type": "link",
+              "title": "Ubuntu",
+              "content": ""
+            }
+          ]
+        },
+        {
+          "key": "./features/mac.md",
+          "slug": "features/mac",
+          "type": "link",
+          "title": "Mac Os",
+          "content": "test"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "key": "test-add",
+      "slug": "test-add/index",
+      "title": "test",
+      "position": null,
+      "content": "",
+      "children": []
+    },
+    {
+      "type": "link",
+      "key": "test-new-page",
+      "slug": "test-new-page/index",
+      "title": "this is a test",
+      "position": null,
+      "content": "",
+      "children": []
+    },
+    {
+      "type": "link",
+      "key": "test",
+      "slug": "test/index",
+      "title": "This is a test page!",
+      "position": null,
+      "content": "## Test Link\n\nlorem.......\n\n### test sub\n\ntesting inline editing.",
+      "children": []
+    },
+    {
+      "type": "link",
+      "key": "testing-adding",
+      "slug": "testing-adding/index",
+      "title": "Can I add a new page?",
+      "position": null,
+      "content": "",
+      "children": []
+    },
+    {
+      "type": "link",
+      "key": "testing-new",
+      "slug": "testing-new/index",
+      "title": "adding a new page",
+      "position": null,
+      "content": "",
+      "children": []
+    },
+    {
+      "type": "link",
+      "key": "testing",
+      "slug": "testing/index",
+      "title": "This is a new page",
+      "position": null,
+      "content": "",
+      "children": []
+    }
+  ]
+}

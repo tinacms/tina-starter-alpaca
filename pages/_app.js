@@ -14,6 +14,7 @@ import "./app.css"
 class MyApp extends App {
   constructor(props) {
     super(props)
+    console.log(process.env.BASE_BRANCH)
     const client = new GithubClient({
       proxy: "/api/proxy-github",
       authCallbackRoute: "/api/create-github-access-token",
