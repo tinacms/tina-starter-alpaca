@@ -27,6 +27,24 @@ const useCreateMainDoc = () => {
       ],
       onSubmit: async ({ slug, title }) => {
         const fileRelativePath = `docs/${slug}/index.md`
+        // const jsonFile = (await import("../docs/config.json"))
+
+        // jsonFile.config.push(
+        //   {
+        //     "type": "link",
+        //     "key": slug,
+        //     slug,
+        //     title,
+        //     "position": null,
+        //     "children": []
+        //   })
+
+        // // update congfig file
+        // const test = await cms.api.github.upload(
+        //   'docs/config.json',
+        //   JSON.stringify(jsonFile),
+        // )
+        // console.log({ test })
 
         return cms.api.github
           .commit(

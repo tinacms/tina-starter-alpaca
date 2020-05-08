@@ -91,38 +91,61 @@ export const getStaticProps = async function ({ preview, previewData, query, par
   const { slug } = params
   console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
 
+  // if (preview) {
+  //   const test = await getGithubPreviewProps({
+  //     ...previewData,
+  //     fileRelativePath: 'docs/config.json',
+  //     parse: parseJson,
+  //   })
+  //   // console.log(test.props.file.data.config)
+  //   const previewProps = await getGithubPreviewProps({
+  //     ...previewData,
+  //     fileRelativePath: `docs/${slug.join("/")}.md`,
+  //     parse: parseMarkdown,
+  //   })
+
+  //   let Alltocs = ""
+
+  //   if (typeof window === "undefined") {
+  //     Alltocs = createToc(previewProps.props.file.data.markdownBody)
+  //   }
+  //   return {
+  //     props: {
+  //       ...previewProps.props,
+  //       allNestedDocs: test.props.file.data.config,
+  //       Alltocs,
+  //     },
+  //   }
+  // }
+  const allNestedDocs = ((context) => parseNestedDocsMds(context))(
+    //eslint-disable-next-line
+    require.context("@docs", true, /\.md$/)
+  )
+
   if (preview) {
-    const test = await getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath: "docs/config.json",
-      parse: parseJson,
-    })
-    console.log(test.props.file)
     const previewProps = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: `docs/${slug.join("/")}.md`,
       parse: parseMarkdown,
     })
+    let Alltocs = ""
 
-    // console.log({ previewProps })
-    // console.log(previewProps.props.file)
+    if (typeof window === "undefined") {
+      Alltocs = createToc(previewProps.props.file.data.markdownBody)
+    }
 
     return {
       props: {
         ...previewProps.props,
-        // allNestedDocs,
-        // Alltocs,
+        allNestedDocs,
+        Alltocs,
       },
     }
   }
 
   const content = await import(`@docs/${slug.join("/")}.md`)
-  console.log({ content })
+  // console.log({ content })
   const data = matter(content.default)
-  const allNestedDocs = ((context) => parseNestedDocsMds(context))(
-    //eslint-disable-next-line
-    require.context("@docs", true, /\.md$/)
-  )
 
   // Create Toc
   // TODO: this works only on SSR, it doesn't work for client routing
@@ -132,7 +155,7 @@ export const getStaticProps = async function ({ preview, previewData, query, par
     Alltocs = createToc(data.content)
   }
 
-  console.log(JSON.stringify(allNestedDocs))
+  // console.log(JSON.stringify(allNestedDocs))
 
   return {
     props: {
