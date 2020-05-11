@@ -3,7 +3,13 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { array, shape, string } from "prop-types"
 import { useRouter } from "next/router"
-import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
+import {
+  getGithubPreviewProps,
+  parseMarkdown,
+  parseJson,
+  getFiles as getGithubFiles,
+} from "next-tinacms-github"
+import axios from "axios"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -38,7 +44,6 @@ const DocTemplate = (props) => {
   // useCreateChildPage(props.allNestedDocs)
   // console.log({file: props.file})
   const [data, form] = useFormEditDoc(props.file)
-  // console.log({ data })
 
   if (!form) return null
   return (
@@ -90,39 +95,32 @@ const DocTemplate = (props) => {
 export const getStaticProps = async function ({ preview, previewData, query, params }) {
   const { slug } = params
   console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
+  // const allNestedDocs = ((context) => parseNestedDocsMds(context))(
+  //   //eslint-disable-next-line
+  //   require.context("@docs", true, /\.md$/)
+  // )
+  // console.log(allNestedDocs)
 
-  // if (preview) {
-  //   const test = await getGithubPreviewProps({
-  //     ...previewData,
-  //     fileRelativePath: 'docs/config.json',
-  //     parse: parseJson,
-  //   })
-  //   // console.log(test.props.file.data.config)
-  //   const previewProps = await getGithubPreviewProps({
-  //     ...previewData,
-  //     fileRelativePath: `docs/${slug.join("/")}.md`,
-  //     parse: parseMarkdown,
-  //   })
-
-  //   let Alltocs = ""
-
-  //   if (typeof window === "undefined") {
-  //     Alltocs = createToc(previewProps.props.file.data.markdownBody)
-  //   }
-  //   return {
-  //     props: {
-  //       ...previewProps.props,
-  //       allNestedDocs: test.props.file.data.config,
-  //       Alltocs,
-  //     },
-  //   }
-  // }
-  const allNestedDocs = ((context) => parseNestedDocsMds(context))(
-    //eslint-disable-next-line
-    require.context("@docs", true, /\.md$/)
-  )
-
+  const allNestedDocs = parseNestedDocsMds(require.context("@docs", true, /\.md$/))
   if (preview) {
+    try {
+      // const newNested = await axios({
+      //   method: 'GET',
+      //   url: `https://api.github.com/repos/${previewData.working_repo_full_name}/contents/docs/?ref=${previewData.head_branch}`,
+      //   headers: {
+      //     Authorization: 'token ' + previewData.github_access_token,
+      //   },
+      // })
+      // const newNested = await getGithubFiles(
+      //   'docs/',
+      //   previewData.working_repo_full_name,
+      //   previewData.head_branch,
+      //   previewData.github_access_token
+      // )
+      // console.log(newNested)
+    } catch (e) {
+      console.log(e)
+    }
     const previewProps = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: `docs/${slug.join("/")}.md`,

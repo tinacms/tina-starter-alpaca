@@ -7,7 +7,7 @@
     "dev": "next",
     "dev2": "node server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=production next start",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\""
   },
   "keywords": [
@@ -21,6 +21,7 @@
     "@tinacms/git-client": "^0.6.2",
     "@zeit/next-sass": "^1.0.1",
     "algoliasearch": "^4.1.0",
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
