@@ -41,7 +41,7 @@ const DocTemplate = (props) => {
   // debugger;
 
   // console.log({allnested: props.allNestedDocs})
-  // useCreateChildPage(props.allNestedDocs)
+  useCreateChildPage(props.allNestedDocs)
   // console.log({file: props.file})
   const [data, form] = useFormEditDoc(props.file)
 

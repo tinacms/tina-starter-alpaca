@@ -32,17 +32,19 @@ const useCreateChildPage = (allDocs) => {
         },
       ],
       onSubmit: ({ slug, title, groupIn }) => {
-        return cms.api.gitHub
-          .writeToDisk({
-            fileRelativePath: `docs/${router.query.slug[0]}/${slug}.md`,
-            content: toMarkdownString({
-              fileRelativePath: `docs/${router.query.slug[0]}/${slug}.md`,
+        const fileRelativePath = `docs/${router.query.slug[0]}/${slug}.md`
+        return cms.api.github
+          .commit(
+            fileRelativePath,
+            null,
+            toMarkdownString({
+              fileRelativePath,
               rawFrontmatter: {
                 title,
                 groupIn: groupIn || "",
               },
-            }),
-          })
+            })
+          )
           .then(() => {
             setTimeout(() => router.push(`/docs/${router.query.slug[0]}/${slug}`), 1500)
           })
