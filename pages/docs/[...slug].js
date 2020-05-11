@@ -99,7 +99,6 @@ export const getStaticProps = async function ({ preview, previewData, query, par
   //   //eslint-disable-next-line
   //   require.context("@docs", true, /\.md$/)
   // )
-  // console.log(allNestedDocs)
 
   const allNestedDocs = parseNestedDocsMds(require.context("@docs", true, /\.md$/))
   if (preview) {
