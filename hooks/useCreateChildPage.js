@@ -46,7 +46,8 @@ const useCreateChildPage = (allDocs) => {
             })
           )
           .then(() => {
-            setTimeout(() => router.push(`/docs/${router.query.slug[0]}/${slug}`), 1500)
+            // setTimeout(() => router.push(`/docs/${router.query.slug[0]}/${slug}`), 1500)
+            window.location.href = `/docs/${router.query.slug[0]}/${slug}`
           })
       },
     },

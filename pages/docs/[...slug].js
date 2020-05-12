@@ -29,7 +29,7 @@ import InlineEditingControls from "@components/inline-controls"
 
 const DocTemplate = (props) => {
   const router = useRouter()
-  const cms = useCMS()
+  // const cms = useCMS()
 
   // const { deactivate, activate } = useInlineForm()
 
@@ -92,15 +92,21 @@ const DocTemplate = (props) => {
   )
 }
 
-export const getStaticProps = async function ({ preview, previewData, query, params }) {
+export const getStaticProps = async function ({ preview, previewData, params }) {
   const { slug } = params
   console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
-  // const allNestedDocs = ((context) => parseNestedDocsMds(context))(
-  //   //eslint-disable-next-line
-  //   require.context("@docs", true, /\.md$/)
-  // )
 
-  const allNestedDocs = parseNestedDocsMds(require.context("@docs", true, /\.md$/))
+  // const fileRelativePath = slug.length === 1
+  //   ? `docs/${slug.join("/")}/index.md`
+  //   : `docs/${slug.join("/")}.md`
+  const fileRelativePath = `docs/${slug.join("/")}.md`
+
+  const allNestedDocs = ((context) => parseNestedDocsMds(context))(
+    //eslint-disable-next-line
+    require.context("@docs", true, /\.md$/)
+  )
+
+  // const allNestedDocs = parseNestedDocsMds(require.context("@docs", true, /\.md$/))
   if (preview) {
     try {
       // const newNested = await axios({
@@ -122,7 +128,7 @@ export const getStaticProps = async function ({ preview, previewData, query, par
     }
     const previewProps = await getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: `docs/${slug.join("/")}.md`,
+      fileRelativePath,
       parse: parseMarkdown,
     })
     let Alltocs = ""
@@ -141,7 +147,6 @@ export const getStaticProps = async function ({ preview, previewData, query, par
   }
 
   const content = await import(`@docs/${slug.join("/")}.md`)
-  // console.log({ content })
   const data = matter(content.default)
 
   // Create Toc
@@ -157,7 +162,7 @@ export const getStaticProps = async function ({ preview, previewData, query, par
   return {
     props: {
       file: {
-        fileRelativePath: `./docs/${slug.join("/")}.md`,
+        fileRelativePath: `docs/${slug.join("/")}.md`,
         data: {
           frontmatter: data.data,
           markdownBody: data.content,
