@@ -3,13 +3,13 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { array, shape, string } from "prop-types"
 import { useRouter } from "next/router"
+import Error from "next/error"
 import {
   getGithubPreviewProps,
   parseMarkdown,
   parseJson,
   getFiles as getGithubFiles,
 } from "next-tinacms-github"
-import axios from "axios"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -29,9 +29,14 @@ import InlineEditingControls from "@components/inline-controls"
 
 const DocTemplate = (props) => {
   const router = useRouter()
+  if (!props.file) {
+    return <Error statusCode={404} />
+  }
+
   if (router.isFallback) {
     return <div>Loading...</div>
   }
+
   // const cms = useCMS()
 
   // const { deactivate, activate } = useInlineForm()

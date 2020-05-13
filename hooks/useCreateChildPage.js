@@ -7,10 +7,11 @@ const useCreateChildPage = (allDocs) => {
   const router = useRouter()
   const cms = useCMS()
   const parentObject = allDocs.find((item) => item.key === router.query.slug[0])
+  //TODO: in preview mode will have to query github for this
   usePlugins([
     {
       __type: "content-creator",
-      name: `Create Child Page for ${parentObject.title}`,
+      name: `Create Child Page for ${parentObject?.title || ""}`,
       fields: [
         {
           name: "slug",
