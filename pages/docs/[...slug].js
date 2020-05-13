@@ -29,6 +29,9 @@ import InlineEditingControls from "@components/inline-controls"
 
 const DocTemplate = (props) => {
   const router = useRouter()
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   // const cms = useCMS()
 
   // const { deactivate, activate } = useInlineForm()
