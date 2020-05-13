@@ -1,5 +1,6 @@
 import matter from "gray-matter"
 
+const TOP = "TOP"
 export default (context) => {
   // console.log(context('./test-from-vercel/index.md').default)
   const keys = context.keys()
@@ -28,7 +29,7 @@ const parseNestiness = (key, list, document) => {
   const foundIndex = listCopy.findIndex((item) => item.key === keySplitted[1])
   if (foundIndex !== -1) {
     if (!document.data.groupIn) {
-      if (keySplitted[2] !== "index.md") {
+      if (keySplitted[2] !== `${TOP}.md`) {
         listCopy[foundIndex].children.push(parseChildItem(key, document))
       } else {
         listCopy[foundIndex].title = document.data.title
@@ -65,7 +66,7 @@ const parseParentItem = (key, document, type) => {
     type: type,
     ...(type === "link" && {
       key: keySplitted[1],
-      slug: `${keySplitted[1]}/index`,
+      slug: `${keySplitted[1]}/${TOP}`,
       title: document.data.title,
     }),
     ...(type === "group" && {
@@ -75,7 +76,7 @@ const parseParentItem = (key, document, type) => {
     // if no position is given put it at the back
     position: typeof document.data.position === "undefined" ? Infinity : document.data.position,
     content: document.content,
-    children: [...(keySplitted[2] !== "index.md" ? [parseChildItem(key, document)] : [])],
+    children: [...(keySplitted[2] !== `${TOP}.md` ? [parseChildItem(key, document)] : [])],
   }
 }
 
