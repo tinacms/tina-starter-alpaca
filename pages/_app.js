@@ -21,6 +21,7 @@ class MyApp extends App {
       clientId: process.env.GITHUB_CLIENT_ID,
       baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
       baseBranch: process.env.BASE_BRANCH,
+      scope: "repo",
     })
     this.cms = new TinaCMS({
       apis: {
@@ -28,7 +29,6 @@ class MyApp extends App {
          * 2. Register the GithubClient
          */
         github: client,
-        git: client,
       },
       /**
        * 3. Hide the Sidebar & Toolbar

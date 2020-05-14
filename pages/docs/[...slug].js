@@ -102,10 +102,11 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   //   : `docs/${slug.join("/")}.md`
   const fileRelativePath = `docs/${slug.join("/")}.md`
 
-  const allNestedDocs = ((context) => parseNestedDocsMds(context))(
-    //eslint-disable-next-line
-    require.context("@docs", true, /\.md$/)
-  )
+  // const allNestedDocs = ((context) => parseNestedDocsMds(context))(
+  //   //eslint-disable-next-line
+  //   require.context("@docs", true, /\.md$/)
+  // )
+  const allNestedDocs = require("../../docs/config.json").config
 
   if (preview) {
     const previewProps = await getGithubPreviewProps({
@@ -113,6 +114,12 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       fileRelativePath,
       parse: parseMarkdown,
     })
+    const allNestedDocsRemote = await getGithubPreviewProps({
+      ...previewData,
+      fileRelativePath: "docs/config.json",
+      parse: parseJson,
+    })
+    console.log(allNestedDocsRemote.props.file.data)
     let Alltocs = ""
 
     if (typeof window === "undefined") {
@@ -122,7 +129,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     return {
       props: {
         ...previewProps.props,
-        allNestedDocs,
+        allNestedDocs: allNestedDocsRemote.props.file.data.config,
         Alltocs,
       },
     }
