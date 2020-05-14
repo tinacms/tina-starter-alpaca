@@ -128,57 +128,9 @@
     },
     {
       "type": "link",
-      "key": "Test-main-page",
-      "slug": "Test-main-page/TOP",
-      "title": "This is a main page",
-      "position": null,
-      "children": []
-    },
-    {
-      "type": "link",
       "key": "main-doc-page",
       "slug": "main-doc-page/TOP",
       "title": "New Main Doc ",
-      "position": null,
-      "children": []
-    },
-    {
-      "type": "link",
-      "key": "main-doc-test-add",
-      "slug": "main-doc-test-add/TOP",
-      "title": "New main doc pt2",
-      "position": null,
-      "children": []
-    },
-    {
-      "type": "link",
-      "key": "slug",
-      "slug": "slug/TOP",
-      "title": "This is a new test",
-      "position": null,
-      "children": [
-        {
-          "key": "./slug/index.md",
-          "slug": "slug/index",
-          "type": "link",
-          "title": "This is a new test",
-          "content": ""
-        }
-      ]
-    },
-    {
-      "type": "link",
-      "key": "test-page",
-      "slug": "test-page/TOP",
-      "title": "This is a new page",
-      "position": null,
-      "children": []
-    },
-    {
-      "type": "link",
-      "key": "testing-new-main-page",
-      "slug": "testing-new-main-page/TOP",
-      "title": "TinaCMS is cool!",
       "position": null,
       "children": []
     }
