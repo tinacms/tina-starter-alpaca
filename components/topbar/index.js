@@ -64,7 +64,7 @@ const TopBar = ({ showDocsSearcher }) => {
         <Link href="/features" passHref>
           <NavBarLink>Features</NavBarLink>
         </Link>
-        <Link href="/docs/getting-started/index" passHref>
+        <Link href="/docs/getting-started/TOP" passHref>
           <NavBarLink>Docs</NavBarLink>
         </Link>
         <NavBarLink

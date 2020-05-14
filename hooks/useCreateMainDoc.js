@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 
 import { toMarkdownString } from "@utils"
 
+const TOP = "TOP"
 const useCreateMainDoc = () => {
   const router = useRouter()
   const cms = useCMS()
@@ -26,7 +27,7 @@ const useCreateMainDoc = () => {
         },
       ],
       onSubmit: async ({ slug, title }) => {
-        const fileRelativePath = `docs/${slug}/index.md`
+        const fileRelativePath = `docs/${slug}/${TOP}.md`
         // const jsonFile = (await import("../docs/config.json"))
 
         // jsonFile.config.push(
@@ -62,7 +63,7 @@ const useCreateMainDoc = () => {
             setCachedFormData(fileRelativePath, {
               sha: response.content.sha,
             })
-            setTimeout(() => router.push(`/docs/${slug}/index`), 1500)
+            setTimeout(() => router.push(`/docs/${slug}/${TOP}`), 1500)
           })
           .catch((e) => {
             return { [FORM_ERROR]: e }

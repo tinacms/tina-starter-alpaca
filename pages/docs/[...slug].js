@@ -3,13 +3,13 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { array, shape, string } from "prop-types"
 import { useRouter } from "next/router"
+import Error from "next/error"
 import {
   getGithubPreviewProps,
   parseMarkdown,
   parseJson,
   getFiles as getGithubFiles,
 } from "next-tinacms-github"
-import axios from "axios"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -29,20 +29,19 @@ import InlineEditingControls from "@components/inline-controls"
 
 const DocTemplate = (props) => {
   const router = useRouter()
+  if (!props.file) {
+    return <Error statusCode={404} />
+  }
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
   // const cms = useCMS()
-
-  // const { deactivate, activate } = useInlineForm()
-
-  // function handleInlineEdit() {
-  //   props.preview ? activate() : deactivate()
-  // }
-  // useMemo(handleInlineEdit, [props.preview] )
 
   // debugger;
 
-  // console.log({allnested: props.allNestedDocs})
   useCreateChildPage(props.allNestedDocs)
-  // console.log({file: props.file})
   const [data, form] = useFormEditDoc(props.file)
 
   if (!form) return null
@@ -52,12 +51,14 @@ const DocTemplate = (props) => {
       <SideNav
         allNestedDocs={props.allNestedDocs}
         currentSlug={router.query.slug}
+        // This will have to change to JSON
         groupIn={data.frontmatter.groupIn}
       />
       <DocWrapper preview={props.preview}>
         {process.env.NODE_ENV !== "production" && <InlineEditingControls />}
         <main>
           <h1>
+            {/* This will have to be JSON as well */}
             <InlineTextField name="frontmatter.title" />
           </h1>
           {/* {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
@@ -106,26 +107,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     require.context("@docs", true, /\.md$/)
   )
 
-  // const allNestedDocs = parseNestedDocsMds(require.context("@docs", true, /\.md$/))
   if (preview) {
-    try {
-      // const newNested = await axios({
-      //   method: 'GET',
-      //   url: `https://api.github.com/repos/${previewData.working_repo_full_name}/contents/docs/?ref=${previewData.head_branch}`,
-      //   headers: {
-      //     Authorization: 'token ' + previewData.github_access_token,
-      //   },
-      // })
-      // const newNested = await getGithubFiles(
-      //   'docs/',
-      //   previewData.working_repo_full_name,
-      //   previewData.head_branch,
-      //   previewData.github_access_token
-      // )
-      // console.log(newNested)
-    } catch (e) {
-      console.log(e)
-    }
     const previewProps = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath,
@@ -181,7 +163,7 @@ export const getStaticPaths = async function () {
   const contentDir = "docs/"
   const files = await fg(`${contentDir}**/*.md`)
   return {
-    fallback: false,
+    fallback: true,
     paths: files
       // .filter(file => !file.endsWith('index.md'))
       .map((file) => {
@@ -190,11 +172,5 @@ export const getStaticPaths = async function () {
       }),
   }
 }
-
-// DocTemplate.propTypes = {
-//   allNestedDocs: array,
-//   markdownFile: shape(),
-//   Alltocs: string,
-// }
 
 export default DocTemplate
