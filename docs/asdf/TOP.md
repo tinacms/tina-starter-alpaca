@@ -1,0 +1,3 @@
+---
+title: New main doc
+---
