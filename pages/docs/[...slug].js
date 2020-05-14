@@ -102,36 +102,45 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   //   : `docs/${slug.join("/")}.md`
   const fileRelativePath = `docs/${slug.join("/")}.md`
 
-  // const allNestedDocs = ((context) => parseNestedDocsMds(context))(
-  //   //eslint-disable-next-line
-  //   require.context("@docs", true, /\.md$/)
-  // )
-  const allNestedDocs = require("../../docs/config.json").config
+  const allNestedDocs = ((context) => parseNestedDocsMds(context))(
+    //eslint-disable-next-line
+    require.context("@docs", true, /\.md$/)
+  )
+
+  // we will use this when we are keeping a working copy of config.json
+  // const allNestedDocs = require('../../docs/config.json').config
 
   if (preview) {
-    const previewProps = await getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath,
-      parse: parseMarkdown,
-    })
-    const allNestedDocsRemote = await getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath: "docs/config.json",
-      parse: parseJson,
-    })
-    console.log(allNestedDocsRemote.props.file.data)
-    let Alltocs = ""
+    try {
+      const previewProps = await getGithubPreviewProps({
+        ...previewData,
+        fileRelativePath,
+        parse: parseMarkdown,
+      })
+      const allNestedDocsRemote = await getGithubPreviewProps({
+        ...previewData,
+        fileRelativePath: "docs/config.json",
+        parse: parseJson,
+      })
+      let Alltocs = ""
 
-    if (typeof window === "undefined") {
-      Alltocs = createToc(previewProps.props.file.data.markdownBody)
-    }
+      if (typeof window === "undefined") {
+        Alltocs = createToc(previewProps.props.file.data.markdownBody)
+      }
 
-    return {
-      props: {
-        ...previewProps.props,
-        allNestedDocs: allNestedDocsRemote.props.file.data.config,
-        Alltocs,
-      },
+      return {
+        props: {
+          ...previewProps.props,
+          allNestedDocs: allNestedDocsRemote.props.file.data.config,
+          Alltocs,
+        },
+      }
+    } catch (e) {
+      return {
+        props: {
+          previewError: { ...e }, //workaround since we cant return error as JSON
+        },
+      }
     }
   }
 

@@ -21,7 +21,7 @@ class MyApp extends App {
       clientId: process.env.GITHUB_CLIENT_ID,
       baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
       baseBranch: process.env.BASE_BRANCH,
-      scope: "repo",
+      authScope: "repo",
     })
     this.cms = new TinaCMS({
       apis: {
