@@ -2,6 +2,14 @@
   "config": [
     {
       "type": "link",
+      "key": "new-main-doc-2",
+      "slug": "new-main-doc-2/TOP",
+      "title": "New main doc 2",
+      "position": null,
+      "children": []
+    },
+    {
+      "type": "link",
       "key": "getting-started",
       "slug": "getting-started/TOP",
       "title": "Getting Started",
@@ -131,14 +139,6 @@
       "key": "main-doc-page",
       "slug": "main-doc-page/TOP",
       "title": "New Main Doc ",
-      "position": null,
-      "children": []
-    },
-    {
-      "type": "link",
-      "key": "new-main-doc-2",
-      "slug": "new-main-doc-2/TOP",
-      "title": "New main doc 2",
       "position": null,
       "children": []
     }
