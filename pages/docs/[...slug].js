@@ -59,7 +59,7 @@ const DocTemplate = (props) => {
             {/* This will have to be JSON as well */}
             <InlineTextField name="frontmatter.title" />
           </h1>
-          {/* {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />} */}
+          {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
           <InlineWysiwyg
             // TODOL: fix this
             // imageProps={{
