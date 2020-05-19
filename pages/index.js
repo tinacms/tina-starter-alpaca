@@ -22,7 +22,7 @@ const Page = ({ file, preview }) => {
     <Layout preview={preview} form={form}>
       <Head title="Home" />
       <Container className="container">
-        <Title className="title">{data.title}</Title>
+        {/* <Title className="title">{data.title}</Title> */}
         <p className="description">
           To get started, edit <code>pages/index.js</code> and save to reload.
         </p>
@@ -45,7 +45,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
 
     return getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: "content/home.json",
+      fileRelativePath: "content/test.json",
       parse: parseJson,
     })
   }
