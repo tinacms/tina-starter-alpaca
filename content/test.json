@@ -15,5 +15,18 @@
       "id": "isabel-allende",
       "best-novel": "Daughter of Fortune"
     }
-  ]
+  ],
+  "rawJson": {
+    "authors": [
+      {
+        "name": "test",
+        "id": "6golwqi7k",
+        "best-novel": "Testing"
+      },
+      {
+        "name": "test 2",
+        "id": "im3b2qaqw"
+      }
+    ]
+  }
 }
