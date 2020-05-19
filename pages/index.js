@@ -6,18 +6,44 @@ import Container from "@components/container"
 import { getGithubPreviewProps, parseJson } from "next-tinacms-github"
 import { GetStaticProps } from "next"
 import { useGithubJsonForm } from "react-tinacms-github"
+import { useGlobalForm } from "tinacms"
 
 const Page = ({ file, preview }) => {
   const formOptions = {
-    label: "home page",
     fields: [
       {
-        name: "title",
-        component: "text",
+        label: "Doc list",
+        name: "config",
+        component: "group-list",
+        description: "test",
+        itemProps: (item) => ({
+          key: item.slug,
+          label: item.title,
+        }),
+        defaultItem: () => ({
+          name: "New Author",
+          id: Math.random().toString(36).substr(2, 9),
+        }),
+        fields: [
+          {
+            label: "type",
+            name: "type",
+            component: "text",
+          },
+          {
+            label: "title",
+            name: "title",
+            component: "text",
+          },
+        ],
       },
+      //...
     ],
   }
+
   const [data, form] = useGithubJsonForm(file, formOptions)
+  // useGlobalForm(form)
+
   return (
     <Layout preview={preview} form={form}>
       <Head title="Home" />
@@ -45,7 +71,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
 
     return getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: "content/test.json",
+      fileRelativePath: "docs/config.json",
       parse: parseJson,
     })
   }
@@ -56,7 +82,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
       error: null,
       preview: false,
       file: {
-        fileRelativePath: "content/home.json",
+        fileRelativePath: "docs/config.json",
         data: (await import("../content/home.json")).default,
       },
     },
