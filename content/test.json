@@ -1,0 +1,19 @@
+{
+  "authors": [
+    {
+      "name": "Alice Walker",
+      "id": "alice-walker",
+      "best-novel": "The Color Purple"
+    },
+    {
+      "name": "Margaret Atwood",
+      "id": "margaret-atwood",
+      "best-novel": "Oyrx and Crake"
+    },
+    {
+      "name": "Isabel Allende",
+      "id": "isabel-allende",
+      "best-novel": "Daughter of Fortune"
+    }
+  ]
+}
