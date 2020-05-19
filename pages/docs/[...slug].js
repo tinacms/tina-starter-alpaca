@@ -39,8 +39,6 @@ const DocTemplate = (props) => {
 
   // const cms = useCMS()
 
-  // debugger;
-
   useCreateChildPage(props.allNestedDocs)
   const [data, form] = useFormEditDoc(props.file)
 
@@ -110,14 +108,17 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   // we will use this when we are keeping a working copy of config.json
   // const allNestedDocs = require('../../docs/config.json').config
 
+  // we need these to be in scope for the catch statment
+  let previewProps
+  let allNestedDocsRemote
   if (preview) {
     try {
-      const previewProps = await getGithubPreviewProps({
+      previewProps = await getGithubPreviewProps({
         ...previewData,
         fileRelativePath,
         parse: parseMarkdown,
       })
-      const allNestedDocsRemote = await getGithubPreviewProps({
+      allNestedDocsRemote = await getGithubPreviewProps({
         ...previewData,
         fileRelativePath: "docs/config.json",
         parse: parseJson,
@@ -138,7 +139,8 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     } catch (e) {
       return {
         props: {
-          previewError: { ...e }, //workaround since we cant return error as JSON
+          ...previewProps.props,
+          ...allNestedDocsRemote.props,
         },
       }
     }

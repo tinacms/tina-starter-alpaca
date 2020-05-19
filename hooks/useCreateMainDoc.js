@@ -7,7 +7,6 @@ import {
   getFiles as getGithubFiles,
   getContent,
 } from "next-tinacms-github"
-import axios from "axios"
 
 import { toMarkdownString } from "@utils"
 
@@ -38,10 +37,13 @@ const useCreateMainDoc = () => {
         const fileRelativePath = `docs/${slug}/${TOP}.md`
 
         // get json file from github
-        // const test = await getContent( this.api.github.workingRepoFullName, this.api.github.baseBranch, 'docs/config.json',.... )
+        // console.log(await cms.api.github.getUser())
+        // console.log(document.cookie)
+        // const test = await getContent( cms.api.github.workingRepoFullName, cms.api.github.baseBranch, 'docs/config.json', '')
         // console.log(test)
-        // TODO Get this file from github not the file system and get its sha1 useing somthing like https://stackoverflow.com/questions/20207594/how-to-find-a-github-file-s-sha-blob
-        // proplem is not sure how to get the access token
+        // let sha = {} //test.data.sha
+        // // TODO Get this file from github not the file system and get its sha1 useing somthing like https://stackoverflow.com/questions/20207594/how-to-find-a-github-file-s-sha-blob
+        // // proplem is not sure how to get the access token
         // const allNestedDocsRemote = require('../docs/config.json')
         // console.log(allNestedDocsRemote)
 
@@ -58,7 +60,7 @@ const useCreateMainDoc = () => {
         // await cms.api.github
         //   .commit(
         //     'docs/config.json',
-        //     getCachedFormData('docs/config').sha,
+        //     sha,
         //     JSON.stringify(allNestedDocsRemote),
         //     'Update from TinaCMS'
         //   )

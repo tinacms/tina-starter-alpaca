@@ -41,6 +41,8 @@ const Title = styled.h1`
  */
 export const getStaticProps = async function ({ preview, previewData }) {
   if (preview) {
+    console.log(previewData)
+
     return getGithubPreviewProps({
       ...previewData,
       fileRelativePath: "content/home.json",

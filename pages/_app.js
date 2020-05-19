@@ -21,7 +21,7 @@ class MyApp extends App {
       clientId: process.env.GITHUB_CLIENT_ID,
       baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
       baseBranch: process.env.BASE_BRANCH,
-      authScope: "repo",
+      // authScope: "repo",
     })
     this.cms = new TinaCMS({
       apis: {
@@ -35,17 +35,12 @@ class MyApp extends App {
        *    unless we're in Preview/Edit Mode
        */
       sidebar: {
-        // hidden: process.env.NODE_ENV === "production",
         hidden: !props.pageProps.preview,
       },
       toolbar: {
         hidden: !props.pageProps.preview,
       },
     })
-
-    // const client = new GitClient("http://localhost:3000/___tina")
-    // this.cms.registerApi("git", client)
-    // this.cms.media.store = new GitMediaStore(client)
   }
 
   render() {
