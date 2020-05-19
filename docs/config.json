@@ -1,6 +1,10 @@
 {
   "config": [
     {
+      "name": "New Author",
+      "id": "jgrz8qcdi"
+    },
+    {
       "type": "link",
       "key": "new-main-doc-2",
       "slug": "new-main-doc-2/TOP",
