@@ -56,7 +56,7 @@
       ]
     },
     {
-      "type": "group",
+      "type": "link",
       "key": "deployment",
       "slug": "deployment/TOP",
       "title": "Deployment",
