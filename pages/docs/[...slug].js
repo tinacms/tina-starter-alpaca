@@ -40,12 +40,8 @@ const DocTemplate = (props) => {
   useNavigationForm(props.jsonFile)
   const [data, form] = useFormEditDoc(props.file)
 
-  // END OF TEMP
-
-  // const cms = useCMS()
-
   useCreateChildPage(props.allNestedDocs)
-
+  console.log(router.query.slug)
   if (!form) return null
   return (
     <Layout showDocsSearcher splitView preview={props.preview} form={form}>

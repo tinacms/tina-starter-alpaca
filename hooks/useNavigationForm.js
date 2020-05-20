@@ -1,9 +1,10 @@
 import { useGithubJsonForm } from "react-tinacms-github"
-
+import { useRouter } from "next/router"
 /*
     Adds a form for changing the order of the doc navigation and adding new things to the navignation
 */
 const useNavigationForm = (jsonFile) => {
+  const router = useRouter()
   const docFields = [
     {
       label: "title",
@@ -13,16 +14,12 @@ const useNavigationForm = (jsonFile) => {
     {
       label: "Type (link or or group)",
       name: "type",
-      component: "text",
+      component: "select",
+      options: ["link", "group"],
     },
     {
       label: "Enter the Slug",
       name: "slug",
-      component: "text",
-    },
-    {
-      label: "key",
-      name: "key",
       component: "text",
     },
   ]
@@ -33,15 +30,13 @@ const useNavigationForm = (jsonFile) => {
       component: "group-list",
       description,
       itemProps: (item) => ({
-        key: item.slug,
-        label: item.title,
+        label: `${item.title} (${item.type})`,
       }),
       defaultItem: () => ({
         type: "link",
-        key: "getting-started",
         slug: "getting-started/TOP",
         title: "new doc page",
-        position: null,
+        id: Math.random().toString(36).substr(2, 9),
         children: [],
       }),
     }
@@ -49,6 +44,9 @@ const useNavigationForm = (jsonFile) => {
   // TODO: clean this up
   const formOptions = {
     label: "Navigation",
+    onSubmit: (data) => {
+      console.log(data)
+    },
     fields: [
       {
         ...childrenGroupListField("Doc list", "config"),

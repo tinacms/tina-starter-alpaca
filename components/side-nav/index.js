@@ -22,7 +22,7 @@ const SideNav = ({ allNestedDocs, currentSlug, groupIn }) => {
             <NavItem
               itemData={doc}
               key={doc.slug}
-              active={currentKey === doc.key}
+              active={currentKey === doc.slug.split("/")[0]}
               currentSlug={currentSlug}
               groupIn={groupIn}
             />

@@ -25,12 +25,12 @@ const useCreateChildPage = (allDocs) => {
           component: "text",
           required: true,
         },
-        {
-          name: "groupIn",
-          label: "Group in",
-          description: "Group under a name to create a 3rd level",
-          component: "text",
-        },
+        // {
+        //   name: "groupIn",
+        //   label: "Group in",
+        //   description: "Group under a name to create a 3rd level",
+        //   component: "text",
+        // },
       ],
       onSubmit: ({ slug, title, groupIn }) => {
         const fileRelativePath = `docs/${router.query.slug[0]}/${slug}.md`
