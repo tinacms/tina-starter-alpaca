@@ -3,10 +3,19 @@
     {
       "type": "link",
       "key": "/",
-      "slug": "/getting-started/TOP",
+      "slug": "getting-started/TOP",
       "title": "new doc page",
       "position": null,
-      "children": []
+      "children": [
+        {
+          "type": "link",
+          "key": "/",
+          "slug": "getting-started/TOP",
+          "title": "new doc page",
+          "position": null,
+          "children": []
+        }
+      ]
     },
     {
       "type": "link",
