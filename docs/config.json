@@ -10,6 +10,53 @@
     },
     {
       "type": "link",
+      "key": "features",
+      "slug": "features/TOP",
+      "title": "Features",
+      "position": 2,
+      "children": [
+        {
+          "key": "./features/Arch.md",
+          "slug": "features/Arch",
+          "type": "link",
+          "title": "Arch"
+        },
+        {
+          "type": "group",
+          "key": "Linux",
+          "title": "Linux",
+          "position": null,
+          "children": [
+            {
+              "key": "./features/linux-froyo.md",
+              "slug": "features/linux-froyo",
+              "type": "link",
+              "title": "Froyo"
+            },
+            {
+              "key": "./features/ubuntu.md",
+              "slug": "features/ubuntu",
+              "type": "link",
+              "title": "Ubuntu"
+            },
+            {
+              "key": "./features/ubuntuLTS.md",
+              "slug": "features/ubuntuLTS",
+              "type": "link",
+              "title": "ubuntu LTS"
+            }
+          ]
+        },
+        {
+          "key": "./features/mac.md",
+          "slug": "features/mac",
+          "type": "link",
+          "title": "Mac Os"
+        }
+      ]
+    },
+    {
+      "type": "link",
       "key": "deployment",
       "slug": "deployment/TOP",
       "title": "Deployment",
@@ -81,40 +128,11 @@
     },
     {
       "type": "link",
-      "key": "features",
-      "slug": "features/TOP",
-      "title": "Features",
-      "position": 2,
-      "children": [
-        { "key": "./features/Arch.md", "slug": "features/Arch", "type": "link", "title": "Arch" },
-        {
-          "type": "group",
-          "key": "Linux",
-          "title": "Linux",
-          "position": null,
-          "children": [
-            {
-              "key": "./features/linux-froyo.md",
-              "slug": "features/linux-froyo",
-              "type": "link",
-              "title": "Froyo"
-            },
-            {
-              "key": "./features/ubuntu.md",
-              "slug": "features/ubuntu",
-              "type": "link",
-              "title": "Ubuntu"
-            },
-            {
-              "key": "./features/ubuntuLTS.md",
-              "slug": "features/ubuntuLTS",
-              "type": "link",
-              "title": "ubuntu LTS"
-            }
-          ]
-        },
-        { "key": "./features/mac.md", "slug": "features/mac", "type": "link", "title": "Mac Os" }
-      ]
+      "key": "new-main-doc-2",
+      "slug": "new-main-doc-2/TOP",
+      "title": "New main doc 2",
+      "position": null,
+      "children": []
     },
     {
       "type": "link",
@@ -126,9 +144,9 @@
     },
     {
       "type": "link",
-      "key": "new-main-doc-2",
-      "slug": "new-main-doc-2/TOP",
-      "title": "New main doc 2",
+      "key": "new-doc-page",
+      "slug": "new-doc-page/TOP",
+      "title": "new doc page",
       "position": null,
       "children": []
     }

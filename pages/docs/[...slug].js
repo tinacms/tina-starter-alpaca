@@ -21,7 +21,7 @@ import MarkdownWrapper from "@components/markdown-wrapper"
 import Toc from "@components/Toc"
 
 import { parseNestedDocsMds, flatDocs, createToc } from "@utils"
-import { useFormEditDoc, useCreateChildPage } from "@hooks"
+import { useFormEditDoc, useCreateChildPage, useNavigationForm } from "@hooks"
 
 import { useCMS } from "tinacms"
 import { useInlineForm, InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
@@ -37,10 +37,14 @@ const DocTemplate = (props) => {
     return <div>Loading...</div>
   }
 
+  useNavigationForm(props.jsonFile)
+  const [data, form] = useFormEditDoc(props.file)
+
+  // END OF TEMP
+
   // const cms = useCMS()
 
   useCreateChildPage(props.allNestedDocs)
-  const [data, form] = useFormEditDoc(props.file)
 
   if (!form) return null
   return (
@@ -95,9 +99,6 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const { slug } = params
   console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
 
-  // const fileRelativePath = slug.length === 1
-  //   ? `docs/${slug.join("/")}/index.md`
-  //   : `docs/${slug.join("/")}.md`
   const fileRelativePath = `docs/${slug.join("/")}.md`
 
   const allNestedDocs = ((context) => parseNestedDocsMds(context))(
@@ -111,6 +112,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   // we need these to be in scope for the catch statment
   let previewProps
   let allNestedDocsRemote
+  // if we are in preview mode we will get the contents from github
   if (preview) {
     try {
       previewProps = await getGithubPreviewProps({
@@ -128,10 +130,13 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       if (typeof window === "undefined") {
         Alltocs = createToc(previewProps.props.file.data.markdownBody)
       }
-
       return {
         props: {
           ...previewProps.props,
+          jsonFile: {
+            ...allNestedDocsRemote.props.file,
+            fileRelativePath: `docs/config.json`,
+          },
           allNestedDocs: allNestedDocsRemote.props.file.data.config,
           Alltocs,
         },
@@ -146,6 +151,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     }
   }
 
+  // Not in preview mode so we will get contents from the file system
   const content = await import(`@docs/${slug.join("/")}.md`)
   const data = matter(content.default)
 
@@ -157,8 +163,6 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     Alltocs = createToc(data.content)
   }
 
-  // console.log(JSON.stringify(allNestedDocs))
-
   return {
     props: {
       file: {
@@ -167,6 +171,10 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
           frontmatter: data.data,
           markdownBody: data.content,
         },
+      },
+      jsonFile: {
+        fileRelativePath: `docs/config.json`,
+        data: allNestedDocs,
       },
       allNestedDocs,
       Alltocs,
