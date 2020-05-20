@@ -141,9 +141,9 @@
           "children": [
             {
               "type": "link",
-              "key": "main-doc-page",
-              "slug": "main-doc-page/TOP",
-              "title": "new doc page",
+              "key": "deployment",
+              "slug": "deployment/testing-chile",
+              "title": "new Group item",
               "id": "uxzjac2zg",
               "children": []
             },
