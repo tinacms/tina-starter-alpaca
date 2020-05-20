@@ -2,6 +2,14 @@
   "config": [
     {
       "type": "link",
+      "key": "/",
+      "slug": "new-doc-page/TOP",
+      "title": "new doc page",
+      "position": null,
+      "children": []
+    },
+    {
+      "type": "link",
       "key": "getting-started",
       "slug": "getting-started/TOP",
       "title": "Getting Started",
