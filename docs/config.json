@@ -2,7 +2,7 @@
   "config": [
     {
       "type": "link",
-      "key": "/",
+      "key": "new-doc-page",
       "slug": "new-doc-page/TOP",
       "title": "new doc page",
       "position": null,
