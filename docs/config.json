@@ -133,16 +133,16 @@
           "children": [
             {
               "type": "link",
-              "key": "getting-started",
-              "slug": "getting-started/TOP",
+              "key": "main-doc-page",
+              "slug": "main-doc-page/TOP",
               "title": "new doc page",
               "id": "uxzjac2zg",
               "children": []
             },
             {
               "type": "link",
-              "key": "getting-started",
-              "slug": "getting-started/TOP",
+              "key": "main-doc-page",
+              "slug": "main-doc-page/TOP",
               "title": "new doc page",
               "id": "donwo3hab",
               "children": []
@@ -150,14 +150,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "link",
-      "key": "main-doc-page",
-      "slug": "main-doc-page/TOP",
-      "title": "New Main Doc ",
-      "position": null,
-      "children": []
     },
     {
       "type": "link",
