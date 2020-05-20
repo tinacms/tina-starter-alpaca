@@ -26,46 +26,43 @@ const useNavigationForm = (jsonFile) => {
       component: "text",
     },
   ]
+  const childrenGroupListField = (label = "Children", name = "children", description = "test") => {
+    return {
+      label,
+      name,
+      component: "group-list",
+      description,
+      itemProps: (item) => ({
+        key: item.slug,
+        label: item.title,
+      }),
+      defaultItem: () => ({
+        type: "link",
+        key: "getting-started",
+        slug: "getting-started/TOP",
+        title: "new doc page",
+        position: null,
+        children: [],
+      }),
+    }
+  }
+  // TODO: clean this up
   const formOptions = {
     label: "Navigation",
     fields: [
       {
-        label: "Doc list",
-        name: "config",
-        component: "group-list",
-        description: "test",
-        itemProps: (item) => ({
-          key: item.slug,
-          label: item.title,
-        }),
-        defaultItem: () => ({
-          type: "link",
-          key: "getting-started",
-          slug: "getting-started/TOP",
-          title: "new doc page",
-          position: null,
-          children: [],
-        }),
+        ...childrenGroupListField("Doc list", "config"),
         fields: [
           ...docFields,
           {
-            label: "children",
-            name: "children",
-            component: "group-list",
-            description: "test",
-            itemProps: (item) => ({
-              key: item.slug,
-              label: item.title,
-            }),
-            defaultItem: () => ({
-              type: "link",
-              key: "/",
-              slug: "/",
-              title: "new doc page",
-              position: null,
-              children: [],
-            }),
-            fields: docFields,
+            ...childrenGroupListField(),
+            fields: [
+              ...docFields,
+              {
+                ...childrenGroupListField(),
+                fields: [...docFields],
+              },
+            ],
           },
         ],
       },
