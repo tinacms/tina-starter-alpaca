@@ -63,14 +63,6 @@
       "position": 1,
       "children": [
         {
-          "type": "link",
-          "key": "deployment",
-          "slug": "deployment/testing-chile",
-          "title": "New child link",
-          "id": "ks7g1s1pr",
-          "children": []
-        },
-        {
           "key": "./deployment/basics.md",
           "slug": "deployment/basics",
           "type": "link",
