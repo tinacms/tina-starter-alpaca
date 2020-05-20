@@ -166,6 +166,14 @@
       "title": "New main doc 2",
       "position": null,
       "children": []
+    },
+    {
+      "type": "link",
+      "key": "getting-started",
+      "slug": "new-main-doc-test/TOP",
+      "title": "new doc page",
+      "id": "nnysxyd05",
+      "children": []
     }
   ]
 }
