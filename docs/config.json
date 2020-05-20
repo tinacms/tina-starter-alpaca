@@ -123,6 +123,14 @@
           "slug": "deployment/test-deploy-page",
           "type": "link",
           "title": "This is a test"
+        },
+        {
+          "type": "group",
+          "key": "getting-started",
+          "slug": "getting-started/TOP",
+          "title": "New Group",
+          "id": "dzu7oruh8",
+          "children": []
         }
       ]
     },
