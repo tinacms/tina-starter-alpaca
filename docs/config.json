@@ -130,7 +130,24 @@
           "slug": "getting-started/TOP",
           "title": "New Group",
           "id": "dzu7oruh8",
-          "children": []
+          "children": [
+            {
+              "type": "link",
+              "key": "getting-started",
+              "slug": "getting-started/TOP",
+              "title": "new doc page",
+              "id": "uxzjac2zg",
+              "children": []
+            },
+            {
+              "type": "link",
+              "key": "getting-started",
+              "slug": "getting-started/TOP",
+              "title": "new doc page",
+              "id": "donwo3hab",
+              "children": []
+            }
+          ]
         }
       ]
     },
