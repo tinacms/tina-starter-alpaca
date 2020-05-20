@@ -155,7 +155,7 @@
       "type": "link",
       "key": "new-doc-page",
       "slug": "new-doc-page/TOP",
-      "title": "new doc page",
+      "title": "new doc page 1",
       "position": null,
       "children": []
     },
@@ -163,7 +163,7 @@
       "type": "link",
       "key": "getting-started",
       "slug": "new-main-doc-test/TOP",
-      "title": "new doc page",
+      "title": "new doc page 2",
       "id": "nnysxyd05",
       "children": []
     },
@@ -171,7 +171,7 @@
       "type": "link",
       "key": "new-main-doc-2",
       "slug": "new-main-doc-2/TOP",
-      "title": "New main doc 2",
+      "title": "New main doc 3",
       "position": null,
       "children": []
     }
