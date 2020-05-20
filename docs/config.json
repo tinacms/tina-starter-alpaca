@@ -128,17 +128,17 @@
     },
     {
       "type": "link",
-      "key": "main-doc-page",
-      "slug": "main-doc-page/TOP",
-      "title": "New Main Doc ",
+      "key": "new-main-doc-2",
+      "slug": "new-main-doc-2/TOP",
+      "title": "New main doc 2",
       "position": null,
       "children": []
     },
     {
       "type": "link",
-      "key": "new-main-doc-2",
-      "slug": "new-main-doc-2/TOP",
-      "title": "New main doc 2",
+      "key": "main-doc-page",
+      "slug": "main-doc-page/TOP",
+      "title": "New Main Doc ",
       "position": null,
       "children": []
     }
