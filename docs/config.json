@@ -153,17 +153,17 @@
     },
     {
       "type": "link",
-      "key": "new-doc-page",
-      "slug": "new-doc-page/TOP",
-      "title": "new doc page",
+      "key": "new-main-doc-2",
+      "slug": "new-main-doc-2/TOP",
+      "title": "New main doc 2",
       "position": null,
       "children": []
     },
     {
       "type": "link",
-      "key": "new-main-doc-2",
-      "slug": "new-main-doc-2/TOP",
-      "title": "New main doc 2",
+      "key": "new-doc-page",
+      "slug": "new-doc-page/TOP",
+      "title": "new doc page",
       "position": null,
       "children": []
     },
