@@ -153,14 +153,6 @@
     },
     {
       "type": "link",
-      "key": "new-main-doc-2",
-      "slug": "new-main-doc-2/TOP",
-      "title": "New main doc 2",
-      "position": null,
-      "children": []
-    },
-    {
-      "type": "link",
       "key": "new-doc-page",
       "slug": "new-doc-page/TOP",
       "title": "new doc page",
@@ -173,6 +165,14 @@
       "slug": "new-main-doc-test/TOP",
       "title": "new doc page",
       "id": "nnysxyd05",
+      "children": []
+    },
+    {
+      "type": "link",
+      "key": "new-main-doc-2",
+      "slug": "new-main-doc-2/TOP",
+      "title": "New main doc 2",
+      "position": null,
       "children": []
     }
   ]
