@@ -22,7 +22,6 @@ const useCreateChildPage = async (allDocs) => {
     }
   }, [])
 
-  //TODO: in preview mode will have to query github for this
   usePlugins([
     {
       __type: "content-creator",
@@ -55,8 +54,6 @@ const useCreateChildPage = async (allDocs) => {
         const category = router.query.slug[0]
         const fileRelativePath = `docs/${router.query.slug[0]}/${slug}.md`
         const sha = configFile.sha
-
-        console.log(allNestedDocsRemote)
 
         const defaultItem = {
           type: "link",

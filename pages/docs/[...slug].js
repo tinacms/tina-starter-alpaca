@@ -25,6 +25,8 @@ import { useFormEditDoc, useCreateChildPage, useNavigationForm } from "@hooks"
 
 import { useCMS } from "tinacms"
 import { useInlineForm, InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
+import { useGithubToolbarPlugins } from "react-tinacms-github"
+
 import InlineEditingControls from "@components/inline-controls"
 
 const DocTemplate = (props) => {
@@ -36,9 +38,10 @@ const DocTemplate = (props) => {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
+  useGithubToolbarPlugins()
 
-  useNavigationForm(props.jsonFile)
   const [data, form] = useFormEditDoc(props.file)
+  const [jsonData] = useNavigationForm(props.jsonFile)
 
   useCreateChildPage(props.allNestedDocs)
   if (!form) return null
@@ -55,7 +58,6 @@ const DocTemplate = (props) => {
         {process.env.NODE_ENV !== "production" && <InlineEditingControls />}
         <main>
           <h1>
-            {/* This will have to be JSON as well */}
             <InlineTextField name="frontmatter.title" />
           </h1>
           {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
