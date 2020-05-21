@@ -1,4 +1,5 @@
 ---
-title: new-child-page-for-features
+title: New Page!
 groupIn: ''
 ---
+This is a test
