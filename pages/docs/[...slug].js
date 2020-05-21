@@ -96,13 +96,14 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
 
   const fileRelativePath = `docs/${slug.join("/")}.md`
 
-  const allNestedDocs = ((context) => parseNestedDocsMds(context))(
-    //eslint-disable-next-line
-    require.context("@docs", true, /\.md$/)
-  )
+  // OLD WAY OF GETTING ALL NESTED DOCS
+  // const allNestedDocs = ((context) => parseNestedDocsMds(context))(
+  //   //eslint-disable-next-line
+  //   require.context("@docs", true, /\.md$/)
+  // )
 
   // we will use this when we are keeping a working copy of config.json
-  // const allNestedDocs = require('../../docs/config.json').config
+  const allNestedDocs = require("../../docs/config.json").config
 
   // we need these to be in scope for the catch statment
   let previewProps
