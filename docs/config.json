@@ -181,6 +181,13 @@
       "title": "New Main Doc 4",
       "id": "r3zi1e7pz",
       "children": []
+    },
+    {
+      "type": "link",
+      "slug": "new-main-doc-5/TOP",
+      "title": "New doc page 5",
+      "id": "urs9mw1v8",
+      "children": []
     }
   ]
 }
