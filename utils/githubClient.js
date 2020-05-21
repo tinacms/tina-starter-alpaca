@@ -10,6 +10,7 @@ class GithubError extends Error {
 }
 
 export class myGitHubClient extends GithubClient {
+  // prehaps at some point this functionality should be moved to the GitHub cleint in tinaCMS
   async fetchFile(filePath, sha) {
     const repo = this.workingRepoFullName
     const branch = this.branchName
@@ -22,7 +23,7 @@ export class myGitHubClient extends GithubClient {
       },
     })
 
-    // return the content of the request and allso the decoded content
+    // return the content of the request and also the decoded content
     return {
       ...request,
       // decode using base64 decoding (https://developer.mozilla.org/en-US/docs/Glossary/Base64)
@@ -30,7 +31,7 @@ export class myGitHubClient extends GithubClient {
     }
   }
 
-  // From tinacms github client but private methods
+  // Methods from tinacms github (they where private methods so implemented here)
   async req(data) {
     const response = await this.proxyRequest(data)
     return this.getGithubResponse(response)
