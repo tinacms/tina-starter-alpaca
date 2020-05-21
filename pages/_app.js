@@ -6,7 +6,7 @@ import { useGithubEditing, GithubClient, TinacmsGithubProvider } from "react-tin
 import { Normalize } from "styled-normalize"
 import { ThemeProvider } from "styled-components"
 import theme from "../utils/theme"
-
+import { myGitHubClient } from "../utils/githubClient"
 // eslint-disable-next-line no-undef
 require("typeface-source-code-pro")
 import "./app.css"
@@ -15,7 +15,7 @@ class MyApp extends App {
   constructor(props) {
     super(props)
     console.log(process.env.BASE_BRANCH)
-    const client = new GithubClient({
+    const client = new myGitHubClient({
       proxy: "/api/proxy-github",
       authCallbackRoute: "/api/create-github-access-token",
       clientId: process.env.GITHUB_CLIENT_ID,

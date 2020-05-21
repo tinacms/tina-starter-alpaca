@@ -37,40 +37,33 @@ const useCreateMainDoc = () => {
         const fileRelativePath = `docs/${slug}/${TOP}.md`
 
         // get json file from github
-        // console.log(await cms.api.github.getUser())
-        // console.log(document.cookie)
-        // const test = await getContent( cms.api.github.workingRepoFullName, cms.api.github.baseBranch, 'docs/config.json', '')
-        // console.log(test)
-        // let sha = {} //test.data.sha
-        // // TODO Get this file from github not the file system and get its sha1 useing somthing like https://stackoverflow.com/questions/20207594/how-to-find-a-github-file-s-sha-blob
-        // // proplem is not sure how to get the access token
-        // const allNestedDocsRemote = require('../docs/config.json')
-        // console.log(allNestedDocsRemote)
+        const configFile = await cms.api.github.fetchFile("docs/config.json", null)
+        const sha = configFile.sha
+        const allNestedDocsRemote = JSON.parse(configFile.decodedContent)
 
-        // allNestedDocsRemote.config.push({
-        //   "type": "link",
-        //   "key": slug,
-        //   slug: `${slug}/${TOP}`,
-        //   title,
-        //   "position": null,
-        //   "children": []
-        // })
-        // console.log(allNestedDocsRemote)
-        // JSON.stringify(allNestedDocsRemote)
-        // await cms.api.github
-        //   .commit(
-        //     'docs/config.json',
-        //     sha,
-        //     JSON.stringify(allNestedDocsRemote),
-        //     'Update from TinaCMS'
-        //   )
-        //   .then((response) => {
-        //     setCachedFormData('docs/config', {
-        //       sha: response.content.sha,
-        //     })
-        //   })
+        // add the new file to the begining of the array (This will also be the begining of the navigation)
+        allNestedDocsRemote.config.unshift({
+          type: "link",
+          key: slug,
+          slug: `${slug}/${TOP}`,
+          title,
+          position: null,
+          children: [],
+        })
+        await cms.api.github
+          .commit(
+            "docs/config.json",
+            sha,
+            JSON.stringify(allNestedDocsRemote),
+            "Update from TinaCMS"
+          )
+          .then((response) => {
+            setCachedFormData("docs/config", {
+              sha: response.content.sha,
+            })
+          })
 
-        return cms.api.github
+        return await cms.api.github
           .commit(
             fileRelativePath,
             getCachedFormData(fileRelativePath).sha,

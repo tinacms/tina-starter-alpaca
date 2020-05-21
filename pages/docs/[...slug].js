@@ -41,7 +41,6 @@ const DocTemplate = (props) => {
   const [data, form] = useFormEditDoc(props.file)
 
   useCreateChildPage(props.allNestedDocs)
-  console.log(router.query.slug)
   if (!form) return null
   return (
     <Layout showDocsSearcher splitView preview={props.preview} form={form}>
