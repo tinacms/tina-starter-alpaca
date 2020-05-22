@@ -20,7 +20,7 @@ REPO_FULL_NAME=<GitHub Username>/<Repo Name>
 # The base branch that new changes and forks are created from. Defaults to 'master'.
 BASE_BRANCH=feature/open-authoring
 ```
-You can learn more about how to [generate these credentials here](https://tinacms.org/guides/nextjs/github-open-authoring/github-oauth-app)!
+You can learn more about how to [generate these credentials here](https://tinacms.org/guides/nextjs/github-open-authoring/github-oauth-app)
 
 Install dependencies and run the example:
 
