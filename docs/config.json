@@ -71,31 +71,6 @@
       "position": 1,
       "children": [
         {
-          "type": "group",
-          "key": "getting-started",
-          "slug": "getting-started/TOP",
-          "title": "New Group",
-          "id": "dzu7oruh8",
-          "children": [
-            {
-              "type": "link",
-              "key": "new child for deployment",
-              "slug": "deployment/new child for deployment",
-              "title": "New group Item 1",
-              "position": null,
-              "children": []
-            },
-            {
-              "type": "link",
-              "key": "deployment",
-              "slug": "deployment/testing-chile",
-              "title": "new Group item 2",
-              "id": "uxzjac2zg",
-              "children": []
-            }
-          ]
-        },
-        {
           "key": "./deployment/basics.md",
           "slug": "deployment/basics",
           "type": "link",
