@@ -7,7 +7,7 @@ const useCreateChildPage = async (allDocs) => {
   const router = useRouter()
   const cms = useCMS()
   const category = router.query.slug[0]
-  const parentObject = allDocs.find((item) => item.key === router.query.slug[0])
+  const parentObject = allDocs.find((item) => item.slug.split("/")[0] === router.query.slug[0])
 
   // // find all the groups
   const groups = []
@@ -57,16 +57,14 @@ const useCreateChildPage = async (allDocs) => {
 
         const defaultItem = {
           type: "link",
-          key: slug,
           slug: `${category}/${slug}`,
           title,
-          position: null,
           children: [],
         }
 
         // find the current category and add it to it
         allNestedDocsRemote.config.forEach((element) => {
-          if (element.slug.startsWith(category)) {
+          if (element.slug.toLowerCase().startsWith(category.toLowerCase())) {
             if (groupIn === "No Group") {
               // not adding it to a third level group
               element.children.unshift(defaultItem)
@@ -99,7 +97,7 @@ const useCreateChildPage = async (allDocs) => {
               fileRelativePath,
               rawFrontmatter: {
                 title,
-                groupIn: groupIn || "",
+                groupIn: groupIn !== "No group" ? groupIn || "" : "",
               },
             })
           )

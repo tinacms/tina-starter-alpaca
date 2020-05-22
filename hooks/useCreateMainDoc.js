@@ -44,10 +44,8 @@ const useCreateMainDoc = () => {
         // add the new file to the begining of the array (This will also be the begining of the navigation)
         allNestedDocsRemote.config.unshift({
           type: "link",
-          key: slug,
           slug: `${slug}/${TOP}`,
           title,
-          position: null,
           children: [],
         })
         await cms.api.github

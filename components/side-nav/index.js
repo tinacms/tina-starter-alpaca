@@ -8,7 +8,6 @@ import { SideNavStyled, H3Styled } from "./styles"
 const SideNav = ({ allNestedDocs, currentSlug, groupIn }) => {
   const [showDocs, setShowDocs] = useState(false)
   const currentKey = currentSlug[0]
-
   return (
     <SideNavStyled>
       <H3Styled onClick={() => setShowDocs(!showDocs)} active={showDocs}>
@@ -24,7 +23,6 @@ const SideNav = ({ allNestedDocs, currentSlug, groupIn }) => {
               key={doc.slug}
               active={currentKey === doc.slug.split("/")[0]}
               currentSlug={currentSlug}
-              groupIn={groupIn}
             />
           ))}
       </div>
