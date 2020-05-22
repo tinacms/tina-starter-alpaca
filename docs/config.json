@@ -16,14 +16,6 @@
       "position": 2,
       "children": [
         {
-          "type": "link",
-          "key": "new-child-page-for-features",
-          "slug": "features/new-child-page-for-features",
-          "title": "New cool sub page for Features",
-          "position": null,
-          "children": []
-        },
-        {
           "key": "./features/Arch.md",
           "slug": "features/Arch",
           "type": "link",
