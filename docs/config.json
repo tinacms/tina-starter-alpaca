@@ -22,13 +22,6 @@
           "children": [
             {
               "type": "link",
-              "slug": "features/windows-3",
-              "title": "Windows 1",
-              "id": "ioxlfuumf",
-              "children": []
-            },
-            {
-              "type": "link",
               "slug": "features/win-2",
               "title": "Windows 2",
               "children": []
