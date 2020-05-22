@@ -30,17 +30,18 @@
           ]
         },
         {
-          "key": "./features/Arch.md",
-          "slug": "features/Arch",
-          "type": "link",
-          "title": "Arch"
-        },
-        {
           "type": "group",
           "key": "Linux",
           "title": "Linux",
           "position": null,
           "children": [
+            {
+              "type": "link",
+              "slug": "features/Arch",
+              "title": "Arch",
+              "id": "r3hpdikqv",
+              "children": []
+            },
             {
               "key": "./features/linux-froyo.md",
               "slug": "features/linux-froyo",
