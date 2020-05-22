@@ -109,28 +109,10 @@
           ]
         },
         {
-          "key": "./deployment/deployment-test-vercel.md",
-          "slug": "deployment/deployment-test-vercel",
-          "type": "link",
-          "title": "This is a new  test"
-        },
-        {
           "key": "./deployment/node.md",
           "slug": "deployment/node",
           "type": "link",
           "title": "Node"
-        },
-        {
-          "key": "./deployment/test 2.md",
-          "slug": "deployment/test 2",
-          "type": "link",
-          "title": "test-2"
-        },
-        {
-          "key": "./deployment/test-deploy-page.md",
-          "slug": "deployment/test-deploy-page",
-          "type": "link",
-          "title": "This is a test"
         }
       ]
     },
@@ -170,22 +152,6 @@
       "slug": "new-main-doc-5/TOP",
       "title": "New doc page 5",
       "id": "urs9mw1v8",
-      "children": []
-    },
-    {
-      "type": "link",
-      "key": "asdf4",
-      "slug": "asdf4/TOP",
-      "title": "asdf4",
-      "position": null,
-      "children": []
-    },
-    {
-      "type": "link",
-      "key": "asdf5",
-      "slug": "asdf5/TOP",
-      "title": "asdf5",
-      "position": null,
       "children": []
     }
   ]
