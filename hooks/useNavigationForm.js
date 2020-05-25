@@ -1,10 +1,18 @@
 import { useGithubJsonForm } from "react-tinacms-github"
-import { useRouter } from "next/router"
+
+import { flatDocs } from "@utils"
+
 /*
     Adds a form for changing the order of the doc navigation and adding new things to the navignation
 */
-const useNavigationForm = (jsonFile) => {
-  const router = useRouter()
+
+const useNavigationForm = (jsonFile, preview) => {
+  if (!preview) {
+    return [jsonFile, null]
+  }
+  const allFlatDocs = flatDocs(jsonFile.data.config)
+  const slugList = allFlatDocs.map((el) => el.slug)
+
   const docFields = [
     {
       label: "title",
@@ -18,9 +26,10 @@ const useNavigationForm = (jsonFile) => {
       options: ["link", "group"],
     },
     {
-      label: "Enter the Slug",
+      label: "Choose linked page",
       name: "slug",
-      component: "text",
+      component: "select",
+      options: slugList,
     },
   ]
   const childrenGroupListField = (label = "Children", name = "children", description = "test") => {
@@ -44,14 +53,13 @@ const useNavigationForm = (jsonFile) => {
   // TODO: clean this up
   const formOptions = {
     label: "Navigation",
-    onSubmit: (data) => {
-      console.log(data)
-    },
+    __type: "screen",
     fields: [
       {
         ...childrenGroupListField("Doc list", "config"),
         fields: [
-          ...docFields,
+          // cant have top level groups
+          ...docFields.filter((item) => item.name !== "type"),
           {
             ...childrenGroupListField(),
             fields: [

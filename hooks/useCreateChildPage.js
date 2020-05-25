@@ -1,7 +1,8 @@
 import { useCMS, usePlugins } from "tinacms"
 import { useRouter } from "next/router"
+import slugify from "slugify"
 
-import { toMarkdownString } from "@utils"
+import { toMarkdownString, flatDocs } from "@utils"
 
 const useCreateChildPage = async (allDocs) => {
   const router = useRouter()
@@ -22,32 +23,47 @@ const useCreateChildPage = async (allDocs) => {
     }
   }, [])
 
+  const fields = [
+    {
+      name: "title",
+      label: "Title",
+      component: "text",
+      required: true,
+      validate(value, allValues, meta, field) {
+        if (!value) {
+          return "A title is required"
+        }
+        let valSlug = `${router.query.slug[0]}/${slugify(value, { lower: true })}`
+        // make sure slug is unique
+        const containsSlug = (el) => {
+          return el.slug === valSlug
+        }
+        // some function reference can be found here
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+        let notValidTitle = flatDocs(allDocs).some(containsSlug)
+        if (notValidTitle) return "titles must be unique, maybe add a number to the end?"
+      },
+    },
+  ]
+
+  // dont want to give them an option for group if there is none to select
+  if (groups.length > 1) {
+    fields.push({
+      name: "groupIn",
+      label: "Group in",
+      description: "Group under a name to create a 3rd level",
+      component: "select",
+      options: ["No Group", ...groups],
+    })
+  }
   usePlugins([
     {
       __type: "content-creator",
       name: `Create Child Page for ${parentObject?.title || ""}`,
-      fields: [
-        {
-          name: "slug",
-          label: "Slug",
-          component: "text",
-          required: true,
-        },
-        {
-          name: "title",
-          label: "Title",
-          component: "text",
-          required: true,
-        },
-        {
-          name: "groupIn",
-          label: "Group in",
-          description: "Group under a name to create a 3rd level",
-          component: "select",
-          options: ["No Group", ...groups],
-        },
-      ],
-      onSubmit: async ({ slug, title, groupIn }) => {
+      fields,
+      onSubmit: async ({ title, groupIn }) => {
+        const slug = slugify(title)
+
         // get confile JSON file from github
         const configFile = await cms.api.github.fetchFile("docs/config.json", null)
         const allNestedDocsRemote = JSON.parse(configFile.decodedContent)
@@ -65,7 +81,7 @@ const useCreateChildPage = async (allDocs) => {
         // find the current category and add it to it
         allNestedDocsRemote.config.forEach((element) => {
           if (element.slug.toLowerCase().startsWith(category.toLowerCase())) {
-            if (groupIn === "No Group") {
+            if (!groupIn || groupIn === "No Group") {
               // not adding it to a third level group
               element.children.unshift(defaultItem)
             } else {

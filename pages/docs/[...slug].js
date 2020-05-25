@@ -19,11 +19,12 @@ import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
 import MarkdownWrapper from "@components/markdown-wrapper"
 import Toc from "@components/Toc"
+import { useCreateMainDoc } from "@hooks"
 
 import { parseNestedDocsMds, flatDocs, createToc } from "@utils"
 import { useFormEditDoc, useCreateChildPage, useNavigationForm } from "@hooks"
 
-import { useCMS } from "tinacms"
+import { useFormScreenPlugin, usePlugin } from "tinacms"
 import { useInlineForm, InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
 import { useGithubToolbarPlugins } from "react-tinacms-github"
 
@@ -38,12 +39,16 @@ const DocTemplate = (props) => {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
+
   useGithubToolbarPlugins()
-
   const [data, form] = useFormEditDoc(props.file)
-  const [jsonData] = useNavigationForm(props.jsonFile)
+  const [jsonData, jsonForm] = useNavigationForm(props.jsonFile, props.preview)
 
+  useFormScreenPlugin(jsonForm)
+  // wrappers around using the content-creator puglin with tinaCMS
+  useCreateMainDoc(props.allNestedDocs)
   useCreateChildPage(props.allNestedDocs)
+
   if (!form) return null
   return (
     <Layout showDocsSearcher splitView preview={props.preview} form={form}>
@@ -60,7 +65,7 @@ const DocTemplate = (props) => {
           <h1>
             <InlineTextField name="frontmatter.title" />
           </h1>
-          {props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+          {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
           <InlineWysiwyg
             // TODOL: fix this
             // imageProps={{
