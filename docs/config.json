@@ -136,6 +136,21 @@
     },
     {
       "type": "link",
+      "key": "new-doc-page",
+      "slug": "new-doc-page/TOP",
+      "title": "new doc page 1",
+      "position": null,
+      "children": [
+        {
+          "type": "link",
+          "slug": "getting-started/TOP",
+          "title": "This is a child page",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "link",
       "key": "getting-started",
       "slug": "new-main-doc-test/TOP",
       "title": "new doc page 2",
@@ -163,21 +178,6 @@
       "title": "New doc page 5",
       "id": "urs9mw1v8",
       "children": []
-    },
-    {
-      "type": "link",
-      "key": "new-doc-page",
-      "slug": "new-doc-page/TOP",
-      "title": "new doc page 1",
-      "position": null,
-      "children": [
-        {
-          "type": "link",
-          "slug": "new-doc-page/child-page-doc-1",
-          "title": "This is a child page",
-          "children": []
-        }
-      ]
     }
   ]
 }
