@@ -140,14 +140,7 @@
       "slug": "new-doc-page/TOP",
       "title": "new doc page 1",
       "position": null,
-      "children": [
-        {
-          "type": "link",
-          "slug": "getting-started/TOP",
-          "title": "This is a child page",
-          "children": []
-        }
-      ]
+      "children": []
     },
     {
       "type": "link",
