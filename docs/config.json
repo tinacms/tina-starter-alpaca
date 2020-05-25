@@ -131,13 +131,6 @@
           "slug": "deployment/node",
           "type": "link",
           "title": "Node"
-        },
-        {
-          "type": "link",
-          "slug": "new-doc-page/new-child-page",
-          "title": "new child page for deplpoyment",
-          "id": "z56rogvfu",
-          "children": []
         }
       ]
     },
