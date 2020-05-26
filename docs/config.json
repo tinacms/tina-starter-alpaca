@@ -3,7 +3,7 @@
     {
       "type": "link",
       "key": "getting-started",
-      "slug": "getting-started/TOP",
+      "slug": "getting-started",
       "title": "Getting Started",
       "position": 0,
       "children": []
@@ -11,7 +11,7 @@
     {
       "type": "link",
       "key": "features",
-      "slug": "features/TOP",
+      "slug": "features",
       "title": "Features",
       "position": 2,
       "children": [
@@ -90,7 +90,7 @@
     {
       "type": "link",
       "key": "deployment",
-      "slug": "deployment/TOP",
+      "slug": "deployment",
       "title": "Deployment",
       "position": 1,
       "children": [
