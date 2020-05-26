@@ -4,7 +4,7 @@ import Link from "next/link"
 
 import { NavItemLink, NavGroup } from "./styles"
 
-const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlug, groupIn }) => {
+const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlug }) => {
   const [showChildrens, setShowChildrens] = useState(type === "group")
   const currentSlugKey = currentSlug.join("/")
 
@@ -55,7 +55,6 @@ const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlu
               key={index}
               active={currentSlugKey === item.slug}
               currentSlug={currentSlug}
-              groupIn={groupIn}
             />
           ))}
         </NavGroup>

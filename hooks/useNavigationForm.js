@@ -49,9 +49,8 @@ const useNavigationForm = (jsonFile, preview) => {
       }),
       defaultItem: () => ({
         type: "link",
-        slug: "getting-started/TOP",
+        slug: "getting-started",
         title: "new doc page",
-        id: Math.random().toString(36).substr(2, 9),
         children: [],
       }),
     }

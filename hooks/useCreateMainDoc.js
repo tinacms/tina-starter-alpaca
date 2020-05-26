@@ -1,18 +1,9 @@
 import { useCMS, usePlugins } from "tinacms"
 import { useRouter } from "next/router"
 import slugify from "slugify"
-import {
-  getGithubPreviewProps,
-  parseMarkdown,
-  parseJson,
-  getFiles as getGithubFiles,
-  getContent,
-} from "next-tinacms-github"
 
 import { toMarkdownString, flatDocs } from "@utils"
-import { title } from "process"
 
-const TOP = "TOP"
 const useCreateMainDoc = (allDocs) => {
   const router = useRouter()
   const cms = useCMS()
@@ -30,7 +21,7 @@ const useCreateMainDoc = (allDocs) => {
             if (!value) {
               return "A title is required"
             }
-            let valSlug = `${slugify(value, { lower: true })}/${TOP}`
+            let valSlug = `${slugify(value, { lower: true })}`
             // make sure slug is unique
             const containsSlug = (el) => {
               return el.slug === valSlug
@@ -49,12 +40,12 @@ const useCreateMainDoc = (allDocs) => {
         const configFile = await cms.api.github.fetchFile("docs/config.json", null)
         const sha = configFile.sha
         const allNestedDocsRemote = JSON.parse(configFile.decodedContent)
-        const fileRelativePath = `docs/${slug}/${TOP}.md`
+        const fileRelativePath = `docs/${slug}.md`
 
         // add the new file to the begining of the array (This will also be the begining of the navigation)
         allNestedDocsRemote.config.unshift({
           type: "link",
-          slug: `${slug}/${TOP}`,
+          slug: slug,
           title,
           children: [],
         })
@@ -90,7 +81,7 @@ const useCreateMainDoc = (allDocs) => {
             setCachedFormData(fileRelativePath, {
               sha: response.content.sha,
             })
-            setTimeout(() => router.push(`/docs/${slug}/${TOP}`), 1500)
+            setTimeout(() => router.push(`/docs/${slug}`), 1500)
           })
           .catch((e) => {
             return { [FORM_ERROR]: e }
