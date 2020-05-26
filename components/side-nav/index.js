@@ -1,8 +1,7 @@
 import { useState } from "react"
 import { array, string } from "prop-types"
 
-import isActive from "@utils/isActive"
-
+import isNavActive from "@utils/isNavActive"
 import NavItem from "./nav-item"
 
 import { SideNavStyled, H3Styled } from "./styles"
@@ -22,7 +21,7 @@ const SideNav = ({ allNestedDocs, currentSlug, groupIn }) => {
             <NavItem
               itemData={doc}
               key={doc.slug}
-              active={isActive(doc, currentSlug.join("/"))}
+              active={isNavActive(doc, currentSlug.join("/"))}
               currentSlug={currentSlug}
             />
           ))}

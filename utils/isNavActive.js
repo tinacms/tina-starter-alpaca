@@ -1,7 +1,10 @@
 // doc is active if it is being clicked or any of its child docs
 export default function isActive(doc, currentSlug) {
+  if (!doc) {
+    return false
+  }
   // is the current doc being clicked?
-  if (doc.slug === currentSlug) {
+  if (doc?.slug === currentSlug) {
     return true
   }
   // are any of its childran being click?

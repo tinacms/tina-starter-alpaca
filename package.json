@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "dev2": "node server.js",
     "debug": "NODE_OPTIONS='--inspect' next",
     "build": "next build",
     "start": "cross-env NODE_ENV=production next start",

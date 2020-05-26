@@ -1,4 +1,3 @@
-import { useMarkdownForm } from "next-tinacms-markdown"
 import { useGithubMarkdownForm } from "react-tinacms-github"
 
 const useFormEditDocs = (markdownFile) => {
@@ -18,8 +17,7 @@ const useFormEditDocs = (markdownFile) => {
     ],
   }
 
-  const [data, form] = useGithubMarkdownForm(markdownFile, formOptions)
-  return [data, form]
+  return useGithubMarkdownForm(markdownFile, formOptions)
 }
 
 export default useFormEditDocs

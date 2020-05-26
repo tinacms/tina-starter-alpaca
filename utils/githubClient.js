@@ -9,7 +9,7 @@ class GithubError extends Error {
   }
 }
 
-export class myGitHubClient extends GithubClient {
+export class AlpacaGitHubClient extends GithubClient {
   // prehaps at some point this functionality should be moved to the GitHub cleint in tinaCMS
   async fetchFile(filePath, sha) {
     const repo = this.workingRepoFullName

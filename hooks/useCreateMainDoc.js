@@ -23,13 +23,13 @@ const useCreateMainDoc = (allDocs) => {
             }
             let valSlug = `${slugify(value, { lower: true })}`
             // make sure slug is unique
-            const containsSlug = (el) => {
+            const slugMatches = (el) => {
               return el.slug === valSlug
             }
             // some function reference can be found here
             // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
-            let notValidTitle = flatDocs(allDocs).some(containsSlug)
-            if (notValidTitle) return "titles must be unique, maybe add a number to the end?"
+            const validTitle = !flatDocs(allDocs).some(slugMatches)
+            if (!validTitle) return "titles must be unique, maybe add a number to the end?"
           },
         },
       ],

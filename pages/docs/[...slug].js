@@ -5,6 +5,7 @@ import Error from "next/error"
 import { useFormScreenPlugin } from "tinacms"
 import { InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
+import { InlineForm } from "react-tinacms-inline"
 
 import Head from "@components/head"
 import InlineEditingControls from "@components/inline-controls"
@@ -29,17 +30,16 @@ const DocTemplate = (props) => {
   }
 
   const [data, form] = useFormEditDoc(props.file)
-  const [jsonData, jsonForm] = useNavigationForm(props.jsonFile, props.preview)
-  const nestedDocs = jsonData.config
+  const [navData, navForm] = useNavigationForm(props.navigation, props.preview)
+  const nestedDocs = navData.config
 
-  useFormScreenPlugin(jsonForm)
+  useFormScreenPlugin(navForm)
   // wrappers around using the content-creator puglin with tinaCMS
   useCreateMainDoc(nestedDocs)
   useCreateChildPage(nestedDocs)
 
-  if (!form) return null
   return (
-    <Layout showDocsSearcher splitView preview={props.preview} form={form}>
+    <Layout showDocsSearcher splitView preview={props.preview}>
       <Head title={data.frontmatter.title} />
       <SideNav
         allNestedDocs={nestedDocs}
@@ -47,39 +47,40 @@ const DocTemplate = (props) => {
         // This will have to change to JSON
         groupIn={data.frontmatter.groupIn}
       />
-      <DocWrapper preview={props.preview}>
-        {process.env.NODE_ENV !== "production" && <InlineEditingControls />}
-        <main>
-          <h1>
-            <InlineTextField name="frontmatter.title" />
-          </h1>
-          {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
-          <InlineWysiwyg
-            // TODO: fix this
-            // imageProps={{
-            //   async upload(files) {
-            //     const directory = "/public/images/"
+      <InlineForm form={form}>
+        <DocWrapper preview={props.preview}>
+          <main>
+            <h1>
+              <InlineTextField name="frontmatter.title" />
+            </h1>
+            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+            <InlineWysiwyg
+              // TODO: fix this
+              // imageProps={{
+              //   async upload(files) {
+              //     const directory = "/public/images/"
 
-            //     let media = await cms.media.store.persist(
-            //       files.map((file) => {
-            //         return {
-            //           directory,
-            //           file,
-            //         }
-            //       })
-            //     )
-            //     return media.map((m) => `/images/${m.filename}`)
-            //   },
-            //   previewUrl: (str) => str,
-            // }}
-            name="markdownBody"
-          >
-            <MarkdownWrapper source={data.markdownBody} />
-          </InlineWysiwyg>
-        </main>
-        <PostNavigation allNestedDocs={nestedDocs} />
-        <PostFeedback />
-      </DocWrapper>
+              //     let media = await cms.media.store.persist(
+              //       files.map((file) => {
+              //         return {
+              //           directory,
+              //           file,
+              //         }
+              //       })
+              //     )
+              //     return media.map((m) => `/images/${m.filename}`)
+              //   },
+              //   previewUrl: (str) => str,
+              // }}
+              name="markdownBody"
+            >
+              <MarkdownWrapper source={data.markdownBody} />
+            </InlineWysiwyg>
+          </main>
+          <PostNavigation allNestedDocs={nestedDocs} />
+          <PostFeedback />
+        </DocWrapper>
+      </InlineForm>
     </Layout>
   )
 }
@@ -116,8 +117,8 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
         props: {
           // markdown file stored in file:
           ...previewProps.props,
-          // jsonFile for navigation form
-          jsonFile: {
+          // json for navigation form
+          navigation: {
             ...allNestedDocsRemote.props.file,
             fileRelativePath: `docs/config.json`,
           },
@@ -155,8 +156,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
           markdownBody: data.content,
         },
       },
-      // json file for navigation
-      jsonFile: {
+      navigation: {
         fileRelativePath: `docs/config.json`,
         data: allNestedDocs,
       },
