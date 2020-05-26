@@ -53,7 +53,6 @@ class MyApp extends App {
           error={pageProps.error}
         >
           <ThemeProvider theme={theme}>
-            {/* <EditLink editMode={pageProps.preview} /> */}
             <Normalize />
             <Component {...pageProps} />
           </ThemeProvider>
