@@ -78,6 +78,12 @@
           "slug": "features/mac",
           "type": "link",
           "title": "Mac OS"
+        },
+        {
+          "type": "link",
+          "slug": "deployment/node",
+          "title": "Node",
+          "children": []
         }
       ]
     },
@@ -125,12 +131,6 @@
               "title": "Complement Sub 4"
             }
           ]
-        },
-        {
-          "key": "./deployment/node.md",
-          "slug": "deployment/node",
-          "type": "link",
-          "title": "Node"
         }
       ]
     },
