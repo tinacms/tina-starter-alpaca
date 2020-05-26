@@ -38,7 +38,7 @@ const useNavigationForm = (jsonFile, preview) => {
   ]
 
   // this returns the children group list field
-  const childrenGroupListField = (label = "Children", name = "children", description = "test") => {
+  const childrenGroupListField = (label = "Children", name = "children", description = "") => {
     return {
       label,
       name,
