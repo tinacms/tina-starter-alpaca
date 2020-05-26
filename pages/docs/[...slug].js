@@ -90,7 +90,6 @@ const DocTemplate = (props) => {
 export const getStaticProps = async function ({ preview, previewData, params }) {
   const { slug } = params
   const fileRelativePath = `docs/${slug.join("/")}.md`
-  console.log({ fileRelativePath })
 
   // we need these to be in scope for the catch statment
   let previewProps

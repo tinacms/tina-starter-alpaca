@@ -2,7 +2,6 @@ import matter from "gray-matter"
 
 const TOP = "TOP"
 export default (context) => {
-  // console.log(context('./test-from-vercel/index.md').default)
   const keys = context.keys()
   const values = keys.map(context)
   const data = keys.reduce((newData, key, index) => {
