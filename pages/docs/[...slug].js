@@ -1,17 +1,13 @@
-import { useMemo } from "react"
 import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
-import { array, shape, string } from "prop-types"
 import { useRouter } from "next/router"
 import Error from "next/error"
-import {
-  getGithubPreviewProps,
-  parseMarkdown,
-  parseJson,
-  getFiles as getGithubFiles,
-} from "next-tinacms-github"
+import { useFormScreenPlugin } from "tinacms"
+import { InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
+import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 
 import Head from "@components/head"
+import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
 import PostNavigation from "@components/post-navigation"
 import PostFeedback from "@components/post-feedback"
@@ -19,16 +15,8 @@ import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
 import MarkdownWrapper from "@components/markdown-wrapper"
 import Toc from "@components/Toc"
-import { useCreateMainDoc } from "@hooks"
-
-import { parseNestedDocsMds, flatDocs, createToc } from "@utils"
-import { useFormEditDoc, useCreateChildPage, useNavigationForm } from "@hooks"
-
-import { useFormScreenPlugin, usePlugin } from "tinacms"
-import { useInlineForm, InlineForm, InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
-import { useGithubToolbarPlugins } from "react-tinacms-github"
-
-import InlineEditingControls from "@components/inline-controls"
+import { useCreateMainDoc, useFormEditDoc, useCreateChildPage, useNavigationForm } from "@hooks"
+import { createToc } from "@utils"
 
 const DocTemplate = (props) => {
   const router = useRouter()
@@ -40,21 +28,21 @@ const DocTemplate = (props) => {
     return <div>Loading...</div>
   }
 
-  useGithubToolbarPlugins()
   const [data, form] = useFormEditDoc(props.file)
   const [jsonData, jsonForm] = useNavigationForm(props.jsonFile, props.preview)
+  const nestedDocs = jsonData.config
 
   useFormScreenPlugin(jsonForm)
   // wrappers around using the content-creator puglin with tinaCMS
-  useCreateMainDoc(props.allNestedDocs)
-  useCreateChildPage(props.allNestedDocs)
+  useCreateMainDoc(nestedDocs)
+  useCreateChildPage(nestedDocs)
 
   if (!form) return null
   return (
     <Layout showDocsSearcher splitView preview={props.preview} form={form}>
       <Head title={data.frontmatter.title} />
       <SideNav
-        allNestedDocs={props.allNestedDocs}
+        allNestedDocs={nestedDocs}
         currentSlug={router.query.slug}
         // This will have to change to JSON
         groupIn={data.frontmatter.groupIn}
@@ -67,7 +55,7 @@ const DocTemplate = (props) => {
           </h1>
           {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
           <InlineWysiwyg
-            // TODOL: fix this
+            // TODO: fix this
             // imageProps={{
             //   async upload(files) {
             //     const directory = "/public/images/"
@@ -89,32 +77,25 @@ const DocTemplate = (props) => {
             <MarkdownWrapper source={data.markdownBody} />
           </InlineWysiwyg>
         </main>
-
-        <PostNavigation allNestedDocs={props.allNestedDocs} />
+        <PostNavigation allNestedDocs={nestedDocs} />
         <PostFeedback />
       </DocWrapper>
     </Layout>
   )
 }
 
+// read more about getStaticProps, getStaticPaths and previewMode (its pretty cool stuff)
+// https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation
+
 export const getStaticProps = async function ({ preview, previewData, params }) {
   const { slug } = params
-  console.log({ fileRelativePath: `docs/${slug.join("/")}.md` })
-
   const fileRelativePath = `docs/${slug.join("/")}.md`
-
-  // OLD WAY OF GETTING ALL NESTED DOCS
-  // const allNestedDocs = ((context) => parseNestedDocsMds(context))(
-  //   //eslint-disable-next-line
-  //   require.context("@docs", true, /\.md$/)
-  // )
-
-  // we will use this when we are keeping a working copy of config.json
-  const allNestedDocs = require("../../docs/config.json").config
+  console.log({ fileRelativePath })
 
   // we need these to be in scope for the catch statment
   let previewProps
   let allNestedDocsRemote
+  let Alltocs = ""
   // if we are in preview mode we will get the contents from github
   if (preview) {
     try {
@@ -128,23 +109,24 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
         fileRelativePath: "docs/config.json",
         parse: parseJson,
       })
-      let Alltocs = ""
 
       if (typeof window === "undefined") {
         Alltocs = createToc(previewProps.props.file.data.markdownBody)
       }
       return {
         props: {
+          // markdown file stored in file:
           ...previewProps.props,
+          // jsonFile for navigation form
           jsonFile: {
             ...allNestedDocsRemote.props.file,
             fileRelativePath: `docs/config.json`,
           },
-          allNestedDocs: allNestedDocsRemote.props.file.data.config,
           Alltocs,
         },
       }
     } catch (e) {
+      // return the erros from gitGithubPreviewProps
       return {
         props: {
           ...previewProps.props,
@@ -155,19 +137,18 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   }
 
   // Not in preview mode so we will get contents from the file system
+  const allNestedDocs = require("../../docs/config.json")
   const content = await import(`@docs/${slug.join("/")}.md`)
   const data = matter(content.default)
 
-  // Create Toc
-  // TODO: this works only on SSR, it doesn't work for client routing
-  let Alltocs = ""
-
+  // Create Toc (table of contents)
   if (typeof window === "undefined") {
     Alltocs = createToc(data.content)
   }
 
   return {
     props: {
+      // the markdown file
       file: {
         fileRelativePath: `docs/${slug.join("/")}.md`,
         data: {
@@ -175,11 +156,11 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
           markdownBody: data.content,
         },
       },
+      // json file for navigation
       jsonFile: {
         fileRelativePath: `docs/config.json`,
         data: allNestedDocs,
       },
-      allNestedDocs,
       Alltocs,
       preview: false,
       error: null,

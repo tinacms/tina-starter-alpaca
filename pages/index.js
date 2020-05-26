@@ -1,11 +1,10 @@
 import styled from "styled-components"
+import { getGithubPreviewProps, parseJson } from "next-tinacms-github"
+import { useGithubJsonForm } from "react-tinacms-github"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
 import Container from "@components/container"
-import { getGithubPreviewProps, parseJson } from "next-tinacms-github"
-import { GetStaticProps } from "next"
-import { useGithubJsonForm } from "react-tinacms-github"
 
 const Page = ({ file, preview }) => {
   const formOptions = {
@@ -41,8 +40,7 @@ const Title = styled.h1`
  */
 export const getStaticProps = async function ({ preview, previewData }) {
   if (preview) {
-    // console.log(previewData)
-
+    // get data from github
     return getGithubPreviewProps({
       ...previewData,
       fileRelativePath: "content/home.json",

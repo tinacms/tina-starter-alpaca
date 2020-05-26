@@ -8,11 +8,15 @@ import { flatDocs } from "@utils"
 
 const useNavigationForm = (jsonFile, preview) => {
   if (!preview) {
-    return [jsonFile, null]
+    // if we are not in preview return the jsonfile and dont register the form
+    return [jsonFile.data, null]
   }
   const allFlatDocs = flatDocs(jsonFile.data.config)
+
+  // the list of slugs
   const slugList = allFlatDocs.map((el) => el.slug)
 
+  // the fields for the doc pages
   const docFields = [
     {
       label: "title",
@@ -32,6 +36,8 @@ const useNavigationForm = (jsonFile, preview) => {
       options: slugList,
     },
   ]
+
+  // this returns the children group list field
   const childrenGroupListField = (label = "Children", name = "children", description = "test") => {
     return {
       label,
@@ -50,7 +56,6 @@ const useNavigationForm = (jsonFile, preview) => {
       }),
     }
   }
-  // TODO: clean this up
   const formOptions = {
     label: "Navigation",
     __type: "screen",
@@ -75,7 +80,7 @@ const useNavigationForm = (jsonFile, preview) => {
       //...
     ],
   }
-  // returns the in the form
+  // returns the in the form [jsonFile, Form]
   return useGithubJsonForm(jsonFile, formOptions)
 }
 export default useNavigationForm
