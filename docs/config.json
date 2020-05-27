@@ -161,7 +161,14 @@
           "type": "group",
           "slug": "getting-started",
           "title": "New Group!",
-          "children": []
+          "children": [
+            {
+              "type": "link",
+              "slug": "test-main-doc-3/Sub-Doc-3.1",
+              "title": "Sub doc 1",
+              "children": []
+            }
+          ]
         },
         {
           "type": "link",
