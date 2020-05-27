@@ -1,6 +1,7 @@
 import { useCMS, usePlugins } from "tinacms"
 import { useRouter } from "next/router"
 import slugify from "slugify"
+import isNavActive from "@utils/isNavActive"
 
 import { toMarkdownString, flatDocs } from "@utils"
 
@@ -13,8 +14,9 @@ const useCreateChildPage = async (allDocs) => {
   // // find all the groups
   const groups = []
   allDocs.forEach((doc) => {
-    // if the doc is the the catorgory we are clicking on
-    if (doc.slug.startsWith(category)) {
+    // find the curent active doc
+    if (isNavActive(doc, router.query.slug.join("/"))) {
+      // since we only have 3rd level groups this is ok
       doc.children.forEach((childDoc) => {
         if (childDoc.type === "group") {
           groups.push(childDoc.title)
@@ -113,7 +115,6 @@ const useCreateChildPage = async (allDocs) => {
               fileRelativePath,
               rawFrontmatter: {
                 title,
-                groupIn: groupIn !== "No group" ? groupIn || "" : "",
               },
             })
           )

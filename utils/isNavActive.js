@@ -4,7 +4,7 @@ export default function isActive(doc, currentSlug) {
     return false
   }
   // is the current doc being clicked?
-  if (doc?.slug === currentSlug) {
+  if (doc?.slug === currentSlug && doc?.type === "link") {
     return true
   }
   // are any of its childran being click?

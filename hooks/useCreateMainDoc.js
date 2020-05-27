@@ -55,7 +55,7 @@ const useCreateMainDoc = (allDocs) => {
           .commit(
             "docs/config.json",
             sha,
-            JSON.stringify(allNestedDocsRemote),
+            JSON.stringify(allNestedDocsRemote, null, 2),
             "Update from TinaCMS"
           )
           .then((response) => {
