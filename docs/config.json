@@ -2,6 +2,12 @@
   "config": [
     {
       "type": "link",
+      "slug": "test-main-doc-3",
+      "title": "Test Main Doc 3",
+      "children": []
+    },
+    {
+      "type": "link",
       "key": "getting-started",
       "slug": "getting-started",
       "title": "Getting Started",
