@@ -102,7 +102,7 @@ const useCreateChildPage = async (allDocs) => {
         await cms.api.github.commit(
           "docs/config.json",
           sha,
-          JSON.stringify(allNestedDocsRemote),
+          JSON.stringify(allNestedDocsRemote, null, 2),
           "Update from TinaCMS"
         )
 
