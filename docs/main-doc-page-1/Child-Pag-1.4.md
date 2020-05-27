@@ -1,3 +1,3 @@
 ---
-title: Child Pag 1.4
+title: Child Page 1.4
 ---
