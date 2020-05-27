@@ -139,44 +139,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "link",
-      "slug": "main-doc-1",
-      "title": "Main doc 1",
-      "children": []
-    },
-    {
-      "type": "link",
-      "slug": "test-main-doc",
-      "title": "test-main-doc",
-      "children": []
-    },
-    {
-      "type": "link",
-      "slug": "test-main-doc-2",
-      "title": "Test Main Doc 2",
-      "children": []
-    },
-    {
-      "type": "link",
-      "slug": "test-main-doc-3",
-      "title": "Test Main Doc 3",
-      "children": [
-        {
-          "type": "group",
-          "slug": "getting-started",
-          "title": "New Group!",
-          "children": [
-            {
-              "type": "link",
-              "slug": "test-main-doc-3/Sub-Doc-3.1",
-              "title": "Sub doc 1",
-              "children": []
-            }
-          ]
-        }
-      ]
     }
   ]
 }
