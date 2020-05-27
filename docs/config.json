@@ -152,12 +152,6 @@
           "children": [
             {
               "type": "link",
-              "slug": "main-doc-page-1/Child-Pag-1.4",
-              "title": "Child Page 1.4",
-              "children": []
-            },
-            {
-              "type": "link",
               "slug": "main-doc-page-1/Child-page-1.1",
               "title": "Child Page 1.1",
               "children": []
@@ -172,6 +166,12 @@
               "type": "link",
               "slug": "main-doc-page-1/Child-Page-1.3",
               "title": "Child Page 1.3",
+              "children": []
+            },
+            {
+              "type": "link",
+              "slug": "main-doc-page-1/Child-Pag-1.4",
+              "title": "Child Page 1.4",
               "children": []
             }
           ]
