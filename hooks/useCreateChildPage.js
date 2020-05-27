@@ -23,8 +23,7 @@ const useCreateChildPage = async (allDocs) => {
         }
       })
     }
-  }, [])
-
+  })
   const fields = [
     {
       name: "title",
@@ -49,7 +48,7 @@ const useCreateChildPage = async (allDocs) => {
   ]
 
   // dont want to give them an option for group if there is none to select
-  if (groups.length > 1) {
+  if (groups.length > 0) {
     fields.push({
       name: "groupIn",
       label: "Group in",
