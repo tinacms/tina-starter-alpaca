@@ -175,6 +175,12 @@
               "children": []
             }
           ]
+        },
+        {
+          "type": "group",
+          "slug": "getting-started",
+          "title": "Child  Group 2",
+          "children": []
         }
       ]
     }
