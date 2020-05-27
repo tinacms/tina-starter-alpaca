@@ -2,12 +2,6 @@
   "config": [
     {
       "type": "link",
-      "slug": "main-doc-page-1",
-      "title": "Main Doc page 1",
-      "children": []
-    },
-    {
-      "type": "link",
       "key": "getting-started",
       "slug": "getting-started",
       "title": "Getting Started",
@@ -145,6 +139,12 @@
           ]
         }
       ]
+    },
+    {
+      "type": "link",
+      "slug": "main-doc-page-1",
+      "title": "Main Doc page 1",
+      "children": []
     }
   ]
 }
