@@ -169,12 +169,6 @@
               "children": []
             }
           ]
-        },
-        {
-          "type": "link",
-          "slug": "test-main-doc-3/Sub-Doc-3.1",
-          "title": "Sub Doc 3.1",
-          "children": []
         }
       ]
     }
