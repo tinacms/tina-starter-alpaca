@@ -163,18 +163,6 @@
               "children": []
             }
           ]
-        },
-        {
-          "type": "link",
-          "slug": "main-doc-page-1/Child-page-1.2",
-          "title": "Child page 1.2",
-          "children": []
-        },
-        {
-          "type": "link",
-          "slug": "main-doc-page-1/Child-page-1.1",
-          "title": "Child page 1.1",
-          "children": []
         }
       ]
     }
