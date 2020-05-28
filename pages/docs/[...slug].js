@@ -2,10 +2,11 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { useRouter } from "next/router"
 import Error from "next/error"
-import { useFormScreenPlugin } from "tinacms"
-import { InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
+import { useFormScreenPlugin, usePlugin } from "tinacms"
+import { InlineTextField } from "react-tinacms-inline"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
+import { InlineWysiwyg } from "react-tinacms-editor"
 
 import Head from "@components/head"
 import InlineEditingControls from "@components/inline-controls"
@@ -30,6 +31,7 @@ const DocTemplate = (props) => {
   }
 
   const [data, form] = useFormEditDoc(props.file)
+  usePlugin(form)
   const [navData, navForm] = useNavigationForm(props.navigation, props.preview)
   const nestedDocs = navData.config
 

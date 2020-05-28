@@ -8064,19 +8064,43 @@ react-tinacms-editor@^0.6.0:
     prosemirror-view "^1.11.3"
     react-dismissible "^1.1.5"
 
-react-tinacms-github@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/react-tinacms-github/-/react-tinacms-github-0.4.0.tgz#8e2ab61a97d302db60286978bd191917aa2f83ba"
-  integrity sha512-cKSkcDNZ7uLO/kogdFiKecHnuGDE36Q7B5RJiY8SkCgQOULgEAmkDkNhtiA6KqsWdN1wEBI5aG3IaUPA7IvPyA==
+react-tinacms-editor@^0.7.2-alpha.0:
+  version "0.7.2-alpha.0"
+  resolved "https://registry.yarnpkg.com/react-tinacms-editor/-/react-tinacms-editor-0.7.2-alpha.0.tgz#596ea2d90a42886bef5fb87ca2512af2e7815f86"
+  integrity sha512-gQc852VL9SXIh/M4LjFRieqjGOT+kjO+8f/2adgKLrKkTvSzIB8JM/qiVzeBXhjhGs8DGrTE2qTsqczidTxNBg==
+  dependencies:
+    codemirror "^5.42.2"
+    lodash.debounce "^4.0.8"
+    lodash.get "^4.4.2"
+    markdown-it "^8.3.1"
+    prosemirror-commands "^1.0.8"
+    prosemirror-dropcursor "^1.1.2"
+    prosemirror-gapcursor "^1.0.4"
+    prosemirror-history "^1.0.4"
+    prosemirror-inputrules "^1.0.4"
+    prosemirror-keymap "^1.0.1"
+    prosemirror-model "^1.0.0"
+    prosemirror-schema-list "^1.0.3"
+    prosemirror-state "^1.2.4"
+    prosemirror-tables "1.0.0"
+    prosemirror-transform "^1.0.0"
+    prosemirror-utils "^0.9.6"
+    prosemirror-view "^1.11.3"
+    react-dismissible "^1.1.5"
+
+react-tinacms-github@^0.4.1-alpha.0:
+  version "0.4.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/react-tinacms-github/-/react-tinacms-github-0.4.1-alpha.0.tgz#a76aebf7ffb9c41259ab924727979cfd6f160da8"
+  integrity sha512-DBte8CNMS5ay/vB+RLq5MEqJH6UIs4sZDVgtAF8Z5gx/BWu5RkvonloS3S4odfphmbtTeeelaPWk1giSi37yew==
   dependencies:
     btoa "^1.2.1"
     js-cookie "^2.2.1"
     next-tinacms-markdown "^0.2.17"
 
-react-tinacms-inline@^0.4.2:
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/react-tinacms-inline/-/react-tinacms-inline-0.4.9.tgz#d91299d9e44e57fdf95067ddd428d2c5fe9002a6"
-  integrity sha512-OkdYL1cyzTIVHCkzcznQejw+dtbgY5yKV36OtNxucTjJX+7ocIvgQrY6rJBA4eS8uGAXhPiKHQtlwEE/pcjbeA==
+react-tinacms-inline@^0.6.0-alpha.0:
+  version "0.6.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/react-tinacms-inline/-/react-tinacms-inline-0.6.0-alpha.0.tgz#e8242b9893f38a6f5b5943a790d08990accd3b9f"
+  integrity sha512-AQfI4LmoIsWt7SdwDZKSVOQVdSXvMosOEKqeYxC0K0MEOVi1O1wEq/DU2tasJ81saOFvV8UHvNuDY3he9ZGo0w==
   dependencies:
     react-textarea-autosize ">=7.1"
 
