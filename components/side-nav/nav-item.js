@@ -2,9 +2,10 @@ import { useState } from "react"
 import { shape, bool, array, string } from "prop-types"
 import Link from "next/link"
 
+import isNavActive from "@utils/isNavActive"
 import { NavItemLink, NavGroup } from "./styles"
 
-const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlug, groupIn }) => {
+const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlug }) => {
   const [showChildrens, setShowChildrens] = useState(type === "group")
   const currentSlugKey = currentSlug.join("/")
 
@@ -25,7 +26,7 @@ const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlu
 
     return (
       <NavItemLink
-        active={active || groupIn === title}
+        active={active || isNavActive({ children }, currentSlugKey)}
         show={showChildrens}
         {...(type === "group" && {
           href: "#",
@@ -55,7 +56,6 @@ const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlu
               key={index}
               active={currentSlugKey === item.slug}
               currentSlug={currentSlug}
-              groupIn={groupIn}
             />
           ))}
         </NavGroup>
