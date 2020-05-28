@@ -1,20 +1,20 @@
 import { node, bool } from "prop-types"
-
-import { useCreateMainDoc } from "@hooks"
+import { InlineForm } from "react-tinacms-inline"
+import { useGithubToolbarPlugins } from "react-tinacms-github"
 
 import TopBar from "@components/topbar"
 import Footer from "@components/footer"
 
 import { LayoutStyled, LayoutBodyStyled } from "./styles"
 
-const Layout = ({ children, showDocsSearcher, splitView }) => {
-  useCreateMainDoc()
+const Layout = ({ children, showDocsSearcher, splitView, preview, form }) => {
+  useGithubToolbarPlugins()
 
   return (
     <LayoutStyled>
       <TopBar showDocsSearcher={showDocsSearcher} />
       <LayoutBodyStyled splitView={splitView}>{children}</LayoutBodyStyled>
-      <Footer />
+      <Footer preview={preview} />
     </LayoutStyled>
   )
 }
