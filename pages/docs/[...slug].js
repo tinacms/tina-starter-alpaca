@@ -2,7 +2,7 @@ import matter from "gray-matter"
 import algoliasearch from "algoliasearch/lite"
 import { useRouter } from "next/router"
 import Error from "next/error"
-import { useFormScreenPlugin } from "tinacms"
+import { useFormScreenPlugin, usePlugin } from "tinacms"
 import { InlineTextField } from "react-tinacms-inline"
 import { InlineWysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
@@ -25,7 +25,7 @@ import {
   useGlobalStyleForm,
 } from "@hooks"
 import { createToc } from "@utils"
-import getGloabStaticProps from "../../utils/getGloabStaticProps"
+import getGlobalStaticProps from "../../utils/getGlobalStaticProps"
 
 const DocTemplate = (props) => {
   const router = useRouter()
@@ -38,6 +38,7 @@ const DocTemplate = (props) => {
   }
 
   const [data, form] = useFormEditDoc(props.file)
+  usePlugin(form)
   const [navData, navForm] = useNavigationForm(props.navigation, props.preview)
   const nestedDocs = navData.config
   const [styleData] = useGlobalStyleForm(props.styleFile, props.preview)
@@ -58,6 +59,7 @@ const DocTemplate = (props) => {
       />
       <InlineForm form={form}>
         <DocWrapper preview={props.preview}>
+          {props.preview && <InlineEditingControls />}
           <main>
             <h1>
               <InlineTextField name="frontmatter.title" />
@@ -98,7 +100,7 @@ const DocTemplate = (props) => {
 // https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation
 
 export const getStaticProps = async function ({ preview, previewData, params }) {
-  const global = await getGloabStaticProps(preview, previewData)
+  const global = await getGlobalStaticProps(preview, previewData)
   const { slug } = params
   const fileRelativePath = `docs/${slug.join("/")}.md`
 

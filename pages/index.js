@@ -6,7 +6,7 @@ import Head from "@components/head"
 import Layout from "@components/layout"
 import Container from "@components/container"
 import { usePlugin } from "tinacms"
-import getGloabStaticProps from "../utils/getGloabStaticProps"
+import getGlobalStaticProps from "../utils/getGlobalStaticProps"
 import { useGlobalStyleForm } from "@hooks"
 
 const Page = ({ file, preview, styleFile }) => {
@@ -46,7 +46,7 @@ const Title = styled.h1`
  * Fetch data with getStaticProps based on 'preview' mode
  */
 export const getStaticProps = async function ({ preview, previewData }) {
-  const global = await getGloabStaticProps(preview, previewData)
+  const global = await getGlobalStaticProps(preview, previewData)
 
   if (preview) {
     // get data from github

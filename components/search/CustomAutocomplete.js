@@ -192,7 +192,7 @@ const HitsWrapper = styled.div`
   display: block;
   width: 100%;
   background: #fff;
-  border: 1px solid #cce3fe;
+  border: 1px solid ${({ theme }) => theme.colors.highlightBorder};
   box-shadow: 2px 4px 8px 0px rgba(60, 60, 60, 0.2);
   display: ${({ show }) => (show ? `block` : `none`)};
   @media all and (min-width: 1024px) {
@@ -202,7 +202,7 @@ const HitsWrapper = styled.div`
 const HitItem = styled.a`
   display: block;
   padding: 15px;
-  box-shadow: 0px 1px 0 0px #cce3fe;
+  box-shadow: 0px 1px 0 0px ${({ theme }) => theme.colors.highlightBorder};
   text-decoration: none;
 
   & .ais-Highlight-highlighted {

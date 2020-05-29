@@ -10,6 +10,7 @@ import { LayoutStyled, LayoutBodyStyled } from "./styles"
 const Layout = ({ children, showDocsSearcher, splitView, preview, theme }) => {
   useGithubToolbarPlugins()
   return (
+    // if the theme isnt avaible load it from the file system
     <ThemeProvider theme={theme || require("../../content/styles.json")}>
       <LayoutStyled>
         <TopBar

@@ -80,7 +80,7 @@ export const NavBarLink = styled.a`
   @media all and (min-width: 1024px) {
     margin-right: 32px;
     font-size: 16px;
-    color: #cce3fe;
+    color: ${({ theme }) => theme.colors.highlightBorder};
     margin-bottom: 0;
     width: initial;
   }

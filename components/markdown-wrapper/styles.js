@@ -46,8 +46,7 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
 
   blockquote {
     background-color: ${({ theme }) => theme.colors.highlight};
-    /* maybe compute the border? */
-    border: 1px solid #cce3fe;
+    border: 1px solid ${({ theme }) => theme.colors.highlightBorder};
     border-radius: 2px;
     margin: 0;
     padding: 24px;
