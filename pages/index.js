@@ -16,6 +16,7 @@ const Page = ({ file, preview }) => {
       },
     ],
   }
+  const theme = import("../content/styles.json")
   const [data, form] = useGithubJsonForm(file, formOptions)
   return (
     <Layout preview={preview} form={form}>

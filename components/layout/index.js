@@ -7,12 +7,12 @@ import Footer from "@components/footer"
 
 import { LayoutStyled, LayoutBodyStyled } from "./styles"
 
-const Layout = ({ children, showDocsSearcher, splitView, preview, form }) => {
+const Layout = ({ children, showDocsSearcher, splitView, preview, theme }) => {
   useGithubToolbarPlugins()
 
   return (
     <LayoutStyled>
-      <TopBar showDocsSearcher={showDocsSearcher} />
+      <TopBar showDocsSearcher={showDocsSearcher} theme={theme} />
       <LayoutBodyStyled splitView={splitView}>{children}</LayoutBodyStyled>
       <Footer preview={preview} />
     </LayoutStyled>
