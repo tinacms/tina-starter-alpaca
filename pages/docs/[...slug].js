@@ -3,7 +3,8 @@ import algoliasearch from "algoliasearch/lite"
 import { useRouter } from "next/router"
 import Error from "next/error"
 import { useFormScreenPlugin } from "tinacms"
-import { InlineTextField, InlineWysiwyg } from "react-tinacms-inline"
+import { InlineTextField } from "react-tinacms-inline"
+import { InlineWysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
 
@@ -16,8 +17,15 @@ import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
 import MarkdownWrapper from "@components/markdown-wrapper"
 import Toc from "@components/Toc"
-import { useCreateMainDoc, useFormEditDoc, useCreateChildPage, useNavigationForm } from "@hooks"
+import {
+  useCreateMainDoc,
+  useFormEditDoc,
+  useCreateChildPage,
+  useNavigationForm,
+  useGlobalStyleForm,
+} from "@hooks"
 import { createToc } from "@utils"
+import getGloabStaticProps from "../../utils/getGloabStaticProps"
 
 const DocTemplate = (props) => {
   const router = useRouter()
@@ -32,6 +40,7 @@ const DocTemplate = (props) => {
   const [data, form] = useFormEditDoc(props.file)
   const [navData, navForm] = useNavigationForm(props.navigation, props.preview)
   const nestedDocs = navData.config
+  const [styleData] = useGlobalStyleForm(props.styleFile, props.preview)
 
   useFormScreenPlugin(navForm)
   // wrappers around using the content-creator puglin with tinaCMS
@@ -39,7 +48,7 @@ const DocTemplate = (props) => {
   useCreateChildPage(nestedDocs)
 
   return (
-    <Layout showDocsSearcher splitView preview={props.preview}>
+    <Layout showDocsSearcher splitView preview={props.preview} theme={styleData}>
       <Head title={data.frontmatter.title} />
       <SideNav
         allNestedDocs={nestedDocs}
@@ -89,6 +98,7 @@ const DocTemplate = (props) => {
 // https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation
 
 export const getStaticProps = async function ({ preview, previewData, params }) {
+  const global = await getGloabStaticProps(preview, previewData)
   const { slug } = params
   const fileRelativePath = `docs/${slug.join("/")}.md`
 
@@ -115,6 +125,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       }
       return {
         props: {
+          ...global,
           // markdown file stored in file:
           ...previewProps.props,
           // json for navigation form
@@ -149,6 +160,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   return {
     props: {
       // the markdown file
+      ...global,
       file: {
         fileRelativePath: `docs/${slug.join("/")}.md`,
         data: {

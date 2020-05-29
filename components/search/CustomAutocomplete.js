@@ -211,7 +211,7 @@ const HitItem = styled.a`
     font-style: normal;
   }
   &:hover {
-    background-color: #eef6ff;
+    background-color: ${({ theme }) => theme.colors.highlight};
   }
 `
 const EmptyResult = styled.div`
