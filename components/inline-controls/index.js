@@ -8,8 +8,6 @@ const InlineEditingControls = () => {
   return (
     <Toolbar>
       <EditToggle />
-      {/* <DiscardChanges /> */}
-      {/* <SaveButton /> */}
     </Toolbar>
   )
 }
