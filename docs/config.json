@@ -22,8 +22,14 @@
           "children": [
             {
               "type": "link",
-              "slug": "features/win-1",
-              "title": "Windows 1",
+              "slug": "features/undefined",
+              "title": "Windows 3",
+              "children": []
+            },
+            {
+              "type": "link",
+              "slug": "features/Windows-4",
+              "title": "Windows 4",
               "children": []
             },
             {
@@ -34,14 +40,8 @@
             },
             {
               "type": "link",
-              "slug": "features/undefined",
-              "title": "Windows 3",
-              "children": []
-            },
-            {
-              "type": "link",
-              "slug": "features/Windows-4",
-              "title": "Windows 4",
+              "slug": "features/win-1",
+              "title": "Windows 1",
               "children": []
             }
           ]
