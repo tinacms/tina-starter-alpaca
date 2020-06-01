@@ -3,8 +3,8 @@ import algoliasearch from "algoliasearch/lite"
 import { useRouter } from "next/router"
 import Error from "next/error"
 import { useFormScreenPlugin, usePlugin } from "tinacms"
-import { InlineTextField } from "react-tinacms-inline"
-import { InlineWysiwyg } from "react-tinacms-editor"
+import { InlineTextField, InlineField } from "react-tinacms-inline"
+import { Wysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
 
@@ -65,7 +65,17 @@ const DocTemplate = (props) => {
               <InlineTextField name="frontmatter.title" />
             </h1>
             {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
-            <InlineWysiwyg
+
+            <InlineField name="markdownBody">
+              {({ input, status }) => {
+                if (status === "active") {
+                  return <Wysiwyg input={input} />
+                }
+                return <MarkdownWrapper source={input.value} />
+              }}
+            </InlineField>
+
+            {/* <Wysiwyg
               // TODO: fix this
               // imageProps={{
               //   async upload(files) {
@@ -86,7 +96,7 @@ const DocTemplate = (props) => {
               name="markdownBody"
             >
               <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
+            </Wysiwyg> */}
           </main>
           <PostNavigation allNestedDocs={nestedDocs} />
           <PostFeedback />
