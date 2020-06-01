@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 import Error from "next/error"
 import { useFormScreenPlugin, usePlugin } from "tinacms"
 import { InlineTextField, InlineField } from "react-tinacms-inline"
-import { Wysiwyg } from "react-tinacms-editor"
+import { InlineWysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
 
@@ -66,16 +66,16 @@ const DocTemplate = (props) => {
             </h1>
             {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
-            <InlineField name="markdownBody">
+            {/* <InlineField name="markdownBody">
               {({ input, status }) => {
                 if (status === "active") {
                   return <Wysiwyg input={input} />
                 }
                 return <MarkdownWrapper source={input.value} />
               }}
-            </InlineField>
+            </InlineField> */}
 
-            {/* <Wysiwyg
+            <InlineWysiwyg
               // TODO: fix this
               // imageProps={{
               //   async upload(files) {
@@ -96,7 +96,7 @@ const DocTemplate = (props) => {
               name="markdownBody"
             >
               <MarkdownWrapper source={data.markdownBody} />
-            </Wysiwyg> */}
+            </InlineWysiwyg>
           </main>
           <PostNavigation allNestedDocs={nestedDocs} />
           <PostFeedback />
