@@ -5,6 +5,8 @@ export const LayoutStyled = styled.main`
   font-family: Roboto, system-ui, sans-serif;
   width: 100%;
   margin: 0 auto;
+  color: ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) => theme.colors.background};
 
   h1 {
     font-size: 40px;

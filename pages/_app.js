@@ -1,11 +1,8 @@
 import React from "react"
 import App from "next/app"
 import { TinaProvider, TinaCMS } from "tinacms"
-import { GitClient, GitMediaStore } from "@tinacms/git-client"
-import { useGithubEditing, GithubClient, TinacmsGithubProvider } from "react-tinacms-github"
+import { TinacmsGithubProvider } from "react-tinacms-github"
 import { Normalize } from "styled-normalize"
-import { ThemeProvider } from "styled-components"
-import theme from "../utils/theme"
 import { AlpacaGitHubClient } from "../utils/githubClient"
 // eslint-disable-next-line no-undef
 require("typeface-source-code-pro")
@@ -52,10 +49,8 @@ class MyApp extends App {
           exitEditMode={exitEditMode}
           error={pageProps.error}
         >
-          <ThemeProvider theme={theme}>
-            <Normalize />
-            <Component {...pageProps} />
-          </ThemeProvider>
+          <Normalize />
+          <Component {...pageProps} />
         </TinacmsGithubProvider>
       </TinaProvider>
     )

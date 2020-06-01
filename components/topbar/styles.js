@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components"
 
 export const TopBarStyled = styled.header`
-  background-color: #0071f0;
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 0 24px;
   justify-content: space-between;
   position: relative;
@@ -46,7 +46,7 @@ export const NavWrapperStyled = styled.div`
   position: fixed;
   z-index: 999;
   height: calc(100vh - 80px);
-  background-color: #0071f0;
+  background-color: ${({ theme }) => theme.colors.primary};
   left: 0;
   top: 80px;
   width: 100%;
@@ -80,7 +80,7 @@ export const NavBarLink = styled.a`
   @media all and (min-width: 1024px) {
     margin-right: 32px;
     font-size: 16px;
-    color: #cce3fe;
+    color: ${({ theme }) => theme.colors.highlightBorder};
     margin-bottom: 0;
     width: initial;
   }

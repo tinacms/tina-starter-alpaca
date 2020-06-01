@@ -48,7 +48,7 @@ export const ReactionButton = styled.button`
   &:hover {
     color: #77b1fa;
     border-color: #77b1fa;
-    background-color: #eef6ff;
+    background-color: ${({ theme }) => theme.colors.highlight};
   }
   i {
     position: absolute;
@@ -72,13 +72,13 @@ export const ReactionButton = styled.button`
   ${({ active }) =>
     active &&
     css`
-      background-color: #eef6ff;
-      color: #0071f0;
-      border-color: #0071f0;
+      background-color: ${({ theme }) => theme.colors.highlight};
+      color: ${({ theme }) => theme.colors.primary};
+      border-color: ${({ theme }) => theme.colors.primary};
       &:hover {
-        background-color: #eef6ff;
-        color: #0071f0;
-        border-color: #0071f0;
+        background-color: ${({ theme }) => theme.colors.highlight};
+        color: ${({ theme }) => theme.colors.primary};
+        border-color: ${({ theme }) => theme.colors.primary};
       }
     `}
   @media all and (min-width: 768px) {

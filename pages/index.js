@@ -5,8 +5,11 @@ import { useGithubJsonForm } from "react-tinacms-github"
 import Head from "@components/head"
 import Layout from "@components/layout"
 import Container from "@components/container"
+import { usePlugin } from "tinacms"
+import getGlobalStaticProps from "../utils/getGlobalStaticProps"
+import { useGlobalStyleForm } from "@hooks"
 
-const Page = ({ file, preview }) => {
+const Page = ({ file, preview, styleFile }) => {
   const formOptions = {
     label: "home page",
     fields: [
@@ -17,8 +20,12 @@ const Page = ({ file, preview }) => {
     ],
   }
   const [data, form] = useGithubJsonForm(file, formOptions)
+  usePlugin(form)
+
+  const [styleData, styleForm] = useGlobalStyleForm(styleFile, preview)
+
   return (
-    <Layout preview={preview} form={form}>
+    <Layout preview={preview} form={form} theme={styleData}>
       <Head title="Home" />
       <Container className="container">
         <Title className="title">{data.title}</Title>
@@ -39,13 +46,24 @@ const Title = styled.h1`
  * Fetch data with getStaticProps based on 'preview' mode
  */
 export const getStaticProps = async function ({ preview, previewData }) {
+  const global = await getGlobalStaticProps(preview, previewData)
+
   if (preview) {
     // get data from github
-    return getGithubPreviewProps({
-      ...previewData,
-      fileRelativePath: "content/home.json",
-      parse: parseJson,
-    })
+    const file = (
+      await getGithubPreviewProps({
+        ...previewData,
+        fileRelativePath: "content/home.json",
+        parse: parseJson,
+      })
+    ).props
+
+    return {
+      props: {
+        ...file,
+        ...global,
+      },
+    }
   }
   // render from the file system.
   return {
@@ -57,6 +75,7 @@ export const getStaticProps = async function ({ preview, previewData }) {
         fileRelativePath: "content/home.json",
         data: (await import("../content/home.json")).default,
       },
+      ...global,
     },
   }
 }

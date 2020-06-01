@@ -5,9 +5,11 @@ import EditToggle from "./EditToggle"
 import SaveButton from "./SaveButton"
 
 const InlineEditingControls = () => {
-  return <Toolbar>{/* <EditToggle />
-      <DiscardChanges />
-      <SaveButton /> */}</Toolbar>
+  return (
+    <Toolbar>
+      <EditToggle />
+    </Toolbar>
+  )
 }
 
 export default InlineEditingControls
