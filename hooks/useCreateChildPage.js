@@ -66,7 +66,7 @@ const useCreateChildPage = async (allDocs) => {
         const slug = slugify(title)
 
         // get confile JSON file from github
-        const configFile = await cms.api.github.fetchFile("docs/config.json", null, true)
+        const configFile = await cms.api.github.fetchFile("docs/config.json", true)
         const allNestedDocsRemote = JSON.parse(configFile.content)
         const category = router.query.slug[0]
         const fileRelativePath = `docs/${router.query.slug[0]}/${slug}.md`

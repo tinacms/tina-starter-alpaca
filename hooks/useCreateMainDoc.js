@@ -40,7 +40,7 @@ const useCreateMainDoc = (allDocs) => {
         // get json file from github
         const github = cms.api.github
         // this is getting the defult branch and not the current working branch
-        const configFile = await github.fetchFile("docs/config.json", null, true)
+        const configFile = await github.fetchFile("docs/config.json", true)
         const sha = configFile.sha
         const allNestedDocsRemote = JSON.parse(configFile.content)
         const fileRelativePath = `docs/${slug}.md`
