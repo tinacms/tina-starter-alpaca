@@ -11,16 +11,12 @@ class GithubError extends Error {
 
 export class AlpacaGitHubClient extends GithubClient {
   // prehaps at some point this functionality should be moved to the GitHub cleint in tinaCMS
-  async fetchFile(filePath, sha, decoded = true) {
+  async fetchFile(filePath, decoded = true) {
     const repo = this.workingRepoFullName
     const branch = this.branchName
     const request = await this.req({
       url: `https://api.github.com/repos/${repo}/contents/${filePath}?ref=${branch}`,
       method: "GET",
-      data: {
-        sha,
-        branch: branch,
-      },
     })
 
     // decode using base64 decoding (https://developer.mozilla.org/en-US/docs/Glossary/Base64)
