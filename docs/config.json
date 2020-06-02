@@ -139,19 +139,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "link",
-      "slug": "test-main-doc",
-      "title": "test main doc",
-      "children": [
-        {
-          "type": "link",
-          "slug": "test-main-doc/Test-child-doc",
-          "title": "Test child doc",
-          "children": []
-        }
-      ]
     }
   ]
 }
