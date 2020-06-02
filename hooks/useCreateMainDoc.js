@@ -1,6 +1,7 @@
 import { useCMS, usePlugins } from "tinacms"
 import { useRouter } from "next/router"
 import slugify from "slugify"
+import { FORM_ERROR } from "final-form"
 
 import { toMarkdownString, flatDocs } from "@utils"
 
@@ -21,7 +22,7 @@ const useCreateMainDoc = (allDocs) => {
             if (!value) {
               return "A title is required"
             }
-            let valSlug = `${slugify(value, { lower: true })}`
+            const valSlug = `${slugify(value, { lower: true })}`
             // make sure slug is unique
             const slugMatches = (el) => {
               return el.slug === valSlug
@@ -37,9 +38,11 @@ const useCreateMainDoc = (allDocs) => {
         const slug = slugify(title, { lower: true })
 
         // get json file from github
-        const configFile = await cms.api.github.fetchFile("docs/config.json", null)
+        const github = cms.api.github
+        // this is getting the defult branch and not the current working branch
+        const configFile = await github.fetchFile("docs/config.json", null, true)
         const sha = configFile.sha
-        const allNestedDocsRemote = JSON.parse(configFile.decodedContent)
+        const allNestedDocsRemote = JSON.parse(configFile.content)
         const fileRelativePath = `docs/${slug}.md`
 
         // add the new file to the begining of the array (This will also be the begining of the navigation)
@@ -49,9 +52,9 @@ const useCreateMainDoc = (allDocs) => {
           title,
           children: [],
         })
-
+        let err = false
         // commit the config file to github
-        await cms.api.github
+        await github
           .commit(
             "docs/config.json",
             sha,
@@ -63,9 +66,16 @@ const useCreateMainDoc = (allDocs) => {
               sha: response.content.sha,
             })
           })
-
+          .catch((error) => {
+            err = true
+            cms.events.dispatch({ type: "github:error", error })
+            return { [FORM_ERROR]: error }
+          })
+        if (err) {
+          return
+        }
         // commit the markdown file to github
-        return await cms.api.github
+        return await github
           .commit(
             fileRelativePath,
             getCachedFormData(fileRelativePath).sha,

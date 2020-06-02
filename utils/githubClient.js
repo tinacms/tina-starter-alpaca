@@ -11,11 +11,11 @@ class GithubError extends Error {
 
 export class AlpacaGitHubClient extends GithubClient {
   // prehaps at some point this functionality should be moved to the GitHub cleint in tinaCMS
-  async fetchFile(filePath, sha) {
+  async fetchFile(filePath, sha, decoded = true) {
     const repo = this.workingRepoFullName
     const branch = this.branchName
     const request = await this.req({
-      url: `https://api.github.com/repos/${repo}/contents/${filePath}`,
+      url: `https://api.github.com/repos/${repo}/contents/${filePath}?ref=${branch}`,
       method: "GET",
       data: {
         sha,
@@ -23,31 +23,8 @@ export class AlpacaGitHubClient extends GithubClient {
       },
     })
 
-    // return the content of the request and also the decoded content
-    return {
-      ...request,
-      // decode using base64 decoding (https://developer.mozilla.org/en-US/docs/Glossary/Base64)
-      decodedContent: atob(request.content || ""),
-    }
-  }
-
-  // Methods from tinacms github (they where private methods so implemented here)
-  async req(data) {
-    const response = await this.proxyRequest(data)
-    return this.getGithubResponse(response)
-  }
-
-  async getGithubResponse(response) {
-    const data = await response.json()
-    //2xx status codes
-    if (response.status.toString()[0] == "2") return data
-
-    throw new GithubError(response.statusText, response.status)
-  }
-  proxyRequest(data) {
-    return fetch(this.proxy, {
-      method: "POST",
-      body: JSON.stringify(data),
-    })
+    // decode using base64 decoding (https://developer.mozilla.org/en-US/docs/Glossary/Base64)
+    request.content = decoded ? atob(request.content || "") : request.content
+    return request
   }
 }

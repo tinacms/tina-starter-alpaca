@@ -3,8 +3,8 @@ import algoliasearch from "algoliasearch/lite"
 import { useRouter } from "next/router"
 import Error from "next/error"
 import { useFormScreenPlugin, usePlugin } from "tinacms"
-import { InlineTextField } from "react-tinacms-inline"
-import { InlineWysiwyg } from "react-tinacms-editor"
+import { InlineTextField, InlineField } from "react-tinacms-inline"
+import { InlineWysiwyg, Wysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
 
@@ -65,6 +65,7 @@ const DocTemplate = (props) => {
               <InlineTextField name="frontmatter.title" />
             </h1>
             {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+
             <InlineWysiwyg
               // TODO: fix this
               // imageProps={{
