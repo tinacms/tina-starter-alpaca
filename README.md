@@ -17,9 +17,7 @@
 
 
 ## :memo: Getting started on localhost
-1. Clone the repo
-   - ssh: ```git clone git@github.com:tinacms/tina-starter-alpaca.git```
-   - https: ```git clone https://github.com/tinacms/tina-starter-alpaca.git``` 
+1. Clone the repo  `git clone https://github.com/tinacms/tina-starter-alpaca.git`
 2. ```cd tina-starter-alpaca```
 3. [Set up a GitHub OAuth App](https://tinacms.org/guides/nextjs/github-open-authoring/github-oauth-app)  
 4. Add a new file called .env with the credentials from your Github OAuth App
@@ -59,4 +57,3 @@ You will have to make a **new GitHub OAuth App** with the url in vercel. [You ca
 ## :octocat: Issues
 
 If you notice any bugs or have any problems please [report them here](https://github.com/tinacms/tina-starter-alpaca/issues/new)
-
