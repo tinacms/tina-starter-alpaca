@@ -16,7 +16,7 @@ const Page = ({ file, preview, styleFile }) => {
   useEffect(() => {
     const { pathname } = Router
     if (pathname == "/") {
-      Router.push("/docs/getting-started")
+      Router.push("/docs/")
     }
   })
   const formOptions = {
