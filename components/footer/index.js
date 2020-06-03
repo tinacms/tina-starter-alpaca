@@ -13,7 +13,7 @@ const Footer = ({ preview }) => {
           <Link href="/features" passHref>
             <FooterLink>Features</FooterLink>
           </Link>
-          <Link href="/docs/[...slug]" as="/docs/getting-started" passHref>
+          <Link href="/docs" passHref>
             <FooterLink>Docs</FooterLink>
           </Link>
           <FooterLink

@@ -1,6 +1,8 @@
+import { useEffect } from "react"
 import styled from "styled-components"
 import { getGithubPreviewProps, parseJson } from "next-tinacms-github"
 import { useGithubJsonForm } from "react-tinacms-github"
+import Router from "next/router"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -10,6 +12,13 @@ import getGlobalStaticProps from "../utils/getGlobalStaticProps"
 import { useGlobalStyleForm } from "@hooks"
 
 const Page = ({ file, preview, styleFile }) => {
+  // can remove this if you want to use the index page
+  useEffect(() => {
+    const { pathname } = Router
+    if (pathname == "/") {
+      Router.push("/docs/")
+    }
+  })
   const formOptions = {
     label: "home page",
     fields: [
