@@ -20,7 +20,7 @@
 1. Clone the repo  `git clone https://github.com/tinacms/tina-starter-alpaca.git`
 2. ```cd tina-starter-alpaca```
 3. [Set up a GitHub OAuth App](https://tinacms.org/guides/nextjs/github-open-authoring/github-oauth-app)  
-4. Add a new file called .env with the credentials from your Github OAuth App
+4. Add a new file called `.env` with the credentials from your Github OAuth App
 
 ```env
 # OAuth App Credentials from GitHub
