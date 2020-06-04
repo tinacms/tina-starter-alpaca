@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import slugify from "slugify"
 import isNavActive from "@utils/isNavActive"
 
-import { toMarkdownString, flatDocs } from "@utils"
+import { toMarkdownString, flatDocs, getRandID } from "@utils"
 
 const useCreateChildPage = async (allDocs) => {
   const router = useRouter()
@@ -76,6 +76,7 @@ const useCreateChildPage = async (allDocs) => {
           type: "link",
           slug: `${category}/${slug}`,
           title,
+          id: getRandID(),
           children: [],
         }
 

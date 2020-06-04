@@ -1,6 +1,6 @@
 import { useGithubJsonForm } from "react-tinacms-github"
 
-import { flatDocs } from "@utils"
+import { flatDocs, getRandID } from "@utils"
 
 /*
     Adds a form for changing the order of the doc navigation and adding new things to the navignation
@@ -53,7 +53,7 @@ const useNavigationForm = (jsonFile, preview) => {
         slug: "getting-started",
         title: "new doc page",
         children: [],
-        id: Math.random().toString(36).substr(2, 9),
+        id: getRandID(),
       }),
     }
   }
