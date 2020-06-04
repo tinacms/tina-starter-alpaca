@@ -6,6 +6,7 @@
       "slug": "getting-started",
       "title": "Getting Started",
       "position": 0,
+      "id": "1",
       "children": []
     },
     {
@@ -13,35 +14,41 @@
       "key": "features",
       "slug": "features",
       "title": "Features",
+      "id": "2",
       "position": 2,
       "children": [
         {
           "type": "group",
           "slug": "features/windows-3",
           "title": "Windows",
+          "id": "3",
           "children": [
             {
               "type": "link",
               "slug": "features/undefined",
               "title": "Windows 3",
+              "id": "4",
               "children": []
             },
             {
               "type": "link",
               "slug": "features/Windows-4",
               "title": "Windows 4",
+              "id": "5",
               "children": []
             },
             {
               "type": "link",
               "slug": "features/win-2",
               "title": "Windows 2",
+              "id": "6",
               "children": []
             },
             {
               "type": "link",
               "slug": "features/win-1",
               "title": "Windows 1",
+              "id": "7",
               "children": []
             }
           ]
@@ -51,31 +58,35 @@
           "key": "Linux",
           "title": "Linux",
           "position": null,
+          "id": "8",
           "children": [
             {
               "type": "link",
               "slug": "features/Arch",
               "title": "Arch",
-              "id": "r3hpdikqv",
+              "id": "9",
               "children": []
             },
             {
               "key": "./features/linux-froyo.md",
               "slug": "features/linux-froyo",
               "type": "link",
-              "title": "Froyo"
+              "title": "Froyo",
+              "id": "10"
             },
             {
               "key": "./features/ubuntu.md",
               "slug": "features/ubuntu",
               "type": "link",
-              "title": "Ubuntu"
+              "title": "Ubuntu",
+              "id": "11"
             },
             {
               "key": "./features/ubuntuLTS.md",
               "slug": "features/ubuntuLTS",
               "type": "link",
-              "title": "ubuntu LTS"
+              "title": "ubuntu LTS",
+              "id": "12"
             }
           ]
         },
@@ -83,12 +94,14 @@
           "key": "./features/mac.md",
           "slug": "features/mac",
           "type": "link",
-          "title": "Mac OS"
+          "title": "Mac OS",
+          "id": "13"
         },
         {
           "type": "link",
           "slug": "deployment/node",
           "title": "Node",
+          "id": "14",
           "children": []
         }
       ]
@@ -99,42 +112,49 @@
       "slug": "deployment",
       "title": "Deployment",
       "position": 1,
+      "id": "15",
       "children": [
         {
           "key": "./deployment/basics.md",
           "slug": "deployment/basics",
           "type": "link",
-          "title": "Basics"
+          "title": "Basics",
+          "id": "16"
         },
         {
           "type": "group",
           "key": "Complement",
           "title": "Complement",
           "position": null,
+          "id": "17",
           "children": [
             {
               "key": "./deployment/complement-1.md",
               "slug": "deployment/complement-1",
               "type": "link",
-              "title": "Complement Sub 1"
+              "title": "Complement Sub 1",
+              "id": "18"
             },
             {
               "key": "./deployment/complement-2.md",
               "slug": "deployment/complement-2",
               "type": "link",
-              "title": "Complement Sub 2"
+              "title": "Complement Sub 2",
+              "id": "19"
             },
             {
               "key": "./deployment/complement-3.md",
               "slug": "deployment/complement-3",
               "type": "link",
-              "title": "Complement Sub 3"
+              "title": "Complement Sub 3",
+              "id": "20"
             },
             {
               "key": "./deployment/conplement-4.md",
               "slug": "deployment/conplement-4",
               "type": "link",
-              "title": "Complement Sub 4"
+              "title": "Complement Sub 4",
+              "id": "22"
             }
           ]
         }

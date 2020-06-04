@@ -8,7 +8,7 @@ import { flatDocs } from "@utils"
 
 const useNavigationForm = (jsonFile, preview) => {
   if (!preview) {
-    // if we are not in preview return the jsonfile and dont register the form
+    // if we are not in preview return the jsonfile and don't register the form
     return [jsonFile.data, null]
   }
   const allFlatDocs = flatDocs(jsonFile.data.config)
@@ -45,6 +45,7 @@ const useNavigationForm = (jsonFile, preview) => {
       component: "group-list",
       description,
       itemProps: (item) => ({
+        key: item.id || item.slug,
         label: `${item.title} (${item.type})`,
       }),
       defaultItem: () => ({
@@ -52,6 +53,7 @@ const useNavigationForm = (jsonFile, preview) => {
         slug: "getting-started",
         title: "new doc page",
         children: [],
+        id: Math.random().toString(36).substr(2, 9),
       }),
     }
   }
