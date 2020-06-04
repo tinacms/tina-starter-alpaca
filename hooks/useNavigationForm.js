@@ -45,7 +45,7 @@ const useNavigationForm = (jsonFile, preview) => {
       component: "group-list",
       description,
       itemProps: (item) => ({
-        key: item.id || item.slug,
+        key: item.id,
         label: `${item.title} (${item.type})`,
       }),
       defaultItem: () => ({
