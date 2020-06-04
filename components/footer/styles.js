@@ -43,6 +43,7 @@ export const EditWithTinaButton = styled.a`
   box-sizing: border-box;
   border: 1px solid ${({ theme }) => theme.colors.highlightBorder};
   background-color: #eff6fe;
+  cursor: pointer;
   text-decoration: none;
   font-size: 16px;
   text-align: center;
