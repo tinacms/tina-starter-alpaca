@@ -22,6 +22,12 @@
           "children": [
             {
               "type": "link",
+              "slug": "features/test123",
+              "title": "test123",
+              "children": []
+            },
+            {
+              "type": "link",
               "slug": "features/undefined",
               "title": "Windows 3",
               "children": []
