@@ -3,7 +3,7 @@ import { useRouter } from "next/router"
 import slugify from "slugify"
 import { FORM_ERROR } from "final-form"
 
-import { toMarkdownString, flatDocs } from "@utils"
+import { toMarkdownString, flatDocs, getRandID } from "@utils"
 
 const useCreateMainDoc = (allDocs) => {
   const router = useRouter()
@@ -50,6 +50,7 @@ const useCreateMainDoc = (allDocs) => {
           type: "link",
           slug: slug,
           title,
+          id: getRandID(),
           children: [],
         })
         let err = false
