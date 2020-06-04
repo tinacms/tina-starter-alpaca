@@ -1,5 +1,6 @@
 import Link from "next/link"
 import styled from "styled-components"
+// import { useFormScreenPlugin } from "tinacms"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -37,10 +38,10 @@ const BlogCard = ({ post }) => {
   )
 }
 const Blog = (props) => {
-  const [styleData] = useGlobalStyleForm(props.styleFile, props.preview)
-
+  const [styleData, form] = useGlobalStyleForm(props.styleFile, props.preview)
+  //   useFormScreenPlugin(form)
   return (
-    <Layout theme={styleData}>
+    <Layout theme={styleData} preview={props.preview}>
       <Head title="Blog" />
       <Container>
         <h1>Blog</h1>
@@ -59,11 +60,11 @@ export const getStaticProps = async function ({ preview, previewData }) {
   try {
     const posts = await getBlogPosts(preview, previewData, "content/blog")
     const global = await getGlobalStaticProps(preview, previewData)
-    console.log({ global })
     if (preview) {
       return {
         props: {
           ...global,
+          preview,
           posts,
         },
       }
