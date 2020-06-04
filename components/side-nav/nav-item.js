@@ -27,7 +27,7 @@ const NavItem = ({ itemData: { slug, children, title, type }, active, currentSlu
     return (
       <NavItemLink
         active={active || isNavActive({ children }, currentSlugKey)}
-        show={showChildrens}
+        show={showChildrens || active}
         {...(type === "group" && {
           href: "#",
           onClick: handleToggleGroup,
