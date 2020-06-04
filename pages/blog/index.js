@@ -1,6 +1,5 @@
 import Link from "next/link"
 import styled from "styled-components"
-// import { useFormScreenPlugin } from "tinacms"
 
 import Head from "@components/head"
 import Layout from "@components/layout"
@@ -8,6 +7,7 @@ import Container from "@components/container"
 import { getBlogPosts } from "@utils"
 import { useGlobalStyleForm } from "@hooks"
 import getGlobalStaticProps from "../../utils/getGlobalStaticProps"
+import useCreateBlogPage from "../../hooks/useCreateBlogPage"
 
 const BlogCardStyled = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -25,6 +25,7 @@ const StyledAnchor = styled.a`
 `
 
 const BlogCard = ({ post }) => {
+  useCreateBlogPage()
   return (
     <Link href={`blog/${post.fileName}`}>
       <StyledAnchor>
@@ -39,7 +40,6 @@ const BlogCard = ({ post }) => {
 }
 const Blog = (props) => {
   const [styleData, form] = useGlobalStyleForm(props.styleFile, props.preview)
-  //   useFormScreenPlugin(form)
   return (
     <Layout theme={styleData} preview={props.preview}>
       <Head title="Blog" />
