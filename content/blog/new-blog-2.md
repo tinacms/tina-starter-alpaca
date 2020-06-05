@@ -4,3 +4,6 @@ author: Logan
 title: new blog 2
 description: Testing
 ---
+# Cool text
+
+this is a test of adding new things
