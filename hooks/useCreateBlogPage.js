@@ -29,7 +29,9 @@ const useCreateBlogPage = (allDocs) => {
         {
           name: "date",
           label: "Date",
-          component: "text",
+          component: "date",
+          dateFormat: "MMMM DD YYYY",
+          timeFormat: false,
           required: true,
         },
         {
