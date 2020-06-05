@@ -15,7 +15,12 @@ import MarkdownWrapper from "@components/markdown-wrapper"
 import { PrimaryAnchor } from "@components/Anchor"
 import { usePlugin } from "tinacms"
 import { createToc } from "@utils"
+import styled from "styled-components"
 
+const Wrapper = styled(DocWrapper)`
+  max-width: 100%;
+  width: 100%;
+`
 const BlogPage = (props) => {
   const formOptions = {
     label: "Edit doc page",
@@ -41,7 +46,7 @@ const BlogPage = (props) => {
         / {data.frontmatter.title}
       </p>
       <InlineForm form={form}>
-        <DocWrapper preview={props.preview}>
+        <Wrapper preview={props.preview} styled={false}>
           {props.preview && <InlineEditingControls />}
           <main>
             <h1>
@@ -54,7 +59,7 @@ const BlogPage = (props) => {
             </InlineWysiwyg>
           </main>
           <PostFeedback />
-        </DocWrapper>
+        </Wrapper>
       </InlineForm>
     </Layout>
   )

@@ -4,15 +4,18 @@ import { useMemo } from "react"
 
 import { DocWrapperStyled } from "./styles"
 
-const DocWrapper = ({ children, preview }) => {
+const DocWrapper = ({ children, preview, styled }) => {
+  const isStyled = styled ?? true
   const { deactivate, activate } = useInlineForm()
 
   function handleInlineEdit() {
     preview ? activate() : deactivate()
   }
   useMemo(handleInlineEdit, [preview])
-
-  return <DocWrapperStyled>{children}</DocWrapperStyled>
+  if (isStyled) {
+    return <DocWrapperStyled>{children}</DocWrapperStyled>
+  }
+  return children
 }
 
 DocWrapper.propTypes = {
