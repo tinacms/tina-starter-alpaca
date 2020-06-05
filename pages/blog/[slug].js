@@ -5,6 +5,7 @@ import { useGithubMarkdownForm } from "react-tinacms-github"
 import { getGithubPreviewProps, parseMarkdown } from "next-tinacms-github"
 import { InlineWysiwyg } from "react-tinacms-editor"
 
+import Head from "@components/head"
 import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
 import Toc from "@components/Toc"
@@ -31,7 +32,8 @@ const BlogPage = (props) => {
   usePlugin(form)
 
   return (
-    <Layout title={data.frontmatter.title} preview={props.preview}>
+    <Layout preview={props.preview}>
+      <Head title={`${data.frontmatter.title} | Blog`} />
       <p>
         <Link href="/blog">
           <PrimaryAnchor>Blog</PrimaryAnchor>
