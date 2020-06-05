@@ -58,7 +58,7 @@ const DocTemplate = (props) => {
         groupIn={data.frontmatter.groupIn}
       />
       <InlineForm form={form}>
-        <DocWrapper preview={props.preview}>
+        <DocWrapper preview={props.preview} styled={true}>
           {props.preview && <InlineEditingControls />}
           <main>
             <h1>
