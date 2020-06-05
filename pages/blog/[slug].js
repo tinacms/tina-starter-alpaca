@@ -14,14 +14,11 @@ import DocWrapper from "@components/doc-wrapper"
 import MarkdownWrapper from "@components/markdown-wrapper"
 import { PrimaryAnchor } from "@components/Anchor"
 import { usePlugin } from "tinacms"
-import { createToc } from "@utils"
-import styled from "styled-components"
+import { createToc, getBlogPosts } from "@utils"
+import useCreateBlogPage from "../../hooks/useCreateBlogPage"
 
-const Wrapper = styled(DocWrapper)`
-  max-width: 100%;
-  width: 100%;
-`
 const BlogPage = (props) => {
+  useCreateBlogPage(props.posts)
   const formOptions = {
     label: "Edit doc page",
     fields: [
@@ -46,7 +43,7 @@ const BlogPage = (props) => {
         / {data.frontmatter.title}
       </p>
       <InlineForm form={form}>
-        <Wrapper preview={props.preview} styled={false}>
+        <DocWrapper preview={props.preview} styled={false}>
           {props.preview && <InlineEditingControls />}
           <main>
             <h1>
@@ -59,7 +56,7 @@ const BlogPage = (props) => {
             </InlineWysiwyg>
           </main>
           <PostFeedback />
-        </Wrapper>
+        </DocWrapper>
       </InlineForm>
     </Layout>
   )
@@ -73,6 +70,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   const fileRelativePath = `content/blog/${slug}.md`
   let Alltocs = ""
 
+  let posts = await getBlogPosts()
   if (preview) {
     const previewProps = await getGithubPreviewProps({
       ...previewData,
@@ -84,6 +82,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
     }
     return {
       props: {
+        posts,
         Alltocs,
         ...previewProps.props,
       },
@@ -98,6 +97,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
   }
   return {
     props: {
+      posts,
       Alltocs,
       sourceProvider: null,
       error: null,

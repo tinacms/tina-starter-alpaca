@@ -11,7 +11,7 @@ const useCreateBlogPage = (allBlogs) => {
   usePlugins([
     {
       __type: "content-creator",
-      name: "Create Main Doc Page",
+      name: "Make a new blog post",
       fields: [
         {
           name: "title",
