@@ -1,8 +1,8 @@
 ---
-title: This is a placeholder title
-description: placeholder description
-date: 'Sunday, May 31st, 2020'
-author: Logan Anderson
+date: '2020-06-05T00:00:00Z'
+author: Logan
+title: Placeholder title
+description: Placeholder description
 ---
 # Placeholder Title
 
