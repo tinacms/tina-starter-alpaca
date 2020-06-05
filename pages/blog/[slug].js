@@ -1,12 +1,19 @@
-import { InlineField, InlineForm } from "react-tinacms-inline"
+import Link from "next/link"
+import { InlineForm, InlineTextField } from "react-tinacms-inline"
 import matter from "gray-matter"
 import { useGithubMarkdownForm } from "react-tinacms-github"
 import { getGithubPreviewProps, parseMarkdown } from "next-tinacms-github"
-import { Wysiwyg } from "react-tinacms-editor"
-import ReactMarkdown from "react-markdown"
+import { InlineWysiwyg } from "react-tinacms-editor"
 
+import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
+import Toc from "@components/Toc"
+import PostFeedback from "@components/post-feedback"
+import DocWrapper from "@components/doc-wrapper"
+import MarkdownWrapper from "@components/markdown-wrapper"
+import { PrimaryAnchor } from "@components/Anchor"
 import { usePlugin } from "tinacms"
+import { createToc } from "@utils"
 
 const BlogPage = (props) => {
   const formOptions = {
@@ -25,15 +32,27 @@ const BlogPage = (props) => {
 
   return (
     <Layout title={data.frontmatter.title} preview={props.preview}>
+      <p>
+        <Link href="/blog">
+          <PrimaryAnchor>Blog</PrimaryAnchor>
+        </Link>{" "}
+        / {data.frontmatter.title}
+      </p>
       <InlineForm form={form}>
-        <InlineField name="markdownBody">
-          {({ input }) => {
-            if (props.preview) {
-              return <Wysiwyg input={input} />
-            }
-            return <ReactMarkdown source={input.value} />
-          }}
-        </InlineField>
+        <DocWrapper preview={props.preview}>
+          {props.preview && <InlineEditingControls />}
+          <main>
+            <h1>
+              <InlineTextField name="frontmatter.title" />
+            </h1>
+            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+
+            <InlineWysiwyg name="markdownBody">
+              <MarkdownWrapper source={data.markdownBody} />
+            </InlineWysiwyg>
+          </main>
+          <PostFeedback />
+        </DocWrapper>
       </InlineForm>
     </Layout>
   )
@@ -45,6 +64,7 @@ const BlogPage = (props) => {
 export const getStaticProps = async function ({ preview, previewData, params }) {
   const { slug } = params
   const fileRelativePath = `content/blog/${slug}.md`
+  let Alltocs = ""
 
   if (preview) {
     const previewProps = await getGithubPreviewProps({
@@ -52,8 +72,12 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       fileRelativePath,
       parse: parseMarkdown,
     })
+    if (typeof window === "undefined") {
+      Alltocs = createToc(previewProps.props.file.data.markdownBody)
+    }
     return {
       props: {
+        Alltocs,
         ...previewProps.props,
       },
     }
@@ -61,8 +85,13 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
 
   const content = await import(`../../content/blog/${slug}.md`)
   const data = matter(content.default)
+
+  if (typeof window === "undefined") {
+    Alltocs = createToc(data.content)
+  }
   return {
     props: {
+      Alltocs,
       sourceProvider: null,
       error: null,
       preview: false,

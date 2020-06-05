@@ -5,7 +5,7 @@ import { FORM_ERROR } from "final-form"
 
 import { toMarkdownString, flatDocs, getRandID } from "@utils"
 
-const useCreateBlogPage = (allDocs) => {
+const useCreateBlogPage = (allBlogs) => {
   const router = useRouter()
   const cms = useCMS()
   usePlugins([
@@ -18,7 +18,14 @@ const useCreateBlogPage = (allDocs) => {
           label: "Title",
           component: "text",
           required: true,
-          //   validate(value, allValues, meta, field) {},
+          validate(value, allValues, meta, field) {
+            if (!value) {
+              return "A title is required"
+            }
+            if (allBlogs.some((post) => post.fileName === slugify(value, { lower: true }))) {
+              return "Sorry the blog title must be unique"
+            }
+          },
         },
         {
           name: "author",
