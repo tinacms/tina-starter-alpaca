@@ -52,6 +52,7 @@ const useCreateBlogPage = (allBlogs) => {
         const github = cms.api.github
         const slug = slugify(frontMatter.title, { lower: true })
         const fileRelativePath = `content/blog/${slug}.md`
+        frontMatter.date = frontMatter.date || new Date().toString()
         return await github
           .commit(
             fileRelativePath,
