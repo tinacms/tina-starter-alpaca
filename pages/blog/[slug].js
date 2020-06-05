@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Error from "next/error"
+import { useRouter } from "next/router"
 import { InlineForm, InlineTextField } from "react-tinacms-inline"
 import matter from "gray-matter"
 import { useGithubMarkdownForm } from "react-tinacms-github"
@@ -18,6 +20,14 @@ import { createToc, getBlogPosts } from "@utils"
 import useCreateBlogPage from "../../hooks/useCreateBlogPage"
 
 const BlogPage = (props) => {
+  const router = useRouter()
+  if (!props.file) {
+    return <Error statusCode={404} />
+  }
+
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
   useCreateBlogPage(props.posts)
   const formOptions = {
     label: "Edit doc page",
