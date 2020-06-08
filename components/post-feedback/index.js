@@ -20,7 +20,7 @@ const PostFeedback = () => {
 
   // method that is called when the form is submitted
   const onSubmit = async (formData) => {
-    const response = await fetch("https://formspree.io/mdowgzjl", {
+    const response = await fetch("/api/feedback", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       credentials: "same-origin", // include, *same-origin, omit
       headers: {
@@ -48,7 +48,8 @@ const PostFeedback = () => {
       dispatch({ type: "set-error" })
     } else {
       try {
-        await onSubmit({ reaction, comment, location: window.location.href })
+        await onSubmit({ reaction, comment, location: window.location.pathname })
+        cms.alerts.success("Your feedback has been submitted")
         dispatch({ type: "set-success" })
       } catch (err) {
         console.error(err)
