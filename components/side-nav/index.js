@@ -20,7 +20,7 @@ const SideNav = ({ allNestedDocs, currentSlug, groupIn }) => {
           allNestedDocs.map((doc) => (
             <NavItem
               itemData={doc}
-              key={doc.slug}
+              key={doc.id}
               active={isNavActive(doc, currentSlug.join("/"))}
               currentSlug={currentSlug}
             />
