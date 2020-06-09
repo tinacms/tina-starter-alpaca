@@ -18,7 +18,7 @@ import {
   IconButton,
 } from "./styles"
 
-const TopBar = ({ showDocsSearcher, theme }) => {
+const TopBar = ({ showDocsSearcher, theme, searchIndex, searchText }) => {
   /* States */
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showMobileSearch, setShowMobileSearch] = useState(false)
@@ -53,6 +53,8 @@ const TopBar = ({ showDocsSearcher, theme }) => {
             <Search
               handleToggleSearchInput={handleToggleSearchInput}
               showMobileSearch={showMobileSearch}
+              searchIndex={searchIndex}
+              searchText={searchText}
             />
           </div>
         </SearchWrapperStyled>

@@ -11,7 +11,13 @@ const Blog = (props) => {
   useCreateBlogPage(props.posts)
   const [styleData] = useGlobalStyleForm(props.styleFile, props.preview)
   return (
-    <Layout theme={styleData} preview={props.preview}>
+    <Layout
+      searchText="Search blog posts"
+      showDocsSearcher
+      preview={props.preview}
+      searchIndex="tina-starter-alpaca-Blogs"
+      theme={styleData}
+    >
       <Head title="Blog" />
       <Container>
         <h1>Blog</h1>

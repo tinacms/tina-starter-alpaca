@@ -44,7 +44,12 @@ const BlogPage = (props) => {
   usePlugin(form)
 
   return (
-    <Layout preview={props.preview}>
+    <Layout
+      searchText="Search blog posts"
+      showDocsSearcher
+      preview={props.preview}
+      searchIndex="tina-starter-alpaca-Blogs"
+    >
       <Head title={`${data.frontmatter.title} | Blog`} />
       <p>
         <Link href="/blog">
