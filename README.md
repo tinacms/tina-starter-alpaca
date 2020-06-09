@@ -65,6 +65,8 @@ npm run dev
 
    3. run `yarn create-indices` (this command will have to be run every time you wish to update the indices)
    4. Complete the setup for each index (located on the right side panel)
+      1. Configure searchable attributes
+      2. Configure custom ranking
    5. Test and see the search is now working
 
 ## :link: Hosting
