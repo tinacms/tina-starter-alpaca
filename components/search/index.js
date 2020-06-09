@@ -5,7 +5,11 @@ import { InstantSearch } from "react-instantsearch-dom"
 
 import CustomAutoComplete from "./CustomAutocomplete"
 
-const searchClient = algoliasearch("ND3Q3FDRQR", "d8db7a735ab11d85cc4110edcd85b14c")
+// const searchClient = algoliasearch("ND3Q3FDRQR", "d8db7a735ab11d85cc4110edcd85b14c")
+const searchClient = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY)
+
+console.log({ APP_ID: process.env.ALGOLIA_APP_ID })
+console.log({ APIKEY: process.env.ALGOLIA_API_KEY })
 
 const Search = ({ handleToggleSearchInput, showMobileSearch }) => {
   const [query, setQuery] = useState(``)
@@ -14,7 +18,8 @@ const Search = ({ handleToggleSearchInput, showMobileSearch }) => {
     <InstantSearch
       onSearchStateChange={({ query }) => setQuery(query)}
       searchClient={searchClient}
-      indexName="docs_index"
+      // indexName="docs_index"
+      indexName="tina-starter-alpaca-Docs"
     >
       <CustomAutoComplete
         handleToggleSearchInput={handleToggleSearchInput}

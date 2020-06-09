@@ -1,5 +1,4 @@
 import matter from "gray-matter"
-import algoliasearch from "algoliasearch/lite"
 import { useRouter } from "next/router"
 import Error from "next/error"
 import { useFormScreenPlugin, usePlugin } from "tinacms"

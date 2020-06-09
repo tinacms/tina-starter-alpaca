@@ -108,7 +108,7 @@ const Hit = ({ hit }) => (
     <HitItem>
       <HighlightTitle hit={hit} attribute="title" />
       <div>
-        <CustomHighlight attribute="content" hit={hit} />
+        <CustomHighlight attribute="excerpt" hit={hit} />
       </div>
     </HitItem>
   </Link>
