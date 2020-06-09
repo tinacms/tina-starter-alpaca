@@ -22,6 +22,7 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
   ul {
     padding-left: 18px;
     margin-bottom: 2rem;
+    line-height: 1.5;
     li {
       margin-top: 0.5rem;
     }
