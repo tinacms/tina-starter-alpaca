@@ -17,7 +17,6 @@ const Search = ({ handleToggleSearchInput, showMobileSearch, searchIndex, search
     <InstantSearch
       onSearchStateChange={({ query }) => setQuery(query)}
       searchClient={searchClient}
-      // indexName="docs_index"
       indexName={searchIndex}
     >
       <CustomAutoComplete
