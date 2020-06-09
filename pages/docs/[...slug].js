@@ -48,7 +48,13 @@ const DocTemplate = (props) => {
   useCreateChildPage(nestedDocs)
 
   return (
-    <Layout showDocsSearcher splitView preview={props.preview} theme={styleData}>
+    <Layout
+      showDocsSearcher
+      splitView
+      preview={props.preview}
+      theme={styleData}
+      searchIndex="tina-starter-alpaca-Docs"
+    >
       <Head title={data.frontmatter.title} />
       <SideNav
         allNestedDocs={nestedDocs}
