@@ -31,7 +31,7 @@ GITHUB_CLIENT_SECRET=***
 REPO_FULL_NAME=<GitHub Username>/<Repo Name>
 
 # The base branch that new changes and forks are created from. Defaults to 'master'.
-BASE_BRANCH=feature/open-authoring
+BASE_BRANCH=master
 ```
 
 You can learn more about [Open Authoring With Github in our guide](https://tinacms.org/guides/nextjs/github-open-authoring/initial-setup)
