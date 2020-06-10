@@ -4,14 +4,15 @@ import styled from "styled-components"
 import { StyledAnchor } from "../Anchor"
 
 const BlogCardStyled = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: ${({ theme }) => theme.colors.highlight};
+  border: 1px solid ${({ theme }) => theme.colors.highlightBorder};
   transition: 0.3s;
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
   color: ${({ theme }) => theme.colors.text};
   &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px 0 ${({ theme }) => theme.colors.highlightBorder};
   }
 `
 
