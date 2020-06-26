@@ -11,6 +11,7 @@ import Head from "@components/head"
 import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
 import PostNavigation from "@components/post-navigation"
+import RichText from "@components/rich-text"
 import PostFeedback from "@components/post-feedback"
 import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
@@ -65,35 +66,37 @@ const DocTemplate = (props) => {
       <InlineForm form={form}>
         <DocWrapper preview={props.preview} styled={true}>
           {props.preview && <InlineEditingControls />}
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+          <RichText>
+            <main>
+              <h1>
+                <InlineTextField name="frontmatter.title" />
+              </h1>
+              {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
-            <InlineWysiwyg
-              // TODO: fix this
-              // imageProps={{
-              //   async upload(files) {
-              //     const directory = "/public/images/"
+              <InlineWysiwyg
+                // TODO: fix this
+                // imageProps={{
+                //   async upload(files) {
+                //     const directory = "/public/images/"
 
-              //     let media = await cms.media.store.persist(
-              //       files.map((file) => {
-              //         return {
-              //           directory,
-              //           file,
-              //         }
-              //       })
-              //     )
-              //     return media.map((m) => `/images/${m.filename}`)
-              //   },
-              //   previewUrl: (str) => str,
-              // }}
-              name="markdownBody"
-            >
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
+                //     let media = await cms.media.store.persist(
+                //       files.map((file) => {
+                //         return {
+                //           directory,
+                //           file,
+                //         }
+                //       })
+                //     )
+                //     return media.map((m) => `/images/${m.filename}`)
+                //   },
+                //   previewUrl: (str) => str,
+                // }}
+                name="markdownBody"
+              >
+                <MarkdownWrapper source={data.markdownBody} />
+              </InlineWysiwyg>
+            </main>
+          </RichText>
           <PostNavigation allNestedDocs={nestedDocs} />
           <PostFeedback />
         </DocWrapper>
