@@ -26,6 +26,7 @@
 # OAuth App Credentials from GitHub
 GITHUB_CLIENT_ID=***
 GITHUB_CLIENT_SECRET=***
+SIGNING_KEY=***
 
 # The path to your repository in GitHub
 REPO_FULL_NAME=<GitHub Username>/<Repo Name>

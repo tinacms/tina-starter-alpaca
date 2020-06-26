@@ -3281,6 +3281,11 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+crypto-js@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.0.0.tgz#2904ab2677a9d042856a2ea2ef80de92e4a36dcc"
+  integrity sha512-bzHZN8Pn+gS7DQA6n+iUmBfl0hO5DJq++QP3U6uTucDtk/0iGpXd/Gg7CGR0p8tJhofJyaKoWBuJI4eAO00BBg==
+
 css-box-model@^1.1.2:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/css-box-model/-/css-box-model-1.2.1.tgz#59951d3b81fd6b2074a62d49444415b0d2b4d7c1"
@@ -6447,26 +6452,28 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next-tinacms-github@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/next-tinacms-github/-/next-tinacms-github-0.1.1.tgz#94fbdadb532f0f2f8ecb056a9d6fc61d0f3ba0b2"
-  integrity sha512-qZcNsOsPzPOHPcrUUCIFoPBx57ObK/MUPzekdc/F88950G32/Dxw/Vzoehn50m/cEYZvkSfCQCGEjO7pJOz8KQ==
+next-tinacms-github@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/next-tinacms-github/-/next-tinacms-github-0.2.0.tgz#2c2a5ff66ac1035df4f17b0f8f097cd81be76e02"
+  integrity sha512-x/4nAXVoNZptC3nVMd0958KPGhQ9h12OhDVjP2HHz9naaYEdE2z3qjaHx/j2PotcZeqLldI3JEoCD35MSf0hnA==
   dependencies:
     atob "2.1.2"
     axios "0.19.2"
     cookie "0.4.0"
+    crypto-js "^4.0.0"
     gray-matter "4.0.2"
     qs "6.9.3"
+    uuid "^8.1.0"
 
 next-tinacms-json@^0.3.7:
   version "0.3.17"
   resolved "https://registry.yarnpkg.com/next-tinacms-json/-/next-tinacms-json-0.3.17.tgz#cfe12f9fe39ae4bbc4b6ebd8549553425375f52f"
   integrity sha512-pumspGnIgG+jWYHXM2LqmWPd7CRmn++NIQL+KwQJ7NItj0/ziws1dod+pQoWArCISwEo97BpW6KlKHdR/r6xEA==
 
-next-tinacms-markdown@^0.2.18:
-  version "0.2.18"
-  resolved "https://registry.yarnpkg.com/next-tinacms-markdown/-/next-tinacms-markdown-0.2.18.tgz#4d4bb4310c45a59745b0696411d1bdfe9ac738d5"
-  integrity sha512-JlrDtJ+dXwEMiPLCdPNem9UPriI1T7oCOW30FBbMj9ABCopMMZSLmerXkHgBGDA3eRLM9j8ca7yDwDHKtby4cA==
+next-tinacms-markdown@^0.2.21:
+  version "0.2.21"
+  resolved "https://registry.yarnpkg.com/next-tinacms-markdown/-/next-tinacms-markdown-0.2.21.tgz#cd67a583cf1a120a83651325bea8afecb7191fa0"
+  integrity sha512-8ejWRySOTQAa9U/WFBJSrzW5Ms3r0JKOGE1zlXWJ4xC66nczstlRki2KZeu8cUBaZLNkUIPhSb23oJNv6iDgRQ==
   dependencies:
     gray-matter "^4.0.2"
     js-yaml "^3.13.1"
@@ -8161,14 +8168,14 @@ react-tinacms-editor@^0.7.2:
     prosemirror-view "^1.11.3"
     react-dismissible "^1.1.5"
 
-react-tinacms-github@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-tinacms-github/-/react-tinacms-github-0.4.1.tgz#d3b5c7c06dd3695200e3d04f514e9e8c21e408e7"
-  integrity sha512-PR16GqBqb639/NCNZIz9WfuZjb7/ch1nT+SNwZrrNjoU4DQ8eYRBj+LpAuBoEa4SiJ3tM+KGJEeMSFIMbnAapg==
+react-tinacms-github@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-tinacms-github/-/react-tinacms-github-0.5.0.tgz#b481e24eb5db88ba1181d5eafa17c23f234cbc2c"
+  integrity sha512-cALdX4jxUc7PyNufhqYB1d+BfkhHIDp3npF3Xlxt4zLEgtw4V3RgdkhKSfF31nZn7JSCpTNe/V58j2L+1QdQqQ==
   dependencies:
     btoa "^1.2.1"
     js-cookie "^2.2.1"
-    next-tinacms-markdown "^0.2.18"
+    next-tinacms-markdown "^0.2.21"
 
 react-tinacms-inline@^0.6.0:
   version "0.6.0"
@@ -10042,6 +10049,11 @@ uuid@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
   integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
+
+uuid@^8.1.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.2.0.tgz#cb10dd6b118e2dada7d0cd9730ba7417c93d920e"
+  integrity sha512-CYpGiFTUrmI6OBMkAdjSDM0k5h8SkkiTP4WAjQgDgNB1S3Ou9VBEvr6q0Kv2H1mMk7IWfxYGpMH5sd5AvcIV2Q==
 
 v8-compile-cache@^2.0.3:
   version "2.1.1"
