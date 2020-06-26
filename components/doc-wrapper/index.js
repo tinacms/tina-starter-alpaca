@@ -1,20 +1,13 @@
 import { node } from "prop-types"
-import { useInlineForm } from "react-tinacms-inline"
 import { useMemo } from "react"
 
 import { DocWrapperStyled } from "./styles"
-// import { useCMS } from "tinacms"
+import { useCMS } from "tinacms"
 
 const DocWrapper = ({ children, preview, styled }) => {
-  const { deactivate, activate } = useInlineForm()
-  // const cms = useCMS()
-
-  // function handleInlineEdit() {
-  //   preview ? cms.enable() : cms.disable()
-  // }
-
+  const cms = useCMS()
   function handleInlineEdit() {
-    preview ? activate() : deactivate()
+    preview ? cms.enable() : cms.disable()
   }
   useMemo(handleInlineEdit, [preview])
   if (styled) {
