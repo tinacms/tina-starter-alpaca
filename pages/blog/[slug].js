@@ -15,6 +15,7 @@ import PostFeedback from "@components/post-feedback"
 import DocWrapper from "@components/doc-wrapper"
 import MarkdownWrapper from "@components/markdown-wrapper"
 import { PrimaryAnchor } from "@components/Anchor"
+import RichText from "@components/rich-text"
 import { usePlugin } from "tinacms"
 import { createToc, getBlogPosts } from "@utils"
 import useCreateBlogPage from "../../hooks/useCreateBlogPage"
@@ -60,16 +61,18 @@ const BlogPage = (props) => {
       <InlineForm form={form}>
         <DocWrapper preview={props.preview} styled={false}>
           {props.preview && <InlineEditingControls />}
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+          <RichText>
+            <main>
+              <h1>
+                <InlineTextField name="frontmatter.title" />
+              </h1>
+              {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
-            <InlineWysiwyg name="markdownBody">
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
+              <InlineWysiwyg name="markdownBody">
+                <MarkdownWrapper source={data.markdownBody} />
+              </InlineWysiwyg>
+            </main>
+          </RichText>
           <PostFeedback />
         </DocWrapper>
       </InlineForm>
