@@ -40,6 +40,11 @@ export const DocWrapperStyled = styled.section`
     ul li ul {
       margin-bottom: 0.3rem;
     }
+    li {
+      p {
+        all: inherit;
+      }
+    }
 
     h2 {
       font-size: 32px;
@@ -69,6 +74,11 @@ export const DocWrapperStyled = styled.section`
       margin-bottom: 2rem;
     }
 
+    code {
+      background: #c7e3ff;
+      padding: 0 10px;
+    }
+
     pre {
       color: #fff;
       background: rgb(51, 51, 51);
@@ -87,6 +97,7 @@ export const DocWrapperStyled = styled.section`
       overflow: auto;
 
       & > code {
+        padding: 0;
         background: transparent;
       }
     }
