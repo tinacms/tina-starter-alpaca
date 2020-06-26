@@ -8,7 +8,6 @@ import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-gi
 import { InlineForm } from "react-tinacms-inline"
 
 import Head from "@components/head"
-import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
 import PostNavigation from "@components/post-navigation"
 import PostFeedback from "@components/post-feedback"
@@ -64,7 +63,6 @@ const DocTemplate = (props) => {
       />
       <InlineForm form={form}>
         <DocWrapper preview={props.preview} styled={true}>
-          {props.preview && <InlineEditingControls />}
           <main>
             <h1>
               <InlineTextField name="frontmatter.title" />
@@ -72,11 +70,9 @@ const DocTemplate = (props) => {
             {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
             <InlineWysiwyg
-              // TODO: fix this
               // imageProps={{
               //   async upload(files) {
               //     const directory = "/public/images/"
-
               //     let media = await cms.media.store.persist(
               //       files.map((file) => {
               //         return {

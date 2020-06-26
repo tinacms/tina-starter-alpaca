@@ -3,9 +3,15 @@ import { useInlineForm } from "react-tinacms-inline"
 import { useMemo } from "react"
 
 import { DocWrapperStyled } from "./styles"
+// import { useCMS } from "tinacms"
 
 const DocWrapper = ({ children, preview, styled }) => {
   const { deactivate, activate } = useInlineForm()
+  // const cms = useCMS()
+
+  // function handleInlineEdit() {
+  //   preview ? cms.enable() : cms.disable()
+  // }
 
   function handleInlineEdit() {
     preview ? activate() : deactivate()

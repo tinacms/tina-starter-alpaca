@@ -1,7 +1,10 @@
 import React from "react"
 import App from "next/app"
 import { TinaProvider, TinaCMS } from "tinacms"
-import { TinacmsGithubProvider } from "react-tinacms-github"
+import {
+  TinacmsGithubProvider,
+  // GithubMediaStore
+} from "react-tinacms-github"
 import { Normalize } from "styled-normalize"
 import { AlpacaGitHubClient } from "../utils/githubClient"
 // import { GithubClient } from "react-tinacms-github"
@@ -18,8 +21,8 @@ class MyApp extends App {
       clientId: process.env.GITHUB_CLIENT_ID,
       baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
       baseBranch: process.env.BASE_BRANCH,
-      // authScope: "repo",
     })
+    // const media = GithubMediaStore(client)
     this.cms = new TinaCMS({
       apis: {
         /**

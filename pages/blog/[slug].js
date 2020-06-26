@@ -8,7 +8,6 @@ import { getGithubPreviewProps, parseMarkdown } from "next-tinacms-github"
 import { InlineWysiwyg } from "react-tinacms-editor"
 
 import Head from "@components/head"
-import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
 import Toc from "@components/Toc"
 import PostFeedback from "@components/post-feedback"
@@ -59,7 +58,6 @@ const BlogPage = (props) => {
       </p>
       <InlineForm form={form}>
         <DocWrapper preview={props.preview} styled={false}>
-          {props.preview && <InlineEditingControls />}
           <main>
             <h1>
               <InlineTextField name="frontmatter.title" />
