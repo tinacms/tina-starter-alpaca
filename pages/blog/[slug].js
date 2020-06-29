@@ -15,6 +15,7 @@ import DocWrapper from "@components/doc-wrapper"
 import MarkdownWrapper from "@components/markdown-wrapper"
 import { PrimaryAnchor } from "@components/Anchor"
 import { usePlugin, useCMS } from "tinacms"
+import RichText from "@components/rich-text"
 import { createToc, getBlogPosts } from "@utils"
 import useCreateBlogPage from "../../hooks/useCreateBlogPage"
 
@@ -60,36 +61,38 @@ const BlogPage = (props) => {
       </p>
       <InlineForm form={form}>
         <DocWrapper preview={props.preview} styled={false}>
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+          <RichText>
+            <main>
+              <h1>
+                <InlineTextField name="frontmatter.title" />
+              </h1>
+              {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
-            <InlineWysiwyg
-              imageProps={{
-                async upload(files) {
-                  const directory = "/public/images/"
-                  let media = await cms.media.store.persist(
-                    files.map((file) => {
-                      return {
-                        directory,
-                        file,
-                      }
-                    })
-                  )
-                  return media.map((m) => `public/images/${m.filename}`)
-                },
-                previewUrl: (str) => {
-                  console.log({ str })
-                  return `${previewURL}/${str}`
-                },
-              }}
-              name="markdownBody"
-            >
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
+              <InlineWysiwyg
+                imageProps={{
+                  async upload(files) {
+                    const directory = "/public/images/"
+                    let media = await cms.media.store.persist(
+                      files.map((file) => {
+                        return {
+                          directory,
+                          file,
+                        }
+                      })
+                    )
+                    return media.map((m) => `public/images/${m.filename}`)
+                  },
+                  previewUrl: (str) => {
+                    console.log({ str })
+                    return `${previewURL}/${str}`
+                  },
+                }}
+                name="markdownBody"
+              >
+                <MarkdownWrapper source={data.markdownBody} />
+              </InlineWysiwyg>
+            </main>
+          </RichText>
           <PostFeedback />
         </DocWrapper>
       </InlineForm>

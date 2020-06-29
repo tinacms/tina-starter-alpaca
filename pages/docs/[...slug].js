@@ -6,10 +6,10 @@ import { InlineTextField, InlineField } from "react-tinacms-inline"
 import { InlineWysiwyg, Wysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
-
 import Head from "@components/head"
 import Layout from "@components/layout"
 import PostNavigation from "@components/post-navigation"
+import RichText from "@components/rich-text"
 import PostFeedback from "@components/post-feedback"
 import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
@@ -67,35 +67,37 @@ const DocTemplate = (props) => {
       >
         <InlineForm form={form}>
           <DocWrapper preview={props.preview} styled={true}>
-            <main>
-              <h1>
-                <InlineTextField name="frontmatter.title" />
-              </h1>
-              {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
-              <InlineWysiwyg
-                imageProps={{
-                  async upload(files) {
-                    const directory = "/public/images/"
-                    let media = await cms.media.store.persist(
-                      files.map((file) => {
-                        return {
-                          directory,
-                          file,
-                        }
-                      })
-                    )
-                    return media.map((m) => `public/images/${m.filename}`)
-                  },
-                  previewUrl: (str) => {
-                    console.log({ str })
-                    return `${previewURL}/${str}`
-                  },
-                }}
-                name="markdownBody"
-              >
-                <MarkdownWrapper source={data.markdownBody} />
-              </InlineWysiwyg>
-            </main>
+            <RichText>
+              <main>
+                <h1>
+                  <InlineTextField name="frontmatter.title" />
+                </h1>
+                {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+                <InlineWysiwyg
+                  imageProps={{
+                    async upload(files) {
+                      const directory = "/public/images/"
+                      let media = await cms.media.store.persist(
+                        files.map((file) => {
+                          return {
+                            directory,
+                            file,
+                          }
+                        })
+                      )
+                      return media.map((m) => `public/images/${m.filename}`)
+                    },
+                    previewUrl: (str) => {
+                      console.log({ str })
+                      return `${previewURL}/${str}`
+                    },
+                  }}
+                  name="markdownBody"
+                >
+                  <MarkdownWrapper source={data.markdownBody} />
+                </InlineWysiwyg>
+              </main>
+            </RichText>
             <PostNavigation allNestedDocs={nestedDocs} />
             <PostFeedback />
           </DocWrapper>
