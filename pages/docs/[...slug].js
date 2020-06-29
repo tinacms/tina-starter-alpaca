@@ -1,7 +1,7 @@
 import matter from "gray-matter"
 import { useRouter } from "next/router"
 import Error from "next/error"
-import { useFormScreenPlugin, usePlugin } from "tinacms"
+import { useFormScreenPlugin, usePlugin, useCMS } from "tinacms"
 import { InlineTextField, InlineField } from "react-tinacms-inline"
 import { InlineWysiwyg, Wysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
@@ -26,6 +26,8 @@ import { createToc } from "@utils"
 import getGlobalStaticProps from "../../utils/getGlobalStaticProps"
 
 const DocTemplate = (props) => {
+  const cms = useCMS()
+  const previewURL = props.previewURL || ""
   const router = useRouter()
   if (!props.file) {
     return <Error statusCode={404} />
@@ -70,21 +72,24 @@ const DocTemplate = (props) => {
             {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
             <InlineWysiwyg
-              // imageProps={{
-              //   async upload(files) {
-              //     const directory = "/public/images/"
-              //     let media = await cms.media.store.persist(
-              //       files.map((file) => {
-              //         return {
-              //           directory,
-              //           file,
-              //         }
-              //       })
-              //     )
-              //     return media.map((m) => `/images/${m.filename}`)
-              //   },
-              //   previewUrl: (str) => str,
-              // }}
+              imageProps={{
+                async upload(files) {
+                  const directory = "/public/images/"
+                  let media = await cms.media.store.persist(
+                    files.map((file) => {
+                      return {
+                        directory,
+                        file,
+                      }
+                    })
+                  )
+                  return media.map((m) => `public/images/${m.filename}`)
+                },
+                previewUrl: (str) => {
+                  console.log({ str })
+                  return `${previewURL}/${str}`
+                },
+              }}
               name="markdownBody"
             >
               <MarkdownWrapper source={data.markdownBody} />
@@ -138,6 +143,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
             fileRelativePath: `docs/config.json`,
           },
           Alltocs,
+          previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
         },
       }
     } catch (e) {
