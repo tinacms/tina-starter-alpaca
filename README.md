@@ -71,7 +71,7 @@ npm run dev
 
 ## Deploy on Vercel
 
-[![Deploy to Vercel](https://vercel.com/button)](/import/project?template=https://github.com/tinacms/tina-starter-alpaca)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/tinacms/tina-starter-alpaca)
 
 - [See how to deploy NextJS on Vercel](https://nextjs.org/docs/deployment).
 - [You have to **create a GitHub OAuth App** with your Vercel URL](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
