@@ -69,11 +69,12 @@ npm run dev
       2. Configure custom ranking (must add excerpt)
    5. Test and see the search is now working
 
-## :link: Hosting
+## Deploy on Vercel
 
-Deploy it to the cloud with [Vercel](https://vercel.com/) ([Documentation](https://nextjs.org/docs/deployment)).
+[![Deploy to Vercel](https://vercel.com/button)](/import/project?template=https://github.com/tinacms/tina-starter-alpaca)
 
-You will have to make a **new GitHub OAuth App** with the url in vercel. [You can learn how to do that in our guide.](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
+- [See how to deploy NextJS on Vercel](https://nextjs.org/docs/deployment).
+- [You have to **create a GitHub OAuth App** with your Vercel URL](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
 
 ## :octocat: Issues
 
