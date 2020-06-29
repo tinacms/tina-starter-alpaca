@@ -57,48 +57,50 @@ const DocTemplate = (props) => {
       searchIndex="tina-starter-alpaca-Docs"
     >
       <Head title={data.frontmatter.title} />
-      <SideNav
-        allNestedDocs={nestedDocs}
-        currentSlug={router.query.slug}
-        // This will have to change to JSON
-        groupIn={data.frontmatter.groupIn}
-      />
-      <InlineForm form={form}>
-        <DocWrapper preview={props.preview} styled={true}>
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
-
-            <InlineWysiwyg
-              imageProps={{
-                async upload(files) {
-                  const directory = "/public/images/"
-                  let media = await cms.media.store.persist(
-                    files.map((file) => {
-                      return {
-                        directory,
-                        file,
-                      }
-                    })
-                  )
-                  return media.map((m) => `public/images/${m.filename}`)
-                },
-                previewUrl: (str) => {
-                  console.log({ str })
-                  return `${previewURL}/${str}`
-                },
-              }}
-              name="markdownBody"
-            >
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
-          <PostNavigation allNestedDocs={nestedDocs} />
-          <PostFeedback />
-        </DocWrapper>
-      </InlineForm>
+      <SideNav allNestedDocs={nestedDocs} currentSlug={router.query.slug} />
+      <div
+        style={{
+          maxWidth: "762px",
+          marginLeft: 0,
+          flex: "1 1 0",
+        }}
+      >
+        <InlineForm form={form}>
+          <DocWrapper preview={props.preview} styled={true}>
+            <main>
+              <h1>
+                <InlineTextField name="frontmatter.title" />
+              </h1>
+              {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+              <InlineWysiwyg
+                imageProps={{
+                  async upload(files) {
+                    const directory = "/public/images/"
+                    let media = await cms.media.store.persist(
+                      files.map((file) => {
+                        return {
+                          directory,
+                          file,
+                        }
+                      })
+                    )
+                    return media.map((m) => `public/images/${m.filename}`)
+                  },
+                  previewUrl: (str) => {
+                    console.log({ str })
+                    return `${previewURL}/${str}`
+                  },
+                }}
+                name="markdownBody"
+              >
+                <MarkdownWrapper source={data.markdownBody} />
+              </InlineWysiwyg>
+            </main>
+            <PostNavigation allNestedDocs={nestedDocs} />
+            <PostFeedback />
+          </DocWrapper>
+        </InlineForm>
+      </div>
     </Layout>
   )
 }
