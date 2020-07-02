@@ -1,7 +1,7 @@
 import React from "react"
 import App from "next/app"
 import { TinaProvider, TinaCMS } from "tinacms"
-import { TinacmsGithubProvider } from "react-tinacms-github"
+import { TinacmsGithubProvider, GithubMediaStore } from "react-tinacms-github"
 import { Normalize } from "styled-normalize"
 import { AlpacaGitHubClient } from "../utils/githubClient"
 // import { GithubClient } from "react-tinacms-github"
@@ -18,19 +18,18 @@ class MyApp extends App {
       clientId: process.env.GITHUB_CLIENT_ID,
       baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
       baseBranch: process.env.BASE_BRANCH,
-      // authScope: "repo",
     })
+    const store = new GithubMediaStore(client)
     this.cms = new TinaCMS({
+      media: {
+        store: store,
+      },
       apis: {
         /**
          * 2. Register the GithubClient
          */
         github: client,
       },
-      /**
-       * 3. Hide the Sidebar & Toolbar
-       *    unless we're in Preview/Edit Mode
-       */
       sidebar: {
         hidden: true,
       },
@@ -59,7 +58,15 @@ class MyApp extends App {
 }
 
 const enterEditMode = () => {
-  return fetch(`/api/preview`).then(() => {
+  const token = localStorage.getItem("tinacms-github-token") || null
+
+  const headers = new Headers()
+
+  if (token) {
+    headers.append("Authorization", "Bearer " + token)
+  }
+
+  return fetch(`/api/preview`, { headers: headers }).then(() => {
     window.location.href = window.location.pathname
   })
 }
@@ -69,4 +76,5 @@ const exitEditMode = () => {
     window.location.reload()
   })
 }
+
 export default MyApp
