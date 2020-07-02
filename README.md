@@ -49,6 +49,27 @@ npm run dev
 6. Your doc starter should be up and running on [http://localhost:3000](http://localhost:3000)!
 
 
+## Github issue feedback
+This will allow the feedback form to submite a github issue to to the repo of your choosing.
+
+1. [make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
+Note: this will be the user that will post the github issue
+2. add new env vars
+```env
+USERNAME_ISSUES=<the github ussername that was used for personal access token>
+GITHUB_ACCESS_TOKEN=<personal access token>
+REPO_ISSUES=< the repo where you want the feedback posted >
+```
+3. run server
+```bash
+git checkout feature/github-issues
+yarn
+yarn dev
+```
+4. submit feedback in the form on the bottom of the page
+
+
+
 ## :link: Hosting
 Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
