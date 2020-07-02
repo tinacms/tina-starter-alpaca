@@ -10,10 +10,16 @@ const PostFeedback = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
   const [{ formStatus, reaction, comment }, dispatch] = useReducer(reducer, initialState)
   const reactionsList = [
-    { icon: "icon-confused", value: "confused" },
-    { icon: "icon-neutral", value: "neutral" },
-    { icon: "icon-happy", value: "happy" },
+    { icon: "icon-confused", value: "Confused😕" },
+    { icon: "icon-neutral", value: "Neutral😐" },
+    { icon: "icon-happy", value: "Happy😄" },
   ]
+  const emojiMap = {
+    "Confused😕": ":confused:",
+    "Neutral😐": ":neutral_face:",
+    "Happy😄": ":smile:",
+  }
+
   const textAreaRef = useRef()
 
   /* Methods */
@@ -48,7 +54,12 @@ const PostFeedback = () => {
       dispatch({ type: "set-error" })
     } else {
       try {
-        await onSubmit({ reaction, comment, location: window.location.pathname })
+        await onSubmit({
+          reaction,
+          comment,
+          location: window.location.pathname,
+          tag: emojiMap[reaction],
+        })
         cms.alerts.success("Your feedback has been submitted")
         dispatch({ type: "set-success" })
       } catch (err) {

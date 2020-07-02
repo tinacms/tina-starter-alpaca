@@ -21,9 +21,9 @@ export default async (req, res) => {
           Authorization: `Basic ${token}`,
         },
         data: {
-          title: `Comment from documentation starter: page ${req.body.location}`,
-          body: JSON.stringify(req.body, null, 2),
-          labels: [req.body.location, req.body.reaction],
+          title: `${req.body.reaction} comment on ${req.body.location}`,
+          body: req.body.comment,
+          labels: [req.body.tag, req.body.location],
         },
       })
       res.status(200).json({ message: "sent" })
