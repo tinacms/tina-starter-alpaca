@@ -1,17 +1,15 @@
 import matter from "gray-matter"
-import algoliasearch from "algoliasearch/lite"
 import { useRouter } from "next/router"
 import Error from "next/error"
-import { useFormScreenPlugin, usePlugin } from "tinacms"
+import { useFormScreenPlugin, usePlugin, useCMS } from "tinacms"
 import { InlineTextField, InlineField } from "react-tinacms-inline"
 import { InlineWysiwyg, Wysiwyg } from "react-tinacms-editor"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
-
 import Head from "@components/head"
-import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
 import PostNavigation from "@components/post-navigation"
+import RichText from "@components/rich-text"
 import PostFeedback from "@components/post-feedback"
 import SideNav from "@components/side-nav"
 import DocWrapper from "@components/doc-wrapper"
@@ -28,6 +26,8 @@ import { createToc } from "@utils"
 import getGlobalStaticProps from "../../utils/getGlobalStaticProps"
 
 const DocTemplate = (props) => {
+  const cms = useCMS()
+  const previewURL = props.previewURL || ""
   const router = useRouter()
   if (!props.file) {
     return <Error statusCode={404} />
@@ -49,50 +49,60 @@ const DocTemplate = (props) => {
   useCreateChildPage(nestedDocs)
 
   return (
-    <Layout showDocsSearcher splitView preview={props.preview} theme={styleData}>
+    <Layout
+      showDocsSearcher
+      splitView
+      preview={props.preview}
+      theme={styleData}
+      searchIndex="tina-starter-alpaca-Docs"
+    >
       <Head title={data.frontmatter.title} />
-      <SideNav
-        allNestedDocs={nestedDocs}
-        currentSlug={router.query.slug}
-        // This will have to change to JSON
-        groupIn={data.frontmatter.groupIn}
-      />
-      <InlineForm form={form}>
-        <DocWrapper preview={props.preview} styled={true}>
-          {props.preview && <InlineEditingControls />}
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
-
-            <InlineWysiwyg
-              // TODO: fix this
-              // imageProps={{
-              //   async upload(files) {
-              //     const directory = "/public/images/"
-
-              //     let media = await cms.media.store.persist(
-              //       files.map((file) => {
-              //         return {
-              //           directory,
-              //           file,
-              //         }
-              //       })
-              //     )
-              //     return media.map((m) => `/images/${m.filename}`)
-              //   },
-              //   previewUrl: (str) => str,
-              // }}
-              name="markdownBody"
-            >
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
-          <PostNavigation allNestedDocs={nestedDocs} />
-          <PostFeedback />
-        </DocWrapper>
-      </InlineForm>
+      <SideNav allNestedDocs={nestedDocs} currentSlug={router.query.slug} />
+      <div
+        style={{
+          maxWidth: "762px",
+          marginLeft: 0,
+          flex: "1 1 0",
+        }}
+      >
+        <InlineForm form={form}>
+          <DocWrapper preview={props.preview} styled={true}>
+            <RichText>
+              <main>
+                <h1>
+                  <InlineTextField name="frontmatter.title" />
+                </h1>
+                {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+                <InlineWysiwyg
+                  imageProps={{
+                    async upload(files) {
+                      const directory = "/public/images/"
+                      let media = await cms.media.store.persist(
+                        files.map((file) => {
+                          return {
+                            directory,
+                            file,
+                          }
+                        })
+                      )
+                      return media.map((m) => `public/images/${m.filename}`)
+                    },
+                    previewUrl: (str) => {
+                      console.log({ str })
+                      return `${previewURL}/${str}`
+                    },
+                  }}
+                  name="markdownBody"
+                >
+                  <MarkdownWrapper source={data.markdownBody} />
+                </InlineWysiwyg>
+              </main>
+            </RichText>
+            <PostNavigation allNestedDocs={nestedDocs} />
+            <PostFeedback />
+          </DocWrapper>
+        </InlineForm>
+      </div>
     </Layout>
   )
 }
@@ -137,6 +147,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
             fileRelativePath: `docs/config.json`,
           },
           Alltocs,
+          previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
         },
       }
     } catch (e) {

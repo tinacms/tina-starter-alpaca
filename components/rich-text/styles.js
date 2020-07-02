@@ -1,8 +1,13 @@
 import styled from "styled-components"
-import ReactMarkdown from "react-markdown"
 
-export const ReactMarkdowStyled = styled(ReactMarkdown)`
+export const StyledRichText = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};
+
+  & img {
+    max-width: 100%;
+    width: 100%;
+  }
+
   p {
     font-size: 16px;
     line-height: 32px;
@@ -29,6 +34,11 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
   }
   ul li ul {
     margin-bottom: 0.3rem;
+  }
+  li {
+    p {
+      all: inherit;
+    }
   }
 
   h2 {
@@ -59,20 +69,30 @@ export const ReactMarkdowStyled = styled(ReactMarkdown)`
     margin-bottom: 2rem;
   }
 
-  code,
-  kbd,
-  samp {
+  code {
     background: #c7e3ff;
     padding: 0 10px;
   }
 
   pre {
-    background: #ccc;
-    border-radius: 2px;
-    padding: 20px;
-    white-space: pre-wrap;
+    color: #fff;
+    background: rgb(51, 51, 51);
+    font-family: "Source Code Pro", Consolas, monospace;
+    font-size: 14px;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+    padding: 24px;
+    margin: 10px 0px 32px;
+    overflow: auto;
 
     & > code {
+      padding: 0;
       background: transparent;
     }
   }

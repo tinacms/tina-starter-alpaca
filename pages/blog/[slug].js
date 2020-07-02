@@ -8,18 +8,20 @@ import { getGithubPreviewProps, parseMarkdown } from "next-tinacms-github"
 import { InlineWysiwyg } from "react-tinacms-editor"
 
 import Head from "@components/head"
-import InlineEditingControls from "@components/inline-controls"
 import Layout from "@components/layout"
 import Toc from "@components/Toc"
 import PostFeedback from "@components/post-feedback"
 import DocWrapper from "@components/doc-wrapper"
 import MarkdownWrapper from "@components/markdown-wrapper"
 import { PrimaryAnchor } from "@components/Anchor"
-import { usePlugin } from "tinacms"
+import { usePlugin, useCMS } from "tinacms"
+import RichText from "@components/rich-text"
 import { createToc, getBlogPosts } from "@utils"
 import useCreateBlogPage from "../../hooks/useCreateBlogPage"
 
 const BlogPage = (props) => {
+  const cms = useCMS()
+  const previewURL = props.previewURL || ""
   const router = useRouter()
   if (!props.file) {
     return <Error statusCode={404} />
@@ -44,7 +46,12 @@ const BlogPage = (props) => {
   usePlugin(form)
 
   return (
-    <Layout preview={props.preview}>
+    <Layout
+      searchText="Search blog posts"
+      showDocsSearcher
+      preview={props.preview}
+      searchIndex="tina-starter-alpaca-Blogs"
+    >
       <Head title={`${data.frontmatter.title} | Blog`} />
       <p>
         <Link href="/blog">
@@ -54,17 +61,38 @@ const BlogPage = (props) => {
       </p>
       <InlineForm form={form}>
         <DocWrapper preview={props.preview} styled={false}>
-          {props.preview && <InlineEditingControls />}
-          <main>
-            <h1>
-              <InlineTextField name="frontmatter.title" />
-            </h1>
-            {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
+          <RichText>
+            <main>
+              <h1>
+                <InlineTextField name="frontmatter.title" />
+              </h1>
+              {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
-            <InlineWysiwyg name="markdownBody">
-              <MarkdownWrapper source={data.markdownBody} />
-            </InlineWysiwyg>
-          </main>
+              <InlineWysiwyg
+                imageProps={{
+                  async upload(files) {
+                    const directory = "/public/images/"
+                    let media = await cms.media.store.persist(
+                      files.map((file) => {
+                        return {
+                          directory,
+                          file,
+                        }
+                      })
+                    )
+                    return media.map((m) => `public/images/${m.filename}`)
+                  },
+                  previewUrl: (str) => {
+                    console.log({ str })
+                    return `${previewURL}/${str}`
+                  },
+                }}
+                name="markdownBody"
+              >
+                <MarkdownWrapper source={data.markdownBody} />
+              </InlineWysiwyg>
+            </main>
+          </RichText>
           <PostFeedback />
         </DocWrapper>
       </InlineForm>
@@ -94,6 +122,7 @@ export const getStaticProps = async function ({ preview, previewData, params }) 
       props: {
         posts,
         Alltocs,
+        previewURL: `https://raw.githubusercontent.com/${previewData.working_repo_full_name}/${previewData.head_branch}`,
         ...previewProps.props,
       },
     }

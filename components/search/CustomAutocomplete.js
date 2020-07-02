@@ -18,6 +18,7 @@ const Autocomplete = ({
   currentRefinement,
   refine,
   query,
+  searchText,
 }) => {
   const inputRef = useRef()
   const wrapperRef = useRef()
@@ -57,7 +58,7 @@ const Autocomplete = ({
   return (
     <SearchWrapper ref={wrapperRef}>
       <Search
-        placeholder="Search our docs by topic…"
+        placeholder={searchText || "Search our docs by topic…"}
         type="search"
         value={currentRefinement}
         onChange={(event) => refine(event.currentTarget.value)}
@@ -108,7 +109,7 @@ const Hit = ({ hit }) => (
     <HitItem>
       <HighlightTitle hit={hit} attribute="title" />
       <div>
-        <CustomHighlight attribute="content" hit={hit} />
+        <CustomHighlight attribute="excerpt" hit={hit} />
       </div>
     </HitItem>
   </Link>
