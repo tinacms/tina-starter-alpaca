@@ -24,9 +24,9 @@
 
 ```env
 # OAuth App Credentials from GitHub
-GITHUB_CLIENT_ID=***
-GITHUB_CLIENT_SECRET=***
-SIGNING_KEY=***
+GITHUB_CLIENT_ID=************
+GITHUB_CLIENT_SECRET=************
+SIGNING_KEY=*********
 
 # The path to your repository in GitHub
 REPO_FULL_NAME=<GitHub Username>/<Repo Name>
@@ -70,11 +70,12 @@ npm run dev
       2. Configure custom ranking (must add excerpt)
    5. Test and see the search is now working
 
-## :link: Hosting
+## Deploy on Vercel
 
-Deploy it to the cloud with [Vercel](https://vercel.com/) ([Documentation](https://nextjs.org/docs/deployment)).
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/tinacms/tina-starter-alpaca&env=REPO_FULL_NAME,GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,SIGNING_KEY&envDescription=Provide%20GitHub%20OAuth%20Keys&envLink=https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel)
 
-You will have to make a **new GitHub OAuth App** with the url in vercel. [You can learn how to do that in our guide.](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
+- [See how to deploy NextJS on Vercel](https://nextjs.org/docs/deployment).
+- [You have to **create a GitHub OAuth App** with your Vercel URL](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
 
 ## :octocat: Issues
 
