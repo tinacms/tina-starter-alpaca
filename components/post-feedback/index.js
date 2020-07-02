@@ -10,14 +10,14 @@ const PostFeedback = () => {
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
   const [{ formStatus, reaction, comment }, dispatch] = useReducer(reducer, initialState)
   const reactionsList = [
-    { icon: "icon-confused", value: "Confused😕" },
-    { icon: "icon-neutral", value: "Neutral😐" },
-    { icon: "icon-happy", value: "Happy😄" },
+    { icon: "icon-confused", value: "😕 Confused" },
+    { icon: "icon-neutral", value: "😐 Neutral" },
+    { icon: "icon-happy", value: "😄 Happy" },
   ]
   const emojiMap = {
-    "Confused😕": ":confused:",
-    "Neutral😐": ":neutral_face:",
-    "Happy😄": ":smile:",
+    "😕 Confused ": ":confused:",
+    "😐 Neutral": ":neutral_face:",
+    "😄 Happy": ":smile:",
   }
 
   const textAreaRef = useRef()
