@@ -50,7 +50,7 @@ npm run dev
 
 
 ## Github issue feedback
-This will allow the feedback form to submit a github issue to to the repo of your choosing.
+This will allow the feedback form to submit a github issue to to the repo of your choosing. Github issues are awesome for this as they allow filtering of feedback based on URL, reactation, ect.
 
 1. [make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
 Note: this will be the user that will post the github issue
