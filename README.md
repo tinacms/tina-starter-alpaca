@@ -50,7 +50,7 @@ npm run dev
 
 
 ## Github issue feedback
-This will allow the feedback form to submite a github issue to to the repo of your choosing.
+This will allow the feedback form to submit a github issue to to the repo of your choosing.
 
 1. [make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
 Note: this will be the user that will post the github issue
@@ -62,7 +62,6 @@ REPO_ISSUES=< the repo where you want the feedback posted >
 ```
 3. run server
 ```bash
-git checkout feature/github-issues
 yarn
 yarn dev
 ```
