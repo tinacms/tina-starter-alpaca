@@ -24,8 +24,9 @@
 
 ```env
 # OAuth App Credentials from GitHub
-GITHUB_CLIENT_ID=***
-GITHUB_CLIENT_SECRET=***
+GITHUB_CLIENT_ID=************
+GITHUB_CLIENT_SECRET=************
+SIGNING_KEY=*********
 
 # The path to your repository in GitHub
 REPO_FULL_NAME=<GitHub Username>/<Repo Name>
@@ -71,7 +72,7 @@ npm run dev
 
 ## Deploy on Vercel
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/tinacms/tina-starter-alpaca)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/tinacms/tina-starter-alpaca&env=REPO_FULL_NAME,GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,SIGNING_KEY&envDescription=Provide%20GitHub%20OAuth%20Keys&envLink=https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel)
 
 - [See how to deploy NextJS on Vercel](https://nextjs.org/docs/deployment).
 - [You have to **create a GitHub OAuth App** with your Vercel URL](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
