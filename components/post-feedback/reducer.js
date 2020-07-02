@@ -22,6 +22,11 @@ export const reducer = (state, { type, value }) => {
         formStatus: "SUCCESS",
         comment: "",
       }
+    case "set-error-send":
+      return {
+        ...state,
+        formStatus: "ERROR_SEND",
+      }
     default:
       return state
   }

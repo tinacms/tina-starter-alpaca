@@ -72,6 +72,34 @@ npm run dev
 
 ## Deploy on Vercel
 
+## Gathering Feedback
+
+People can submit  feedback from any documentation page. This feedback is immediately posted to GitHub and stored as issues to the repository of your choosing.
+GitHub issues are an awesome way to store feeback, make it searchable, filterable on page URL or reaction types for instance, and you can chosse to be notified of any new comment on your website 🔔.
+
+### Setup
+
+1. [Make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) 👈 This is the GitHub user that posts any new feedback. Feel free to create a dedicated GitHub account for this.
+2. Add the following environement variables:
+```env
+USERNAME_ISSUES=<GitHub username>
+GITHUB_ACCESS_TOKEN=<personal access token>
+REPO_ISSUES=<repository-name> 
+```
+
+Make sure issues are activated in the repository settings.
+
+3. Run NextJS in development mode to test:
+```bash
+yarn
+yarn dev
+```
+4. Submit a feedback from the form at the bottom of a documenation page on your site. 
+5.  👀 Check your GitHub repository if an issue has been created.
+
+
+## :link: Hosting
+
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/tinacms/tina-starter-alpaca&env=REPO_FULL_NAME,GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,SIGNING_KEY&envDescription=Provide%20GitHub%20OAuth%20Keys&envLink=https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel)
 
 - [See how to deploy NextJS on Vercel](https://nextjs.org/docs/deployment).
