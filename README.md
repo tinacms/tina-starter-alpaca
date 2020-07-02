@@ -49,24 +49,27 @@ npm run dev
 6. Your doc starter should be up and running on [http://localhost:3000](http://localhost:3000)!
 
 
-## Github issue feedback
-This will allow the feedback form to submit a github issue to to the repo of your choosing. Github issues are awesome for this as they allow filtering of feedback based on URL, reactation, ect.
+## Gathering Feedback
 
-1. [make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
-Note: this will be the user that will post the github issue
-2. add new env vars
+People can submit  feedback from any documentation page. This feedback is immediately posted to GitHub and stored as issues to the repository of your choosing.
+GitHub issues are an awesome way to store feeback, make it searchable, filterable on page URL or reaction types for instance, and you can chosse to be notified of any new comment on your website 🔔.
+
+### Setup
+
+1. [Make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) 👈 This is the GitHub user that posts any new feedback. Feel free to create a dedicated GitHub account for this.
+2. Add new env vars:
 ```env
-USERNAME_ISSUES=<the github ussername that was used for personal access token>
+USERNAME_ISSUES=<GitHub username>
 GITHUB_ACCESS_TOKEN=<personal access token>
-REPO_ISSUES=< the repo where you want the feedback posted >
+REPO_ISSUES=<the repo where you want the feedback posted: username/repository-name>
 ```
-3. run server
+3. Run server
 ```bash
 yarn
 yarn dev
 ```
-4. submit feedback in the form on the bottom of the page
-
+4. Submit a feedback from the form at the bottom of a documenation page on your site. 
+5.  👀 Check your GitHub repository, an issue should have been created.
 
 
 ## :link: Hosting
