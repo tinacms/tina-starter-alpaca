@@ -57,19 +57,22 @@ GitHub issues are an awesome way to store feeback, make it searchable, filterabl
 ### Setup
 
 1. [Make a personal GitHub access token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) 👈 This is the GitHub user that posts any new feedback. Feel free to create a dedicated GitHub account for this.
-2. Add new env vars:
+2. Add the following environement variables:
 ```env
 USERNAME_ISSUES=<GitHub username>
 GITHUB_ACCESS_TOKEN=<personal access token>
-REPO_ISSUES=<the repo where you want the feedback posted: username/repository-name>
+REPO_ISSUES=<repository-name> 
 ```
-3. Run server
+
+Make sure issues are activated in the repository settings.
+
+3. Run NextJS in development mode to test:
 ```bash
 yarn
 yarn dev
 ```
 4. Submit a feedback from the form at the bottom of a documenation page on your site. 
-5.  👀 Check your GitHub repository, an issue should have been created.
+5.  👀 Check your GitHub repository if an issue has been created.
 
 
 ## :link: Hosting
