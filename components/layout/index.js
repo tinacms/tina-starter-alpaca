@@ -1,4 +1,4 @@
-import { node, bool } from "prop-types"
+import { node, bool, any, string } from "prop-types"
 import { useGithubToolbarPlugins } from "react-tinacms-github"
 import { ThemeProvider } from "styled-components"
 
@@ -38,6 +38,10 @@ Layout.propTypes = {
   children: node,
   showDocsSearcher: bool,
   splitView: bool,
+  preview: bool,
+  searchIndex: string,
+  theme: any,
+  searchText: string,
 }
 
 Layout.defaultProps = {
