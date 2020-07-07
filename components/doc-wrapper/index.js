@@ -5,11 +5,11 @@ import { DocWrapperStyled } from "./styles"
 import { useCMS } from "tinacms"
 
 const DocWrapper = ({ children, preview, styled }) => {
-  const cms = useCMS()
-  function handleInlineEdit() {
-    preview ? cms.enable() : cms.disable()
-  }
-  useMemo(handleInlineEdit, [preview])
+  // const cms = useCMS()
+  // function handleInlineEdit() {
+  //   preview ? cms.enable() : cms.disable()
+  // }
+  // useMemo(handleInlineEdit, [preview])
   if (styled) {
     return <DocWrapperStyled>{children}</DocWrapperStyled>
   }
