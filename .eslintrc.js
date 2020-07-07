@@ -11,11 +11,6 @@ module.exports = {
     process: true,
   },
   parser: "babel-eslint",
-  compilerOptions: {
-    paths: {
-      "@/*": ["./*"],
-    },
-  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
