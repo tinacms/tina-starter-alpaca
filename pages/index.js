@@ -34,7 +34,7 @@ const Page = ({ file, preview, styleFile }) => {
   const [styleData, styleForm] = useGlobalStyleForm(styleFile, preview)
 
   return (
-    <Layout preview={preview} form={form} theme={styleData}>
+    <Layout form={form} theme={styleData}>
       <Head title="Home" />
       <Container className="container">
         <Title className="title">{data.title}</Title>

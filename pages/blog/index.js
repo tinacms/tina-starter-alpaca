@@ -14,7 +14,6 @@ const Blog = (props) => {
     <Layout
       searchText="Search blog posts"
       showDocsSearcher
-      preview={props.preview}
       searchIndex="tina-starter-alpaca-Blogs"
       theme={styleData}
     >

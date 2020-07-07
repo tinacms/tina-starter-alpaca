@@ -25,12 +25,12 @@ const Footer = ({ preview }) => {
           </FooterLink>
         </section>
 
-        <EditLink editMode={preview} />
+        <EditLink />
       </div>
     </FooterWrapper>
   )
 }
-export const EditLink = ({ editMode }) => {
+export const EditLink = () => {
   const cms = useCMS()
   return (
     <EditWithTinaButton onClick={() => cms.toggle()}>

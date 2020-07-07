@@ -2,9 +2,9 @@ import Head from "@components/head"
 import Layout from "@components/layout"
 import Container from "@components/container"
 
-const Features = ({ preview }) => {
+const Features = () => {
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Head title="Features" />
       <Container>
         <h1>Features</h1>
