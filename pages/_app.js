@@ -21,6 +21,7 @@ class MyApp extends App {
     })
     const store = new GithubMediaStore(client)
     this.cms = new TinaCMS({
+      enabled: props.pageProps.preview,
       media: {
         store: store,
       },
@@ -30,12 +31,8 @@ class MyApp extends App {
          */
         github: client,
       },
-      sidebar: {
-        hidden: true,
-      },
-      toolbar: {
-        hidden: !props.pageProps.preview,
-      },
+      sidebar: false,
+      toolbar: props.pageProps.preview,
     })
   }
 
@@ -44,9 +41,8 @@ class MyApp extends App {
     return (
       <TinaProvider cms={this.cms}>
         <TinacmsGithubProvider
-          editMode={pageProps.preview}
-          enterEditMode={enterEditMode}
-          exitEditMode={exitEditMode}
+          onLogin={enterEditMode}
+          onLogout={exitEditMode}
           error={pageProps.error}
         >
           <Normalize />

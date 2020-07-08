@@ -49,13 +49,7 @@ const DocTemplate = (props) => {
   useCreateChildPage(nestedDocs)
 
   return (
-    <Layout
-      showDocsSearcher
-      splitView
-      preview={props.preview}
-      theme={styleData}
-      searchIndex="tina-starter-alpaca-Docs"
-    >
+    <Layout showDocsSearcher splitView theme={styleData} searchIndex="tina-starter-alpaca-Docs">
       <Head title={data.frontmatter.title} />
       <SideNav allNestedDocs={nestedDocs} currentSlug={router.query.slug} />
       <div
@@ -66,7 +60,7 @@ const DocTemplate = (props) => {
         }}
       >
         <InlineForm form={form}>
-          <DocWrapper preview={props.preview} styled={true}>
+          <DocWrapper styled={true}>
             <RichText>
               <main>
                 <h1>

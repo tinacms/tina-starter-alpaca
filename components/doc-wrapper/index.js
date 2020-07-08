@@ -1,15 +1,7 @@
-import { node } from "prop-types"
-import { useMemo } from "react"
-
+import { node, bool } from "prop-types"
 import { DocWrapperStyled } from "./styles"
-import { useCMS } from "tinacms"
 
-const DocWrapper = ({ children, preview, styled }) => {
-  const cms = useCMS()
-  function handleInlineEdit() {
-    preview ? cms.enable() : cms.disable()
-  }
-  useMemo(handleInlineEdit, [preview])
+const DocWrapper = ({ children, styled }) => {
   if (styled) {
     return <DocWrapperStyled>{children}</DocWrapperStyled>
   }
@@ -18,6 +10,7 @@ const DocWrapper = ({ children, preview, styled }) => {
 
 DocWrapper.propTypes = {
   children: node,
+  styled: bool,
 }
 
 export default DocWrapper

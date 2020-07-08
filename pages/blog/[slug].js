@@ -46,12 +46,7 @@ const BlogPage = (props) => {
   usePlugin(form)
 
   return (
-    <Layout
-      searchText="Search blog posts"
-      showDocsSearcher
-      preview={props.preview}
-      searchIndex="tina-starter-alpaca-Blogs"
-    >
+    <Layout searchText="Search blog posts" showDocsSearcher searchIndex="tina-starter-alpaca-Blogs">
       <Head title={`${data.frontmatter.title} | Blog`} />
       <p>
         <Link href="/blog">
@@ -60,7 +55,7 @@ const BlogPage = (props) => {
         / {data.frontmatter.title}
       </p>
       <InlineForm form={form}>
-        <DocWrapper preview={props.preview} styled={false}>
+        <DocWrapper styled={false}>
           <RichText>
             <main>
               <h1>
@@ -83,7 +78,6 @@ const BlogPage = (props) => {
                     return media.map((m) => `public/images/${m.filename}`)
                   },
                   previewUrl: (str) => {
-                    console.log({ str })
                     return `${previewURL}/${str}`
                   },
                 }}
