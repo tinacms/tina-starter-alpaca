@@ -31,7 +31,12 @@ class MyApp extends App {
          */
         github: client,
       },
-      sidebar: false,
+      sidebar: {
+        buttons: {
+          reset: "Reset",
+          save: "Save",
+        },
+      },
       toolbar: props.pageProps.preview,
     })
   }
