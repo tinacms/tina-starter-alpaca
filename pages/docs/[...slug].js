@@ -82,6 +82,9 @@ const DocTemplate = (props) => {
                       return media.map((m) => `public/images/${m.filename}`)
                     },
                     previewUrl: (str) => {
+                      if (!str.startsWith("http")) {
+                        return str
+                      }
                       console.log({ str })
                       return `${previewURL}/${str}`
                     },
