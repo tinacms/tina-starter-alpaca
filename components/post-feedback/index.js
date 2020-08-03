@@ -26,7 +26,7 @@ const PostFeedback = () => {
 
   // method that is called when the form is submitted
   const onSubmit = async (formData) => {
-    const response = await fetch("/api/feedback", {
+    const response = await fetch(process.env.FEEDBACK_ENDPOINT || "/api/feedback", {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       credentials: "same-origin", // include, *same-origin, omit
       headers: {
