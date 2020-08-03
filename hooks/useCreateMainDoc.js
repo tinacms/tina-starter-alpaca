@@ -4,6 +4,7 @@ import slugify from "slugify"
 import { FORM_ERROR } from "final-form"
 
 import { toMarkdownString, flatDocs, getRandID } from "@utils"
+import { removeInvalidChars } from "../utils/removeInvalidChars"
 
 const useCreateMainDoc = (allDocs) => {
   const router = useRouter()
@@ -35,7 +36,7 @@ const useCreateMainDoc = (allDocs) => {
         },
       ],
       onSubmit: async ({ title }) => {
-        const slug = slugify(title, { lower: true })
+        const slug = removeInvalidChars(slugify(title, { lower: true }))
 
         // get json file from github
         const github = cms.api.github

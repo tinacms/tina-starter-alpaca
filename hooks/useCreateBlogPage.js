@@ -4,6 +4,7 @@ import slugify from "slugify"
 import { FORM_ERROR } from "final-form"
 
 import { toMarkdownString, flatDocs, getRandID } from "@utils"
+import { removeInvalidChars } from "../utils/removeInvalidChars"
 
 const useCreateBlogPage = (allBlogs) => {
   const router = useRouter()
@@ -50,7 +51,7 @@ const useCreateBlogPage = (allBlogs) => {
       ],
       onSubmit: async (frontMatter) => {
         const github = cms.api.github
-        const slug = slugify(frontMatter.title, { lower: true })
+        const slug = removeInvalidChars(slugify(frontMatter.title, { lower: true }))
         const fileRelativePath = `content/blog/${slug}.md`
         frontMatter.date = frontMatter.date || new Date().toString()
         return await github
