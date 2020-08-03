@@ -101,6 +101,13 @@
       "position": 1,
       "children": [
         {
+          "type": "link",
+          "slug": "deployment/deployment-child-page",
+          "title": "Deployment Child Page",
+          "id": "9yxc9wnm4",
+          "children": []
+        },
+        {
           "key": "./deployment/basics.md",
           "slug": "deployment/basics",
           "type": "link",
