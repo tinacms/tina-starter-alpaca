@@ -24,6 +24,7 @@ import {
 } from "@hooks"
 import { createToc } from "@utils"
 import getGlobalStaticProps from "../../utils/getGlobalStaticProps"
+import { useLastEdited } from "../../hooks/useLastEdited"
 
 const DocTemplate = (props) => {
   const cms = useCMS()
@@ -39,6 +40,7 @@ const DocTemplate = (props) => {
 
   const [data, form] = useFormEditDoc(props.file)
   usePlugin(form)
+  useLastEdited(form)
   const [navData, navForm] = useNavigationForm(props.navigation, props.preview)
   const nestedDocs = navData.config
   const [styleData] = useGlobalStyleForm(props.styleFile, props.preview)
@@ -93,6 +95,11 @@ const DocTemplate = (props) => {
                 >
                   <MarkdownWrapper source={data.markdownBody} />
                 </InlineWysiwyg>
+                {data.frontmatter.last_edited && (
+                  <p style={{ fontSize: ".8rem", color: "grey" }}>
+                    Last updated: {new Date(data.frontmatter.last_edited).toDateString()}
+                  </p>
+                )}
               </main>
             </RichText>
             <PostNavigation allNestedDocs={nestedDocs} />
