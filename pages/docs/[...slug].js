@@ -85,7 +85,6 @@ const DocTemplate = (props) => {
                       if (!str.startsWith("http")) {
                         return str
                       }
-                      console.log({ str })
                       return `${previewURL}/${str}`
                     },
                   }}
