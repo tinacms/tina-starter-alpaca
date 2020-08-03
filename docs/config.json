@@ -2,21 +2,6 @@
   "config": [
     {
       "type": "link",
-      "slug": "this-is-a-new-man-doc-page",
-      "title": "This is  a New Man Doc Page",
-      "id": "xnu3cnbpz",
-      "children": [
-        {
-          "type": "link",
-          "slug": "this-is-a-new-man-doc-pagenew-child-doc-page",
-          "title": "New Child Doc Page",
-          "id": "2271rsx0v",
-          "children": []
-        }
-      ]
-    },
-    {
-      "type": "link",
       "key": "getting-started",
       "slug": "getting-started",
       "title": "Getting Started",
