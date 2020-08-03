@@ -72,10 +72,10 @@ npm run dev
 
 ## Deploy on Vercel
 
-## Gathering Feedback
+## Gathering Feedback with Github
 
 People can submit  feedback from any documentation page. This feedback is immediately posted to GitHub and stored as issues to the repository of your choosing.
-GitHub issues are an awesome way to store feeback, make it searchable, filterable on page URL or reaction types for instance, and you can chosse to be notified of any new comment on your website 🔔.
+GitHub issues are an awesome way to store feeback, make it searchable, filterable on page URL or reaction types for instance, and you can choose to be notified of any new comment on your website 🔔.
 
 ### Setup
 
@@ -97,6 +97,12 @@ yarn dev
 4. Submit a feedback from the form at the bottom of a documenation page on your site. 
 5.  👀 Check your GitHub repository if an issue has been created.
 
+## Gathering Feedback with another endpoint
+
+If you want to use another service ((like Formspree)[https://formspree.io/]) you can change the endpoint that the form is send to. Simple add the following line to your `.env` file 
+```
+FEEDBACK_ENDPOINT=https://example.com
+```
 
 ## :link: Hosting
 
