@@ -2,6 +2,13 @@
   "config": [
     {
       "type": "link",
+      "slug": "this-is-a-new-man-doc-page",
+      "title": "This is  a New Man Doc Page",
+      "id": "xnu3cnbpz",
+      "children": []
+    },
+    {
+      "type": "link",
       "key": "getting-started",
       "slug": "getting-started",
       "title": "Getting Started",
