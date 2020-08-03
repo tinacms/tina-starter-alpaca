@@ -68,7 +68,7 @@ const DocTemplate = (props) => {
                 </h1>
                 {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
                 <InlineWysiwyg
-                  sticky="70px"
+                  sticky={"calc(var(--tina-toolbar-height) + var(--tina-padding-small))"}
                   imageProps={{
                     async upload(files) {
                       const directory = "/public/images/"
