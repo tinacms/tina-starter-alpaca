@@ -4,11 +4,11 @@ import slugify from "slugify"
 import isNavActive from "@utils/isNavActive"
 
 import { toMarkdownString, flatDocs, getRandID } from "@utils"
+import { removeInvalidChars } from "../utils/removeInvalidChars"
 
 const useCreateChildPage = async (allDocs) => {
   const router = useRouter()
   const cms = useCMS()
-  const category = router.query.slug[0]
   const parentObject = allDocs.find((item) => item.slug.split("/")[0] === router.query.slug[0])
 
   // // find all the groups
@@ -63,7 +63,7 @@ const useCreateChildPage = async (allDocs) => {
       name: `Create Child Page for ${parentObject?.title || ""}`,
       fields,
       onSubmit: async ({ title, groupIn }) => {
-        const slug = slugify(title)
+        const slug = removeInvalidChars(slugify(title, { lower: true }))
 
         // get confile JSON file from github
         const configFile = await cms.api.github.fetchFile("docs/config.json", true)
@@ -74,7 +74,7 @@ const useCreateChildPage = async (allDocs) => {
 
         const defaultItem = {
           type: "link",
-          slug: `${category}/${slug}`,
+          slug: removeInvalidChars(category) + "/" + slug,
           title,
           id: getRandID(),
           children: [],
@@ -119,7 +119,6 @@ const useCreateChildPage = async (allDocs) => {
             })
           )
           .then(() => {
-            // setTimeout(() => router.push(`/docs/${router.query.slug[0]}/${slug}`), 1500)
             window.location.href = `/docs/${router.query.slug[0]}/${slug}`
           })
       },
