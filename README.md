@@ -99,7 +99,7 @@ yarn dev
 
 ## Gathering Feedback with another endpoint
 
-If you want to use another service ((like Formspree)[https://formspree.io/]) you can change the endpoint that the form is send to. Simple add the following line to your `.env` file 
+If you want to use another service ([like Formspree](https://formspree.io/)) you can change the endpoint that the form is send to. Simple add the following line to your `.env` file 
 ```
 FEEDBACK_ENDPOINT=https://example.com
 ```
