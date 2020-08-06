@@ -24,7 +24,7 @@ const useNavigationForm = (jsonFile, preview) => {
       component: "text",
     },
     {
-      label: "Type (link or or group)",
+      label: "Type (link or group)",
       name: "type",
       component: "select",
       options: ["link", "group"],
