@@ -47,25 +47,11 @@
               "children": []
             },
             {
-              "key": "./features/linux-froyo.md",
-              "slug": "features/linux-froyo",
-              "type": "link",
-              "title": "Froyo",
-              "id": "10"
-            },
-            {
               "key": "./features/ubuntu.md",
               "slug": "features/ubuntu",
               "type": "link",
               "title": "Ubuntu",
               "id": "11"
-            },
-            {
-              "key": "./features/ubuntuLTS.md",
-              "slug": "features/ubuntuLTS",
-              "type": "link",
-              "title": "ubuntu LTS",
-              "id": "12"
             }
           ]
         },
