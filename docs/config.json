@@ -25,29 +25,8 @@
           "children": [
             {
               "type": "link",
-              "slug": "features/undefined",
-              "title": "Windows 3",
-              "id": "4",
-              "children": []
-            },
-            {
-              "type": "link",
-              "slug": "features/Windows-4",
-              "title": "Windows 4",
-              "id": "5",
-              "children": []
-            },
-            {
-              "type": "link",
-              "slug": "features/win-2",
-              "title": "Windows 2",
-              "id": "6",
-              "children": []
-            },
-            {
-              "type": "link",
               "slug": "features/win-1",
-              "title": "Windows 1",
+              "title": "Windows 10",
               "id": "7",
               "children": []
             }
