@@ -111,29 +111,8 @@
               "key": "./deployment/complement-1.md",
               "slug": "deployment/complement-1",
               "type": "link",
-              "title": "Complement Sub 1",
+              "title": "Subpage",
               "id": "18"
-            },
-            {
-              "key": "./deployment/complement-2.md",
-              "slug": "deployment/complement-2",
-              "type": "link",
-              "title": "Complement Sub 2",
-              "id": "19"
-            },
-            {
-              "key": "./deployment/complement-3.md",
-              "slug": "deployment/complement-3",
-              "type": "link",
-              "title": "Complement Sub 3",
-              "id": "20"
-            },
-            {
-              "key": "./deployment/conplement-4.md",
-              "slug": "deployment/conplement-4",
-              "type": "link",
-              "title": "Complement Sub 4",
-              "id": "22"
             }
           ]
         }
