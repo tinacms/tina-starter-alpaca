@@ -1955,10 +1955,10 @@
   resolved "https://registry.yarnpkg.com/@tinacms/alerts/-/alerts-0.29.0.tgz#7c3e390cbfc595b6b21ead9e926739f69a9ccd11"
   integrity sha512-1f8rceaYikx82RFQHeiOHuDtmfgs0dPEoe2nqmA83q/JpVv2vfCgXEByBVEM11wG6BXARph7EjzlQb5tdvknJQ==
 
-"@tinacms/api-git@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@tinacms/api-git/-/api-git-0.7.0.tgz#0690f928db02d413a3154dfabc7bfa8f2a8c8ca0"
-  integrity sha512-yrQ72E9PiTO58TD9TYUVHelgUdTGQGa4hBJBUkVeQnjuwGtwQ7+x3kSryaiDvW9BWOrM1nGAMMmD0Tp6ff9xpg==
+"@tinacms/api-git@^0.29.0":
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/@tinacms/api-git/-/api-git-0.29.0.tgz#b690aac490c7a6057800829b02db9f6ecc5ea948"
+  integrity sha512-q7UYMx7kE+Cme+J3fNEBqzJgX3Q1jBCtQwJ+Ncyl+fvFlTYT1SvwgzwwKi1aNKUpLxuDqjbAw6BdYTrySFC+aw==
   dependencies:
     atob "2.1.2"
     cors "^2.8.5"
@@ -2000,10 +2000,10 @@
     final-form "^4.18.2"
     final-form-arrays "^3.0.1"
 
-"@tinacms/git-client@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@tinacms/git-client/-/git-client-0.24.0.tgz#a7951d89421c4257b0ac8040ceeca6a32967058e"
-  integrity sha512-thSbTcldRVZkFHfQaCzyP4HdYgjvP7udcTAGQGOaPpgGti2Jjx2iwVzj/moJzhytXGXR4IJUzbvuXTHo2JG0pQ==
+"@tinacms/git-client@^0.29.0":
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/@tinacms/git-client/-/git-client-0.29.0.tgz#a79407229d28ed147de80c6957b2ed6689c8173a"
+  integrity sha512-jQuzEuq7aBi8RwBkpCZn9Rc3pWttB2Et6jnnNkPbo+JOeL2y4uh9jHtuV/SEWwewQwrDQAeqyY9Ckd1O9ncojg==
 
 "@tinacms/icons@^0.29.0":
   version "0.29.0"
@@ -6781,10 +6781,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-next-tinacms-github@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.yarnpkg.com/next-tinacms-github/-/next-tinacms-github-0.27.0.tgz#e164786d53686d96d18951c5813665a6f4aa50dc"
-  integrity sha512-t9P9AwbwAVLgVaO8okxMMHEu+2TU4F+TDlBZLepFdZyaN3Ob0eyJfFsrdwYKlsBXEurp1J1CYJK9EOmGueS0YA==
+next-tinacms-github@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/next-tinacms-github/-/next-tinacms-github-0.29.0.tgz#deef8042d3863c63ea1cc2a87e0c830b1663972a"
+  integrity sha512-8IBHRKVUFp4c8mX5iTQvucR6YqK0qtuqc8OdHTuLFnypiBFBIx/N9pecuq8V6rNOdMLCZP//Iemg/ra3UrPU5Q==
   dependencies:
     atob "2.1.2"
     axios "0.19.2"
@@ -6794,15 +6794,15 @@ next-tinacms-github@^0.27.0:
     qs "6.9.3"
     uuid "^8.1.0"
 
-next-tinacms-json@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/next-tinacms-json/-/next-tinacms-json-0.28.0.tgz#c66b8b5ad006ea520e4ba3b2492f4a9930144895"
-  integrity sha512-X1nj2ip7IREhwS/g5ufqlmAFln4yXPSrmdtJzD1FatCXCdonhwRleDNe+IyNlJE6gAePup+9YNy66munSY0b4w==
+next-tinacms-json@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/next-tinacms-json/-/next-tinacms-json-0.29.0.tgz#e27d54b5daf7dd7d5ead2ec785a578db8001058a"
+  integrity sha512-dboVY11NNSBWM4tTLdqpHTrfv48+hBV4cxFPFw1vfSgXjbD4Ywo955o0O15dtch9wKcQg60cMF6ABbauoRESwg==
 
-next-tinacms-markdown@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/next-tinacms-markdown/-/next-tinacms-markdown-0.28.0.tgz#d4209bbda1c342d14ee07584b867d34a6f90071e"
-  integrity sha512-ddcL48aDztPdzET72Fo8m9+uMqkvJeZcgipYbJfFP+nWiLTHe6POvLGM5YwwboeNqLrkWyEjIG1HdwkBs5J2+w==
+next-tinacms-markdown@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/next-tinacms-markdown/-/next-tinacms-markdown-0.29.0.tgz#ced7f754ac4bc1c2bdb0e627e549139e018fcb40"
+  integrity sha512-YDuyqSaFqqlI6WR6MkW4+pnggY36R7pZip1/ezyWEWR1OkzdraRwgq3r0O1x0zULvgabac9THK9QpWVX7bWeRQ==
   dependencies:
     gray-matter "^4.0.2"
     js-yaml "^3.13.1"
@@ -8159,10 +8159,10 @@ react-textarea-autosize@^8.2.0:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-tinacms-editor@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/react-tinacms-editor/-/react-tinacms-editor-0.28.0.tgz#49f3a14c9d6c34ee879584e313b307d81a15c13d"
-  integrity sha512-ja3nZcQ9GgvWgD92gPHHPIzOr++lxrxguVhljVarg3Vr2FhNQpWamhINFvRm425y+em5iASVfdPEIg8KbTKqIg==
+react-tinacms-editor@^0.30.0-alpha.0:
+  version "0.30.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/react-tinacms-editor/-/react-tinacms-editor-0.30.0-alpha.0.tgz#620d7e28326b93782bcc8c4711a99d0cd9988cd5"
+  integrity sha512-3UsyaKIfgsmYF953IajBkXhEhV6r3nnJCZyzNvHpEbslrVlEJFdkJrbVAWGHAkPye4KUgqf/Pmoi+SBKPeWjTQ==
   dependencies:
     codemirror "^5.42.2"
     lodash.debounce "^4.0.8"
@@ -8183,14 +8183,14 @@ react-tinacms-editor@^0.28.0:
     prosemirror-view "^1.11.3"
     react-dismissible "^1.3.0"
 
-react-tinacms-github@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/react-tinacms-github/-/react-tinacms-github-0.28.0.tgz#1fc560bd943479c2ee9331be43607ca9c2c483e4"
-  integrity sha512-OKDtyZWVozpC29CRLK5VaMbdh8w0rvvB+3mBo6uKsFjc2Fc+joU/kH93hY2ge/FsVYjO5vNqli7pS2IrlBeQ1g==
+react-tinacms-github@^0.30.0-alpha.0:
+  version "0.30.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/react-tinacms-github/-/react-tinacms-github-0.30.0-alpha.0.tgz#9e0f61a32c09ba41658b97f068a084371e527f89"
+  integrity sha512-e8Cq1GBmuxYMc7lejKEvYCExXeKU+M6n12nTUxM1W5jO2zzRzRgchbGa2QpHURDJlUd1B7HuQ+j34Kk9LT6JbA==
   dependencies:
     btoa "^1.2.1"
     js-cookie "^2.2.1"
-    next-tinacms-markdown "^0.28.0"
+    next-tinacms-markdown "^0.29.0"
 
 react-tinacms-inline@^0.28.0:
   version "0.28.0"
@@ -10012,9 +10012,9 @@ uuid@^7.0.2:
   integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 uuid@^8.1.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.2.0.tgz#cb10dd6b118e2dada7d0cd9730ba7417c93d920e"
-  integrity sha512-CYpGiFTUrmI6OBMkAdjSDM0k5h8SkkiTP4WAjQgDgNB1S3Ou9VBEvr6q0Kv2H1mMk7IWfxYGpMH5sd5AvcIV2Q==
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.0.tgz#ab738085ca22dc9a8c92725e459b1d507df5d6ea"
+  integrity sha512-fX6Z5o4m6XsXBdli9g7DtWgAx+osMsRRZFKma1mIUsLCz6vRvv+pz5VNbyu9UEDzpMWulZfvpgb/cmDXVulYFQ==
 
 v8-compile-cache@^2.0.3:
   version "2.1.1"
