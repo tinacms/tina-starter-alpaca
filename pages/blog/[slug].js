@@ -67,8 +67,8 @@ const BlogPage = (props) => {
                 name="markdownBody"
                 sticky={"calc(var(--tina-toolbar-height) + var(--tina-padding-small))"}
                 imageProps={{
-                  directory: "images/",
-                  parse: (media) => `/images/${media.filename}`,
+                  uploadDir: () => "/images/",
+                  parse: (media) => media.id,
                   previewSrc(src) {
                     return cms.media.previewSrc(src)
                   },
