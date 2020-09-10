@@ -2,13 +2,13 @@
 date: '2019-07-10T07:00:00.000Z'
 title: Getting Started
 position: 0
-last_edited: '2020-08-19T11:03:57.348Z'
+last_edited: '2020-09-10T10:47:28.061Z'
 ---
 Tina Starter Alpaca is a NextJS documentation responsive theme, customizable, and hosted on Vercel.
 
 Go to [https://tina-starter-alpaca.now.sh](https://tina-starter-alpaca.now.sh/ "https://tina-starter-alpaca.now.sh/") to give it a spin. You can edit your content from the website just like on tinacms.org.
 
-![](https://tinacms.org/gif/open-auth.gif)
+![](public/images/dx-study.jpg)
 
 ## Blocks
 
@@ -32,10 +32,10 @@ Suspendisse potenti. Interdum et malesuada fames ac ante ipsum primis in faucibu
 
 ## Tables
 
-| Lorem | Lorem | Ipsum | Dolores | Ipsum |
-| --- | --- | --- | --- | --- |
-| Ipsum | Ipsum | Ipsum | Ipsum | 0 |
-| Ipsum | Ipsum | Ipsum | Ipsum | 0 |
+| Lorem | Ipsum | Dolores | Ipsum |
+| --- | --- | --- | --- |
+| Ipsum | Ipsum | Ipsum | 0 |
+| Ipsum | Ipsum | Ipsum | 0 |
 
 ## List Items
 
