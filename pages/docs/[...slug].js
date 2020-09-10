@@ -70,28 +70,15 @@ const DocTemplate = (props) => {
                 </h1>
                 {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
                 <InlineWysiwyg
+                  name="markdownBody"
                   sticky={"calc(var(--tina-toolbar-height) + var(--tina-padding-small))"}
                   imageProps={{
-                    async upload(files) {
-                      const directory = "/public/images/"
-                      let media = await cms.media.store.persist(
-                        files.map((file) => {
-                          return {
-                            directory,
-                            file,
-                          }
-                        })
-                      )
-                      return media.map((m) => `public/images/${m.filename}`)
-                    },
-                    previewUrl: (str) => {
-                      if (!str.startsWith("http")) {
-                        return str
-                      }
-                      return `${previewURL}/${str}`
-                    },
-                  }}
-                  name="markdownBody"
+                    directory: 'public/images/',
+                    parse: filename => 'images/' + filename,
+                    previewSrc(src: string) {
+                      return cms.api.github.getDownloadUrl('public/' + src)
+                      },
+                    }}
                 >
                   <MarkdownWrapper source={data.markdownBody} />
                 </InlineWysiwyg>
