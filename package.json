@@ -1,7 +1,7 @@
 {
   "name": "tina-alpaca",
   "version": "0.1.0",
-  "description": "",
+  "description": "NextJS documentation starter with TinaCMS",
   "main": "index.js",
   "scripts": {
     "dev": "next",
