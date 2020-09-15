@@ -64,25 +64,15 @@ const BlogPage = (props) => {
               {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
 
               <InlineWysiwyg
+                name="markdownBody"
                 sticky={"calc(var(--tina-toolbar-height) + var(--tina-padding-small))"}
                 imageProps={{
-                  async upload(files) {
-                    const directory = "/public/images/"
-                    let media = await cms.media.store.persist(
-                      files.map((file) => {
-                        return {
-                          directory,
-                          file,
-                        }
-                      })
-                    )
-                    return media.map((m) => `public/images/${m.filename}`)
-                  },
-                  previewUrl: (str) => {
-                    return `${previewURL}/${str}`
+                  directory: "public/images/",
+                  parse: (filename) => "/images/" + filename,
+                  previewSrc(src) {
+                    return cms.api.github.getDownloadUrl("public/" + src)
                   },
                 }}
-                name="markdownBody"
               >
                 <MarkdownWrapper source={data.markdownBody} />
               </InlineWysiwyg>
