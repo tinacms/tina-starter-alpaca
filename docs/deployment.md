@@ -8,3 +8,4 @@ Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&ut
 [Create a new GitHub OAuth App](https://tinacms.org/guides/nextjs/github/github-oauth-app) with your Vercel URL.
 
 ![](/images/vercel-deployment.png)
+
