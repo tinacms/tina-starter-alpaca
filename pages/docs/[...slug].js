@@ -73,10 +73,10 @@ const DocTemplate = (props) => {
                   name="markdownBody"
                   sticky={"calc(var(--tina-toolbar-height) + var(--tina-padding-small))"}
                   imageProps={{
-                    directory: "public/images/",
+                    directory: "images/",
                     parse: (filename) => "/images/" + filename,
                     previewSrc(src) {
-                      return cms.api.github.getDownloadUrl("public/" + src)
+                      return cms.media.previewSrc(src)
                     },
                   }}
                 >
