@@ -19,19 +19,12 @@ class MyApp extends App {
       baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
       baseBranch: process.env.BASE_BRANCH,
     })
-    const store = new GithubMediaStore(client)
     this.cms = new TinaCMS({
       enabled: props.pageProps.preview,
-      media: {
-        store: store,
-      },
       apis: {
-        /**
-         * 2. Register the GithubClient
-         */
         github: client,
       },
-      sidebar: false,
+      media: new GithubMediaStore(client),
       toolbar: props.pageProps.preview,
     })
   }
