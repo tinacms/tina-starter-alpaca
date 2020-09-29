@@ -1,9 +1,10 @@
 import React from "react"
 import App from "next/app"
 import { TinaProvider, TinaCMS } from "tinacms"
-import { TinacmsGithubProvider, GithubMediaStore } from "react-tinacms-github"
+import { TinacmsGithubProvider } from "react-tinacms-github"
 import { Normalize } from "styled-normalize"
 import { AlpacaGitHubClient } from "../utils/githubClient"
+import { NextGithubMediaStore } from "next-tinacms-github"
 // import { GithubClient } from "react-tinacms-github"
 // eslint-disable-next-line no-undef
 require("typeface-source-code-pro")
@@ -24,7 +25,7 @@ class MyApp extends App {
       apis: {
         github: client,
       },
-      media: new GithubMediaStore(client),
+      media: new NextGithubMediaStore(client),
       toolbar: props.pageProps.preview,
     })
   }
