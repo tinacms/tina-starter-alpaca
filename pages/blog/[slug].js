@@ -68,7 +68,7 @@ const BlogPage = (props) => {
                 sticky={"calc(var(--tina-toolbar-height) + var(--tina-padding-small))"}
                 imageProps={{
                   directory: "images/",
-                  parse: (filename) => "/images/" + filename,
+                  parse: (media) => `/images/${media.filename}`,
                   previewSrc(src) {
                     return cms.media.previewSrc(src)
                   },
