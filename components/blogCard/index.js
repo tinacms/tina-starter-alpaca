@@ -20,7 +20,7 @@ const BlogCard = ({ post }) => {
   const date = new Date(post.data.frontmatter.date)
   const dateOptions = { year: "numeric", month: "long", day: "numeric" }
   return (
-    <Link href="blog/[slug]" as={`blog/${post.fileName}`}>
+    <Link href={`blog/${post.fileName}`}>
       <StyledAnchor>
         <BlogCardStyled>
           <h1>{post.data.frontmatter.title}</h1>
