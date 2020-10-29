@@ -33,6 +33,13 @@
           ]
         },
         {
+          "key": "./features/mac.md",
+          "slug": "features/mac",
+          "type": "link",
+          "title": "macOS",
+          "id": "13"
+        },
+        {
           "type": "group",
           "key": "Linux",
           "title": "Linux",
@@ -54,13 +61,6 @@
               "id": "11"
             }
           ]
-        },
-        {
-          "key": "./features/mac.md",
-          "slug": "features/mac",
-          "type": "link",
-          "title": "macOS",
-          "id": "13"
         },
         {
           "type": "link",
