@@ -71,7 +71,7 @@ const DocTemplate = (props) => {
                 {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
                 <InlineWysiwyg
                   name="markdownBody"
-                  sticky={"calc(var(--tina-toolbar-height) + var(--tina-padding-small))"}
+                  sticky="62px"
                   imageProps={{
                     uploadDir: () => "/images/",
                     parse: (media) => media.id,
