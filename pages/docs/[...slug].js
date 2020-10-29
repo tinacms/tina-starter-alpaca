@@ -2,8 +2,8 @@ import matter from "gray-matter"
 import { useRouter } from "next/router"
 import Error from "next/error"
 import { useFormScreenPlugin, usePlugin, useCMS } from "tinacms"
-import { InlineTextField, InlineField } from "react-tinacms-inline"
 import { InlineWysiwyg, Wysiwyg } from "react-tinacms-editor"
+import { InlineText } from "react-tinacms-inline"
 import { getGithubPreviewProps, parseMarkdown, parseJson } from "next-tinacms-github"
 import { InlineForm } from "react-tinacms-inline"
 import Head from "@components/head"
@@ -66,7 +66,7 @@ const DocTemplate = (props) => {
             <RichText>
               <main>
                 <h1>
-                  <InlineTextField name="frontmatter.title" />
+                  <InlineText name="frontmatter.title" />
                 </h1>
                 {!props.preview && props.Alltocs.length > 0 && <Toc tocItems={props.Alltocs} />}
                 <InlineWysiwyg
