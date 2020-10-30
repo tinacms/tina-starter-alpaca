@@ -2,6 +2,13 @@
   "config": [
     {
       "type": "link",
+      "slug": "test-page",
+      "title": "Test Page",
+      "id": "blff7c5et",
+      "children": []
+    },
+    {
+      "type": "link",
       "key": "getting-started",
       "slug": "getting-started",
       "title": "Getting Started",
