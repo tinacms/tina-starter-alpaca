@@ -4,7 +4,7 @@
 
 ## :sparkles: Features
 
-- Full integration with [TinaCMS](https://tinacms.org)
+- Full integration with [Tina](https://tina.io)
 - Edit and add new documentation pages
 - Fully customizable Navigation
   - Organized your documentation into groups and subgroups
@@ -19,7 +19,7 @@
 
 1. Clone the repo `git clone https://github.com/tinacms/tina-starter-alpaca.git`
 2. `cd tina-starter-alpaca`
-3. [Set up a GitHub OAuth App](https://tinacms.org/guides/nextjs/github-open-authoring/github-oauth-app)
+3. [Set up a GitHub OAuth App](https://tina.io/guides/nextjs/github-open-authoring/github-oauth-app)
 4. Add a new file called `.env` with the credentials from your Github OAuth App
 
 ```env
@@ -35,7 +35,7 @@ REPO_FULL_NAME=<GitHub Username>/<Repo Name>
 BASE_BRANCH=master
 ```
 
-You can learn more about [Open Authoring With Github in our guide](https://tinacms.org/guides/nextjs/github-open-authoring/initial-setup)
+You can learn more about [Open Authoring With Github in our guide](https://tina.io/guides/nextjs/github-open-authoring/initial-setup)
 
 5. Install dependencies and run the doc starter:
 
@@ -106,10 +106,10 @@ FEEDBACK_ENDPOINT=https://example.com
 
 ## :link: Hosting
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2Ftinacms%2Ftina-starter-alpaca%2F&env=REPO_FULL_NAME,GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,SIGNING_KEY&envDescription=GitHub%20OAuth%20needed%20for%20TinaCMS&envLink=https%3A%2F%2Ftinacms.org%2Fguides%2Fnextjs%2Fgithub%2Fhosting-vercel&project-name=tinacms-next-documentation&repo-name=tinacms-next-documentation)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https%3A%2F%2Fgithub.com%2Ftinacms%2Ftina-starter-alpaca%2F&env=REPO_FULL_NAME,GITHUB_CLIENT_ID,GITHUB_CLIENT_SECRET,SIGNING_KEY&envDescription=GitHub%20OAuth%20needed%20for%20TinaCMS&envLink=https%3A%2F%2Ftina.io%2Fguides%2Fnextjs%2Fgithub%2Fhosting-vercel&project-name=tinacms-next-documentation&repo-name=tinacms-next-documentation)
 
 - [See how to deploy NextJS on Vercel](https://nextjs.org/docs/deployment).
-- [You have to **create a GitHub OAuth App** with your Vercel URL](https://tinacms.org/guides/nextjs/github-open-authoring/hosting-vercel).
+- [You have to **create a GitHub OAuth App** with your Vercel URL](https://tina.io/guides/nextjs/github-open-authoring/hosting-vercel).
 
 ## :octocat: Issues
 
