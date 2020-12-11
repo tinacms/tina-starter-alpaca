@@ -2,13 +2,6 @@
   "config": [
     {
       "type": "link",
-      "slug": "event",
-      "title": "Event",
-      "id": "qsfyjh58w",
-      "children": []
-    },
-    {
-      "type": "link",
       "key": "getting-started",
       "slug": "getting-started",
       "title": "Getting Started",
