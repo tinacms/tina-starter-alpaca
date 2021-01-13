@@ -2,10 +2,10 @@
 date: '2019-07-10T07:00:00.000Z'
 title: Getting Started
 position: 0
-last_edited: '2020-11-24T08:34:50.343Z'
+last_edited: '2021-01-13T13:58:29.450Z'
 ---
-Tina Starter Alpaca is a Next.js customizable documentation theme hosted on Vercel.
+Tina Alpaca is a Next.js customizable documentation starter hosted on Vercel.
 
-Go to [https://tina-starter-alpaca.now.sh](https://tina-starter-alpaca.now.sh/ "https://tina-starter-alpaca.now.sh/") to give it a spin. You can edit your content from the website just like on [tina.io](https://tina.io).
+Visit the [public website](https://tina-starter-alpaca.now.sh/ "https://tina-starter-alpaca.now.sh/") to see it in action. You can edit content from the website by clicking on the pencil button at the bottom of the page just like on [tina.io](https://tina.io).
 
 ![](/images/notebook.jpg)
