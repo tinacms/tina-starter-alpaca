@@ -47,18 +47,18 @@
           "id": "8",
           "children": [
             {
-              "type": "link",
-              "slug": "features/Arch",
-              "title": "Arch",
-              "id": "9",
-              "children": []
-            },
-            {
               "key": "./features/ubuntu.md",
               "slug": "features/ubuntu",
               "type": "link",
               "title": "Ubuntu",
               "id": "11"
+            },
+            {
+              "type": "link",
+              "slug": "features/Arch",
+              "title": "Arch",
+              "id": "9",
+              "children": []
             }
           ]
         },
