@@ -1,8 +1,10 @@
 ---
 title: Ubuntu
 groupIn: Linux
-last_edited: '2021-01-13T14:08:25.739Z'
+last_edited: '2021-01-13T14:27:17.441Z'
 ---
+![](/images/Logo-ubuntu_no(r)-black_orange-hex.svg.png)
+
 **Ubuntu** ([/ʊˈbʊntuː/](https://en.wikipedia.org/wiki/Help:IPA/English "Help:IPA/English") is a [Linux distribution](https://en.wikipedia.org/wiki/Linux_distribution "Linux distribution") based on [Debian](https://en.wikipedia.org/wiki/Debian "Debian") and mostly composed of [free and open-source software](https://en.wikipedia.org/wiki/Free_and_open-source_software "Free and open-source software").
 
 Ubuntu is officially released in three editions: _[Desktop](https://en.wikipedia.org/wiki/Desktop_computer "Desktop computer")_, _[Server](https://en.wikipedia.org/wiki/Server_(computing) "Server (computing)")_, and _Core_ for [Internet of things](https://en.wikipedia.org/wiki/Internet_of_things "Internet of things") devices and [robots](https://en.wikipedia.org/wiki/Robot "Robot"). All the editions can run on the computer alone, or in a [virtual machine](https://en.wikipedia.org/wiki/Virtual_machine "Virtual machine"). Ubuntu is a popular [operating system](https://en.wikipedia.org/wiki/Operating_system "Operating system") for [cloud computing](https://en.wikipedia.org/wiki/Cloud_computing "Cloud computing"), with support for [OpenStack](https://en.wikipedia.org/wiki/OpenStack "OpenStack"). Ubuntu's default desktop has been [GNOME](https://en.wikipedia.org/wiki/GNOME "GNOME"), since version 17.10.
