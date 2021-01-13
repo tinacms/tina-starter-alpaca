@@ -1,19 +1,14 @@
 ---
 date: '2019-07-10T07:00:00.000Z'
-title: Features
-last_edited: '2021-01-13T14:00:45.013Z'
+title: Operating Systems
+last_edited: '2021-01-13T14:35:39.779Z'
 ---
-* Full integration with [Tina](https://tina.io)
-* Edit and add new documentation pages
-* Media Manager
+An **operating system** (**OS**) is [system software](https://en.wikipedia.org/wiki/System_software "System software") that manages [computer hardware](https://en.wikipedia.org/wiki/Computer_hardware "Computer hardware"), [software](https://en.wikipedia.org/wiki/Computer_software "Computer software") resources, and provides common [services](https://en.wikipedia.org/wiki/Daemon_(computing) "Daemon (computing)") for [computer programs](https://en.wikipedia.org/wiki/Computer_program "Computer program").
 
-  Navigation management:
-  * Organize your documentation into groups and subgroups
-  * Change the order of the links
-* Theme customization:
-  * Name
-  * Logo
-  * Colors
-  * Famity font
-  * Title
-* Search (powered by [Algolia](https://algolia.com))
+[Time-sharing](https://en.wikipedia.org/wiki/Time-sharing "Time-sharing") operating systems [schedule tasks](https://en.wikipedia.org/wiki/Scheduler_(computing) "Scheduler (computing)") for efficient use of the system and may also include accounting software for cost allocation of [processor time](https://en.wikipedia.org/wiki/Scheduling_(computing) "Scheduling (computing)"), [mass storage](https://en.wikipedia.org/wiki/Mass_storage "Mass storage"), printing, and other resources.
+
+For hardware functions such as [input and output](https://en.wikipedia.org/wiki/Input_and_output "Input and output") and [memory allocation](https://en.wikipedia.org/wiki/Memory_allocation "Memory allocation"), the operating system acts as an intermediary between programs and the computer hardware, although the application code is usually executed directly by the hardware and frequently makes [system calls](https://en.wikipedia.org/wiki/System_call "System call") to an OS function or is [interrupted](https://en.wikipedia.org/wiki/Interrupt "Interrupt") by it. Operating systems are found on many devices that contain a computer – from cellular phones and video game consoles to [web servers](https://en.wikipedia.org/wiki/Web_server "Web server") and [supercomputers](https://en.wikipedia.org/wiki/Supercomputer "Supercomputer").
+
+The dominant desktop operating system is [Microsoft Windows](https://en.wikipedia.org/wiki/Microsoft_Windows "Microsoft Windows") with a market share of around 76.45%. [macOS](https://en.wikipedia.org/wiki/MacOS "MacOS") by [Apple Inc.](https://en.wikipedia.org/wiki/Apple_Inc. "Apple Inc.") is in second place (17.72%), and the varieties of [Linux](https://en.wikipedia.org/wiki/Linux "Linux") are collectively in third place (1.73%). In the [mobile](https://en.wikipedia.org/wiki/Mobile_operating_system "Mobile operating system") sector (including smartphones and [tablets](https://en.wikipedia.org/wiki/Tablet_computer "Tablet computer")), [Android's](https://en.wikipedia.org/wiki/Android_(operating_system) "Android (operating system)") share is up to 72% in the year 2020. According to third-quarter 2016 data, Android's share on smartphones is dominant with 87.5 percent with also a growth rate of 10.3 percent per year, followed by Apple's [iOS](https://en.wikipedia.org/wiki/IOS "IOS") with 12.1 percent with per year decrease in market share of 5.2 percent, while other operating systems amount to just 0.3 percent. [Linux distributions](https://en.wikipedia.org/wiki/Linux_distribution "Linux distribution") are dominant in the server and supercomputing sectors. Other specialized classes of operating systems, such as [embedded](https://en.wikipedia.org/wiki/Embedded_system "Embedded system") and real-time systems, exist for many applications.
+
+Source: [Wikipedia](https://en.wikipedia.org/wiki/Operating_system)
